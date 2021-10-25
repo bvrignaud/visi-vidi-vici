@@ -13,7 +13,7 @@ class SpotsController extends Controller
 
     public function index(): \Inertia\Response
     {
-        return Inertia::render('Spots', [
+        return Inertia::render('Spots/Index', [
             'spots' => Spot::orderBy('name')->get(),
         ]);
     }
