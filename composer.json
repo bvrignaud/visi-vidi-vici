@@ -1,11 +1,11 @@
 {
-    "name": "laravel/laravel",
+    "name": "bvrignaud/visi-vidi-vici",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Clear sea weather for freedivers and underwater fishermen.",
+    "keywords": ["apnea", "sea", "spearfishing", "turbidity", "visibility"],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^8.0",
         "fruitcake/laravel-cors": "^2.0",
         "goldspecdigital/laravel-eloquent-uuid": "^8.0",
         "guzzlehttp/guzzle": "^7.0.1",
