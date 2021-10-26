@@ -31,6 +31,9 @@ class StormGlassAPI
                 'start' => $start?->getTimestamp(),
                 'end' => $end?->getTimestamp(),
             ]);
+
+            $response->throw();
+
             $hours = $response->json()['hours'];
 
             foreach ($hours as &$hour) {
