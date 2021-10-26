@@ -35,11 +35,6 @@
     </app-layout>
 </template>
 
-<style scoped>
-    td {
-        @apply p-2;
-    }
-</style>
 
 <script>
 import { defineComponent } from 'vue'

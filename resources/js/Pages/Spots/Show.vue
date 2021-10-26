@@ -85,10 +85,6 @@
 </template>
 
 <style scoped>
-    td, th {
-        @apply p-2;
-    }
-
     th.actual-day, td.actual-day {
         @apply bg-yellow-300;
     }

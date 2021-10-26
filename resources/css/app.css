@@ -1,3 +1,43 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+    h1 {
+        @apply mt-2 text-3xl sm:text-4xl leading-8 font-extrabold tracking-tight;
+    }
+
+    h2 {
+        @apply mt-2 text-2xl sm:text-3xl leading-8 font-extrabold tracking-tight;
+    }
+
+    h3 {
+        @apply my-5 font-bold;
+    }
+
+    h4 {
+        @apply italic;
+    }
+
+    h5 {
+    }
+
+    a {
+        @apply underline;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+    td, th {
+        @apply p-2;
+    }
+}
