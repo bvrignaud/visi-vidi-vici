@@ -33,7 +33,7 @@ class SpotsController extends Controller
         return back()->with('spot_store', 'Merci pour votre contribution.');
     }
 
-    public function show(Spot $spot): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function show(Spot $spot): \Inertia\Response
     {
         $stormGlassAPI = new StormGlassAPI();
 
@@ -41,7 +41,7 @@ class SpotsController extends Controller
 
         $tides = $stormGlassAPI->getTideExtremesPoint($spot->lat , $spot->lng, (new \DateTime())->sub(new \DateInterval('P5D')));
 
-        return view('spot', compact('spot', 'weathers', 'tides'));
+        return Inertia::render('Spots/Show', compact('spot', 'weathers', 'tides'));
     }
 
     /**
@@ -101,7 +101,7 @@ class SpotsController extends Controller
         foreach ($forecastsSum as $date => $value) {
             foreach ($value as $key => $sum) {
                 if ($key !== 'count') {
-                    $forecasts[$date][$key] = $sum / $value['count'];
+                    $forecasts[$date][$key] = round($sum / $value['count'], PHP_ROUND_HALF_UP);
                 }
             }
         }
