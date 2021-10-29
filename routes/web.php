@@ -25,7 +25,7 @@ use Inertia\Inertia;
 //    ]);
 //});
 //Route::get('/', [Controllers\SpotsController::class, 'index'])->name('home');
-Route::get('/', [Controllers\SpotsController::class, 'index']);
+Route::get('/', [Controllers\SpotsController::class, 'index'])->name('home');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
