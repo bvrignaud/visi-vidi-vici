@@ -25,6 +25,14 @@
                                 <jet-nav-link v-for="navLink in navLinks" :href="route(navLink.route)" :active="route().current(navLink.route)">
                                     {{ navLink.label }}
                                 </jet-nav-link>
+                                <template v-if="! $page.props.user">
+                                    <jet-nav-link :href="route('login')" :active="route().current('login')">
+                                        Connexion
+                                    </jet-nav-link>
+                                    <jet-nav-link :href="route('register')" :active="route().current('register')">
+                                        Inscription
+                                    </jet-nav-link>
+                                </template>
                             </div>
                         </div>
 
@@ -151,6 +159,14 @@
                         <jet-responsive-nav-link v-for="navLink in navLinks" :href="route(navLink.route)" :active="route().current(navLink.route)">
                             {{ navLink.label }}
                         </jet-responsive-nav-link>
+                        <template v-if="! $page.props.user">
+                            <jet-responsive-nav-link :href="route('login')" :active="route().current('login')">
+                                Connexion
+                            </jet-responsive-nav-link>
+                            <jet-responsive-nav-link :href="route('register')" :active="route().current('register')">
+                                Inscription
+                            </jet-responsive-nav-link>
+                        </template>
                     </div>
 
                     <!-- Responsive Settings Options -->
