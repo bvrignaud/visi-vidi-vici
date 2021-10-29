@@ -22,7 +22,7 @@
                                 <jet-nav-link v-if="$page.props.user" :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
-                                <jet-nav-link v-for="navLink in navLinks" :href="navLink.route" :active="route().current(navLink.route)">
+                                <jet-nav-link v-for="navLink in navLinks" :href="route(navLink.route)" :active="route().current(navLink.route)">
                                     {{ navLink.label }}
                                 </jet-nav-link>
                             </div>
@@ -148,7 +148,7 @@
                         <jet-responsive-nav-link v-if="$page.props.user" :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </jet-responsive-nav-link>
-                        <jet-responsive-nav-link v-for="navLink in navLinks" :href="route('dashboard')" :active="route().current('dashboard')">
+                        <jet-responsive-nav-link v-for="navLink in navLinks" :href="route(navLink.route)" :active="route().current(navLink.route)">
                             {{ navLink.label }}
                         </jet-responsive-nav-link>
                     </div>
@@ -268,8 +268,12 @@
                 showingNavigationDropdown: false,
                 navLinks: [
                     {
+                        label: 'Accueil',
+                        route: 'home',
+                    },
+                    {
                         label: 'Contact',
-                        route: '/contact',
+                        route: 'contact',
                     }
                 ],
             }

@@ -4,7 +4,7 @@
             <slot></slot>
         </button>
 
-        <Link :href="href" :class="classes" v-else>
+        <Link :href="href" class="no-underline" :class="classes" v-else>
             <slot />
         </Link>
     </div>
