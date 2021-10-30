@@ -6,7 +6,7 @@
 
         <title>@yield('title')</title>
 
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
         <!-- Styles -->
         <style>

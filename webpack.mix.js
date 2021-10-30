@@ -10,15 +10,12 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-mix.options({
-    postCss: [require("tailwindcss")("./tailwind.config.js")]
-})
 
 mix.js('resources/js/app.js', 'public/js').vue()
-    .postCss('resources/css/app.css', 'public/css', [
-        require('postcss-import'),
-        require('tailwindcss'),
-    ])
+    .sass('resources/scss/app.scss', 'public/css')
+    .options({
+        postCss: [ require("tailwindcss")('./tailwind.config.js') ],
+    })
     .webpackConfig(require('./webpack.config'));
 
 if (mix.inProduction()) {
