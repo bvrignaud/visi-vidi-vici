@@ -12,8 +12,8 @@
                         <thead>
                             <tr>
                                 <th>Nom</th>
-                                <th>Longitude</th>
-                                <th>Latitude</th>
+                                <th class="hidden sm:table-cell">Longitude</th>
+                                <th class="hidden sm:table-cell">Latitude</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -21,10 +21,10 @@
                                 <td>
                                     <a :href="`${route('spots.show', spot)}`">{{ spot.name }}</a>
                                 </td>
-                                <td>
+                                <td class="hidden sm:table-cell">
                                     {{ spot.lng }}
                                 </td>
-                                <td>
+                                <td class="hidden sm:table-cell">
                                     {{ spot.lat }}
                                 </td>
                             </tr>
