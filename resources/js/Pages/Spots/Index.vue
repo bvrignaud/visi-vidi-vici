@@ -19,7 +19,7 @@
                         <tbody>
                             <tr v-for="spot in spots">
                                 <td>
-                                    <a :href="`${route('spots.show', spot)}`">{{ spot.name }}</a>
+                                    <Link :href="`${route('spots.show', spot)}`">{{ spot.name }}</Link>
                                 </td>
                                 <td class="hidden sm:table-cell">
                                     {{ spot.lng }}
@@ -40,9 +40,11 @@
 <script>
 import { defineComponent } from 'vue'
 import AppLayout from '@/Layouts/AppLayout.vue'
+import { Link } from '@inertiajs/inertia-vue3'
 
 export default defineComponent({
     components: {
+        Link,
         AppLayout,
     },
     props: {
