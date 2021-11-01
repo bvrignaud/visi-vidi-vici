@@ -1,5 +1,5 @@
 <template>
-    <l-map style="height:50vh" :center="center" :zoom="`12`">
+    <l-map style="height:50vh" :center="center" ref="map" @ready="zoomFitToMarkers()">
         <l-tile-layer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             :attribution="attribution"
@@ -20,7 +20,7 @@
 
 <script>
 import "leaflet/dist/leaflet.css"
-import { LMap, LIcon, LMarker, LTileLayer } from "@vue-leaflet/vue-leaflet";
+import {LMap, LIcon, LMarker, LTileLayer} from "@vue-leaflet/vue-leaflet";
 export default {
     components: {
         LIcon,
@@ -41,6 +41,9 @@ export default {
         }
     },
     methods: {
+        zoomFitToMarkers() {
+            this.$refs.map.leafletObject.fitBounds(this.markers.map(m => m.coordinates))
+        },
         goToSpot(spotId) {
             this.$inertia.visit(route('spots.show', spotId));
         },
