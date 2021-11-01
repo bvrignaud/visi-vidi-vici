@@ -1,25 +1,25 @@
 <template>
     <jet-action-section>
         <template #title>
-            Two Factor Authentication
+            Double authentification
         </template>
 
         <template #description>
-            Add additional security to your account using two factor authentication.
+            Ajouter une sécurité supplémentaire à votre compte en utilisant l'authentification à deux facteurs.
         </template>
 
         <template #content>
             <h3 class="text-lg font-medium text-gray-900" v-if="twoFactorEnabled">
-                You have enabled two factor authentication.
+                Vous avez activé la double authentification.
             </h3>
 
             <h3 class="text-lg font-medium text-gray-900" v-else>
-                You have not enabled two factor authentication.
+                Vous n'avez pas activé la double authentification.
             </h3>
 
             <div class="mt-3 max-w-xl text-sm text-gray-600">
                 <p>
-                    When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.
+                    Lorsque l'authentification à deux facteurs est activée, vous serez invité à saisir un jeton aléatoire sécurisé lors de l'authentification. Vous pouvez récupérer ce jeton depuis l'application Google Authenticator de votre téléphone.
                 </p>
             </div>
 
@@ -27,7 +27,7 @@
                 <div v-if="qrCode">
                     <div class="mt-4 max-w-xl text-sm text-gray-600">
                         <p class="font-semibold">
-                            Two factor authentication is now enabled. Scan the following QR code using your phone's authenticator application.
+                            L'authentification à deux facteurs est maintenant activée. Enregistrez ce QR code dans votre application d'authentification.
                         </p>
                     </div>
 
@@ -54,7 +54,7 @@
                 <div v-if="! twoFactorEnabled">
                     <jet-confirms-password @confirmed="enableTwoFactorAuthentication">
                         <jet-button type="button" :class="{ 'opacity-25': enabling }" :disabled="enabling">
-                            Enable
+                            Activer
                         </jet-button>
                     </jet-confirms-password>
                 </div>
@@ -63,7 +63,7 @@
                     <jet-confirms-password @confirmed="regenerateRecoveryCodes">
                         <jet-secondary-button class="mr-3"
                                         v-if="recoveryCodes.length > 0">
-                            Regenerate Recovery Codes
+                            Régénérer les codes de récupération
                         </jet-secondary-button>
                     </jet-confirms-password>
 

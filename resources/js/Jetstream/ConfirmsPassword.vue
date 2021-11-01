@@ -48,7 +48,7 @@
 
         props: {
             title: {
-                default: 'Confirm Password',
+                default: 'Confirmez votre mot de passe',
             },
             content: {
                 default: 'For your security, please confirm your password to continue.',

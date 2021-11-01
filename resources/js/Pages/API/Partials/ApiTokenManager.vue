@@ -131,11 +131,11 @@
 
             <template #footer>
                 <jet-secondary-button @click="managingPermissionsFor = null">
-                    Cancel
+                    Annuler
                 </jet-secondary-button>
 
                 <jet-button class="ml-2" @click="updateApiToken" :class="{ 'opacity-25': updateApiTokenForm.processing }" :disabled="updateApiTokenForm.processing">
-                    Save
+                    Sauvegarder
                 </jet-button>
             </template>
         </jet-dialog-modal>
@@ -152,7 +152,7 @@
 
             <template #footer>
                 <jet-secondary-button @click="apiTokenBeingDeleted = null">
-                    Cancel
+                    Annuler
                 </jet-secondary-button>
 
                 <jet-danger-button class="ml-2" @click="deleteApiToken" :class="{ 'opacity-25': deleteApiTokenForm.processing }" :disabled="deleteApiTokenForm.processing">
