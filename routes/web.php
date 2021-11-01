@@ -27,9 +27,9 @@ use Inertia\Inertia;
 //Route::get('/', [Controllers\SpotsController::class, 'index'])->name('home');
 Route::get('/', [Controllers\SpotsController::class, 'index'])->name('home');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+//Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//    return Inertia::render('Dashboard');
+//})->name('dashboard');
 
 Route::get('/contact', [Controllers\ContactController::class, 'index'])->name('contact');
 Route::post('/contact/send', [Controllers\ContactController::class, 'send'])->name('contact.send');
