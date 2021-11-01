@@ -9,21 +9,15 @@
             :lat-lng="marker.coordinates"
             :options="marker.options"
             @click="goToSpot(marker.id)"
-        >
-            <l-icon
-                :icon-url="`/images/favicon.png`"
-                :icon-size="[32, 32]"
-            />
-        </l-marker>
+        />
     </l-map>
 </template>
 
 <script>
 import "leaflet/dist/leaflet.css"
-import {LMap, LIcon, LMarker, LTileLayer} from "@vue-leaflet/vue-leaflet";
+import {LMap, LMarker, LTileLayer} from "@vue-leaflet/vue-leaflet";
 export default {
     components: {
-        LIcon,
         LMap,
         LMarker,
         LTileLayer,
