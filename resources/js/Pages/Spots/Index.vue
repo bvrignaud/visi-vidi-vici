@@ -31,6 +31,11 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 mt-5">
+                   <Map :markers="markers()" />
+                </div>
+
             </div>
         </div>
     </app-layout>
@@ -41,14 +46,27 @@
 import { defineComponent } from 'vue'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import { Link } from '@inertiajs/inertia-vue3'
+import Map from "@/Components/Map";
 
 export default defineComponent({
     components: {
         Link,
+        Map,
         AppLayout,
     },
     props: {
         spots: Array,
+    },
+    methods: {
+        markers() {
+            return this.spots.map(spot => {
+                return {
+                    id: spot.id,
+                    coordinates: [spot.lat, spot.lng],
+                    options: {title: spot.name},
+                };
+            });
+        },
     },
 })
 </script>
