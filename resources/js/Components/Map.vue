@@ -1,5 +1,5 @@
 <template>
-    <l-map style="height:50vh" :center="center" ref="map" @ready="zoomFitToMarkers()">
+    <l-map style="height:50vh" :center="center" ref="map" @ready="zoomFitToMarkers()" zoom="16">
         <l-tile-layer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             :attribution="attribution"
@@ -29,6 +29,10 @@ export default {
         };
     },
     props: {
+        linkOnMarker: {
+            type: Boolean,
+            default: true,
+        },
         markers: {
             type: Array,
             default: []
@@ -36,10 +40,16 @@ export default {
     },
     methods: {
         zoomFitToMarkers() {
-            this.$refs.map.leafletObject.fitBounds(this.markers.map(m => m.coordinates))
+            if (this.markers.length > 1) {
+                this.$refs.map.leafletObject.fitBounds(this.markers.map(m => m.coordinates));
+            } else {
+                this.center = this.markers[0].coordinates;
+            }
         },
         goToSpot(spotId) {
-            this.$inertia.visit(route('spots.show', spotId));
+            if (this.linkOnMarker) {
+                this.$inertia.visit(route('spots.show', spotId));
+            }
         },
     },
 };

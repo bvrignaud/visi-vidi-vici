@@ -79,6 +79,10 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 mt-5">
+                    <Map :markers="markers()" :link-on-marker="false" />
+                </div>
             </div>
         </div>
     </app-layout>
@@ -93,10 +97,12 @@
 <script>
 import { defineComponent } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
+import Map from "@/Components/Map";
 
 export default defineComponent({
     components: {
         AppLayout,
+        Map,
     },
     props: {
         spot: Object,
@@ -127,6 +133,13 @@ export default defineComponent({
                 G = 255 - ((255 * percentage) / 100);
             }
             return `rgb(${R},${G},${B})`;
+        },
+        markers() {
+            return [{
+                id: this.spot.id,
+                coordinates: [+this.spot.lat, +this.spot.lng],
+                options: {title: this.spot.name},
+            }];
         },
     }
 })
