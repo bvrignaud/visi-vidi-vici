@@ -2,7 +2,11 @@
     <l-map style="height:50vh" :center="center" ref="map" @ready="zoomFitToMarkers()" zoom="16">
         <l-tile-layer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            :attribution="attribution"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <l-tile-layer
+            url="https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"
+            attribution='Map data: &copy; <a href="https://www.openseamap.org">OpenSeaMap</a> contributors'
         />
         <l-marker v-for="marker in markers"
             :key="marker.id"
@@ -24,7 +28,6 @@ export default {
     },
     data() {
         return {
-            attribution: '&copy; <a target="_blank" href="https://osm.org/copyright">OpenStreetMap</a> contributors',
             center: [ 46.47, -1.75 ],
         };
     },
