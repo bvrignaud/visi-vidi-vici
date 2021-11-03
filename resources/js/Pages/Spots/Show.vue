@@ -98,6 +98,7 @@
 import { defineComponent } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Map from "@/Components/Map";
+import dayjs from "dayjs";
 
 export default defineComponent({
     components: {
@@ -110,13 +111,12 @@ export default defineComponent({
         tides: Array,
     },
     data() {
-        const dateToday = new Date();
         return {
-            today: `${dateToday.getFullYear()}-${dateToday.getMonth() + 1}-${dateToday.getDate()}`,
+            today: dayjs().format('YYYY-MM-DD'),
         }
     },
     methods: {
-        dayjs: require('dayjs'),
+        dayjs: dayjs,
         formatDateToYmd(date) {
           return `${date.getFullYear()}${date.getMonth() + 1}${date.getDate()}`;
         },
