@@ -30,7 +30,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <Link :href="route('spots.create')">
+                    <Link v-if="$page.props.user" :href="route('spots.create')">
                         <Button>Ajouter un nouveau Spot</Button>
                     </Link>
                 </div>
