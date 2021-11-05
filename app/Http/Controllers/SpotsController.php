@@ -67,7 +67,10 @@ class SpotsController extends Controller
             'lng',
             'lat',
         ]));
-        return back()->with('spot_store', 'Merci pour votre contribution.');
+        return back()->with([
+            'flash.banner' => "'{$request->name}' à bien été modifié. Merci pour votre contribution.",
+            'flash.bannerStyle' => 'success',
+        ]);
     }
 
     /**

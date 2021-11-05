@@ -35,6 +35,7 @@ Route::post('/contact/send', [Controllers\ContactController::class, 'send'])->na
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/spots/create', [Controllers\SpotsController::class, 'create'])->name('spots.create');
     Route::post('/spots/create', [Controllers\SpotsController::class, 'store'])->name('spots.store');
+    Route::patch('/spots/{spot}', [Controllers\SpotsController::class, 'update'])->name('spots.update');
 });
 
 Route::get('spots', [Controllers\SpotsController::class, 'index'])->name('spots.index');

@@ -41,17 +41,17 @@ class SpotsTest extends AbstractFeatureTestCase
         $this->assertCount($spotCount + 1, Spot::all());
     }
 
-//    /** @test */
-//    public function  a_spot_can_be_updated() :void
-//    {
-//        $spot = Spot::factory()->create();
-//        $response = $this->actingAs(User::factory()->create())->patch(route('spots.update', $spot), [
-//            'name' => 'New name',
-//            'lng' => $this->faker->longitude,
-//            'lat' => $this->faker->latitude,
-//        ]);
-//        $response->assertRedirect();
-//        $spot->refresh();
-//        $this->assertEquals('New name', $spot->name);
-//    }
+    /** @test */
+    public function  a_spot_can_be_updated() :void
+    {
+        $spot = Spot::factory()->create();
+        $response = $this->actingAs(User::factory()->create())->patch(route('spots.update', $spot), [
+            'name' => 'New name',
+            'lng' => $this->faker->longitude,
+            'lat' => $this->faker->latitude,
+        ]);
+        $response->assertRedirect();
+        $spot->refresh();
+        $this->assertEquals('New name', $spot->name);
+    }
 }
