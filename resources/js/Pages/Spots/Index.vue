@@ -30,6 +30,9 @@
                             </tr>
                         </tbody>
                     </table>
+                    <Link :href="route('spots.create')">
+                        <Button>Ajouter un nouveau Spot</Button>
+                    </Link>
                 </div>
 
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 mt-5">
@@ -47,9 +50,11 @@ import { defineComponent } from 'vue'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import { Link } from '@inertiajs/inertia-vue3'
 import Map from "@/Components/Map";
+import Button from "@/Jetstream/Button";
 
 export default defineComponent({
     components: {
+        Button,
         Link,
         Map,
         AppLayout,

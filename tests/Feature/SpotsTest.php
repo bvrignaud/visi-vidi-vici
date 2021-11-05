@@ -17,29 +17,29 @@ class SpotsTest extends AbstractFeatureTestCase
         $response->assertStatus(200);
     }
 
-//    /** @test */
-//    public function get_create_spot(): void
-//    {
-//        $response = $this->get(route('spots.create'));
-//        $response->assertStatus(302);
-//
-//        $user = User::factory()->create();
-//        $response = $this->actingAs($user)->get(route('spots.create'));
-//        $response->assertStatus(200);
-//    }
+    /** @test */
+    public function get_create_spot(): void
+    {
+        $response = $this->get(route('spots.create'));
+        $response->assertStatus(302);
 
-//    /** @test */
-//    public function store_spot(): void
-//    {
-//        $spotCount = Spot::count();
-//        $response = $this->actingAs(User::factory()->create())->post(route('spots.store'), [
-//            'name' => $this->faker->name,
-//            'lng' => $this->faker->longitude,
-//            'lat' => $this->faker->latitude,
-//        ]);
-//        $response->assertRedirect();
-//        $this->assertCount($spotCount + 1, Spot::all());
-//    }
+        $user = User::factory()->create();
+        $response = $this->actingAs($user)->get(route('spots.create'));
+        $response->assertStatus(200);
+    }
+
+    /** @test */
+    public function store_spot(): void
+    {
+        $spotCount = Spot::count();
+        $response = $this->actingAs(User::factory()->create())->post(route('spots.store'), [
+            'name' => $this->faker->name,
+            'lng' => $this->faker->longitude,
+            'lat' => $this->faker->latitude,
+        ]);
+        $response->assertRedirect();
+        $this->assertCount($spotCount + 1, Spot::all());
+    }
 
 //    /** @test */
 //    public function  a_spot_can_be_updated() :void

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SpotStoreRequest;
 use App\Models\Spot;
 use App\Services\StormGlassAPI;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class SpotsController extends Controller
@@ -18,9 +17,9 @@ class SpotsController extends Controller
         ]);
     }
 
-    public function create(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function create(): \Inertia\Response
     {
-        return view('spots.form');
+        return Inertia::render('Spots/Form');
     }
 
     public function store(SpotStoreRequest $request): \Illuminate\Http\RedirectResponse
@@ -30,7 +29,10 @@ class SpotsController extends Controller
             'lng',
             'lat',
         ]));
-        return back()->with('spot_store', 'Merci pour votre contribution.');
+        return redirect('/')->with([
+            'flash.banner' => "'{$request->name}' à été ajouté à la liste des spots. Merci pour votre contribution.",
+            'flash.bannerStyle' => 'success',
+        ]);
     }
 
     public function show(Spot $spot): \Inertia\Response

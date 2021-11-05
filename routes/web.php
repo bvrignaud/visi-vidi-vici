@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +31,11 @@ Route::get('/', [Controllers\SpotsController::class, 'index'])->name('home');
 
 Route::get('/contact', [Controllers\ContactController::class, 'index'])->name('contact');
 Route::post('/contact/send', [Controllers\ContactController::class, 'send'])->name('contact.send');
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/spots/create', [Controllers\SpotsController::class, 'create'])->name('spots.create');
+    Route::post('/spots/create', [Controllers\SpotsController::class, 'store'])->name('spots.store');
+});
 
 Route::get('spots', [Controllers\SpotsController::class, 'index'])->name('spots.index');
 Route::get('spots/{spot}', [Controllers\SpotsController::class, 'show'])->name('spots.show');
