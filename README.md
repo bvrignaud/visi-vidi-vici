@@ -1,4 +1,4 @@
-# Visi Vidi Vici
+# 🐟 Visi Vidi Vici 🐟
 
 <p align="center">
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
@@ -31,7 +31,7 @@ The Visi Vidi Vici website is open-sourced software licensed under the [MIT lice
 ```bash
 cd DEPPLOY_FOLDER
 git pull origin master
-composer install --no-interaction --prefer-dist --optimize-autoloader
+composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 echo "" | sudo -S service php8.0-fpm reload
 npm install
 npm run production
