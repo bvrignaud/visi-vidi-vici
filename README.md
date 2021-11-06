@@ -34,7 +34,7 @@ git pull origin master
 composer install --no-interaction --prefer-dist --optimize-autoloader
 echo "" | sudo -S service php8.0-fpm reload
 npm install
-npm run prodduction
+npm run production
 
 echo "🚀 Application deployed!"
 
