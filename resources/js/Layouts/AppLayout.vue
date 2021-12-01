@@ -27,10 +27,10 @@
                                 </jet-nav-link>
                                 <template v-if="! $page.props.user">
                                     <jet-nav-link :href="route('login')" :active="route().current('login')">
-                                        Connexion
+                                        {{ $t('Log in') }}
                                     </jet-nav-link>
                                     <jet-nav-link :href="route('register')" :active="route().current('register')">
-                                        Inscription
+                                        {{ $t('Register') }}
                                     </jet-nav-link>
                                 </template>
                             </div>
@@ -164,7 +164,7 @@
                                 {{ $t('Log in') }}
                             </jet-responsive-nav-link>
                             <jet-responsive-nav-link :href="route('register')" :active="route().current('register')">
-                                Inscription
+                                {{ $t('Register') }}
                             </jet-responsive-nav-link>
                         </template>
                     </div>

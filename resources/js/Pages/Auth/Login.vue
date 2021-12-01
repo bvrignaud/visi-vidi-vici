@@ -1,5 +1,5 @@
 <template>
-    <Head title="Connexion" />
+    <Head title="{{ $t('Log in') }}" />
 
     <jet-authentication-card>
         <template #logo>
@@ -36,7 +36,7 @@
                 </Link>
 
                 <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Connexion
+                    {{ $t('Log in') }}
                 </jet-button>
             </div>
         </form>

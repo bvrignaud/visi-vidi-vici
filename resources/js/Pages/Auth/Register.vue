@@ -1,5 +1,5 @@
 <template>
-    <Head title="Inscription" />
+    <Head title="{{ $t('Register') }}" />
 
     <jet-authentication-card>
         <template #logo>
@@ -47,7 +47,7 @@
                 </Link>
 
                 <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Inscription
+                    {{ $t('Register') }}
                 </jet-button>
             </div>
         </form>
