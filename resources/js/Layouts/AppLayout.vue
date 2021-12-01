@@ -161,7 +161,7 @@
                         </jet-responsive-nav-link>
                         <template v-if="! $page.props.user">
                             <jet-responsive-nav-link :href="route('login')" :active="route().current('login')">
-                                Connexion
+                                {{ $t('Log in') }}
                             </jet-responsive-nav-link>
                             <jet-responsive-nav-link :href="route('register')" :active="route().current('register')">
                                 Inscription

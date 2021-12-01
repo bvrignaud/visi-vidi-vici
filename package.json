@@ -32,6 +32,7 @@
         "@fontsource/nunito": "^4.5.0",
         "@vue-leaflet/vue-leaflet": "^0.6.1",
         "dayjs": "^1.10.7",
+        "laravel-vue-i18n": "^0.3.0",
         "leaflet": "^1.7.1"
     }
 }
