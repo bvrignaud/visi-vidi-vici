@@ -1,5 +1,5 @@
 <template>
-    <l-map style="height:50vh" :center="center" ref="map" @ready="zoomFitToMarkers()" zoom="16">
+    <l-map style="height:50vh" :center="center" ref="map" @ready="zoomFitToMarkers()" :zoom="16">
         <l-tile-layer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
