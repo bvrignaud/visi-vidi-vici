@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Spot;
 use App\Services\StormGlassAPI;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Response;
 
 class SpotsController extends Controller
@@ -18,11 +19,23 @@ class SpotsController extends Controller
     {
         $stormGlassAPI = new StormGlassAPI();
 
+        $carbonPeriod = CarbonPeriod::create('now -5 days', '1 days', 10);
+
         $weathers = $this->getWeatherPointAvgByDay($stormGlassAPI, $spot->lat, $spot->lng);
 
         $tides = $stormGlassAPI->getTideExtremesPoint($spot->lat , $spot->lng, (new \DateTime())->sub(new \DateInterval('P5D')));
 
-        return new Response(compact('spot', 'weathers', 'tides'));
+        $forecasts = [];
+        foreach ($carbonPeriod as $carbon) {
+            $forecasts[$carbon->format('Y-m-d')] = [
+                'sun' => array_map(
+                    fn($timestamp): string => date('H:i', $timestamp),
+                    date_sun_info($carbon->getTimestamp(), $spot->lat, $spot->lng)
+                ),
+            ];
+        }
+
+        return new Response(compact('spot', 'weathers', 'tides', 'forecasts'));
     }
 
     private function getWeatherPointAvgByDay(StormGlassAPI $stormGlassAPI, float $lat, float $lng): array
