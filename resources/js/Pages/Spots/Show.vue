@@ -107,7 +107,7 @@ export default defineComponent({
     },
     props: {
         spot: Object,
-        weathers: Array,
+        weathers: Object,
         tides: Array,
     },
     data() {
