@@ -76,6 +76,12 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <th>Sun</th>
+                                <td v-for="(forecast, date) in forecasts" :class="{'actual-day' : date === today}">
+                                    {{ forecast.sun.sunrise }}<br>{{ forecast.sun.sunset }}
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -112,8 +118,14 @@ export default defineComponent({
     },
     data() {
         return {
+            forecasts: [],
             today: dayjs().format('YYYY-MM-DD'),
         }
+    },
+    async mounted() {
+        fetch(`/api/spots/${this.spot.id}/forecast`)
+            .then(response => response.json())
+            .then(data => this.forecasts = data.forecasts)
     },
     methods: {
         dayjs: dayjs,
