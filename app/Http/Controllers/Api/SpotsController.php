@@ -10,7 +10,7 @@ use Illuminate\Http\Response;
 
 class SpotsController extends Controller
 {
-    public function index()
+    public function index(): \Illuminate\Support\Collection
     {
         return Spot::orderBy('name')->get();
     }
