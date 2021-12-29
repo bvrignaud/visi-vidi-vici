@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SpotTrait;
 use App\Models\Spot;
 use App\Services\StormGlassAPI;
 use Carbon\CarbonPeriod;
@@ -10,6 +11,8 @@ use Illuminate\Http\Response;
 
 class SpotsController extends Controller
 {
+    use SpotTrait;
+
     public function index(): \Illuminate\Support\Collection
     {
         return Spot::orderBy('name')->get();
@@ -38,33 +41,4 @@ class SpotsController extends Controller
         return new Response(compact('spot', 'weathers', 'tides', 'forecasts'));
     }
 
-    private function getWeatherPointAvgByDay(StormGlassAPI $stormGlassAPI, float $lat, float $lng): array
-    {
-        $weathers = $stormGlassAPI->getWeatherPoint($lat, $lng, (new \DateTime())->sub(new \DateInterval('P5D')));
-
-        $forecastsSum = [];
-        foreach ($weathers as $weather) {
-            $date = (new \DateTime($weather['time']))->format('Y-m-d');
-            if (empty($forecastsSum[$date])) {
-                $forecastsSum[$date]['count'] = 0;
-            }
-            $forecastsSum[$date]['count']++;
-            foreach ($weather as $key => $value) {
-                if ($key !== 'time') {
-                    $forecastsSum[$date][$key] = (empty($forecastsSum[$date][$key]) ? 0 : $forecastsSum[$date][$key]) + $value;
-                }
-            }
-        }
-
-        $forecasts = [];
-        foreach ($forecastsSum as $date => $value) {
-            foreach ($value as $key => $sum) {
-                if ($key !== 'count') {
-                    $forecasts[$date][$key] = round($sum / $value['count'], PHP_ROUND_HALF_UP);
-                }
-            }
-        }
-
-        return $forecasts;
-    }
 }
