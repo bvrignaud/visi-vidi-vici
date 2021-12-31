@@ -29,6 +29,7 @@ class SpotsController extends Controller
             'name',
             'lng',
             'lat',
+            'optimal_wind_direction',
         ]));
         return redirect('/')->with([
             'flash.banner' => "'{$request->name}' à été ajouté à la liste des spots. Merci pour votre contribution.",

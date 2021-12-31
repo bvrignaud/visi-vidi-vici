@@ -20,6 +20,13 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <th>Note</th>
+                                <td v-for="(weather, date) in weathers" :class="{'actual-day' : date === today}"
+                                    :style="{ color: numberToColor(weather.note, 0, 10)}">
+                                    {{ Math.round(weather.note) }}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>airTemperature</th>
                                 <td v-for="(weather, date) in weathers" :class="{'actual-day' : date === today}"
                                     :style="{ color: numberToColor(weather.airTemperature, 0, 40)}">

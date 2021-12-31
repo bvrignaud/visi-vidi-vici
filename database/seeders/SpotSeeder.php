@@ -14,11 +14,13 @@ class SpotSeeder extends Seeder
                 'name' => 'Anse du vieux moulin',
                 'lat' => 46.4666,
                 'lng' => -1.7395,
+                'optimal_wind_direction' => 230,
             ],
             [
                 'name' => 'La chaume',
                 'lat' => 46.48848,
                 'lng' => -1.79662,
+                'optimal_wind_direction' => 230,
             ],
         ];
 

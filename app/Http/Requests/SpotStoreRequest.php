@@ -17,6 +17,7 @@ class SpotStoreRequest extends FormRequest
             'name' => 'required|string|min:5|max:255',
             'lng' => 'required|numeric|between:-180,180',
             'lat' => 'required|numeric|between:-180,180',
+            'optimal_wind_direction' => 'required|integer|between:0,360',
         ];
     }
 }

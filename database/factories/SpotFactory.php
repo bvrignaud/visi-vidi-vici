@@ -25,6 +25,7 @@ class SpotFactory extends Factory
             'name' => $this->faker->sentence(),
             'lng' => $this->faker->longitude(),
             'lat' => $this->faker->latitude(),
+            'optimal_wind_direction' => rand(0, 360),
         ];
     }
 }

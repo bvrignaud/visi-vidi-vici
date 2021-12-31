@@ -35,6 +35,12 @@
                                       required min="-180" max="180" />
                             <InputError :message="form.errors.lat" class="mt-2" />
                         </div>
+                        <div class="col-span-6 sm:col-span-4">
+                            <Label for="optimal_wind_direction" value="Meilleur orientation du vent (en degré)" />
+                            <JetInput id="optimal_wind_direction" type="number" class="mt-1 block w-full"
+                                      v-model="form.optimal_wind_direction" required min="0" max="360" />
+                            <InputError :message="form.errors.optimal_wind_direction" class="mt-2" />
+                        </div>
                     </template>
 
                     <template #actions>
@@ -79,6 +85,7 @@ export default defineComponent({
                 name: null,
                 lng: null,
                 lat: null,
+                optimal_wind_direction: null,
             }),
         }
     },
