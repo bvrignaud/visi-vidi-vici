@@ -41,7 +41,7 @@ class SpotsController extends Controller
     {
         $stormGlassAPI = new StormGlassAPI();
 
-        $weathers = $this->getWeatherPointAvgByDay($stormGlassAPI, $spot->lat, $spot->lng);
+        $weathers = $this->getWeatherPointAvgByDay($stormGlassAPI, $spot);
 
         $tides = $stormGlassAPI->getTideExtremesPoint($spot->lat , $spot->lng, (new \DateTime())->sub(new \DateInterval('P5D')));
 

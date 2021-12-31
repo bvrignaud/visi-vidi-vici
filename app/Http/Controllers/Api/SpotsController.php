@@ -24,7 +24,7 @@ class SpotsController extends Controller
 
         $carbonPeriod = CarbonPeriod::create('now -5 days', '1 days', 10);
 
-        $weathers = $this->getWeatherPointAvgByDay($stormGlassAPI, $spot->lat, $spot->lng);
+        $weathers = $this->getWeatherPointAvgByDay($stormGlassAPI, $spot);
 
         $tides = $stormGlassAPI->getTideExtremesPoint($spot->lat , $spot->lng, (new \DateTime())->sub(new \DateInterval('P5D')));
 
