@@ -22,6 +22,12 @@ class SpotSeeder extends Seeder
                 'lng' => -1.79662,
                 'optimal_wind_direction' => 45,
             ],
+            [
+                'name' => 'Palavas les flots',
+                'lat' => 43.52271,
+                'lng' => 3.92885,
+                'optimal_wind_direction' => 315,
+            ],
         ];
 
         foreach ($spots as $spot) {
