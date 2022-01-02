@@ -26,7 +26,7 @@ trait SpotTrait
                 }
             }
             $note += $this->calculNoteForSwell($weather['swellHeight']);
-            $note += $this->calculNoteForWind($spot->optimal_wind_direction, $weather['windDirection']);
+            $note += $this->calculNoteForWind($spot->optimal_wind_direction, $weather['windDirection'], $weather['windSpeed']);
             $note = $note < 0 ? 0 : ($note > 10 ? 10 : $note);
             $forecastsSum[$date]['note'] += $note;
         }
@@ -46,12 +46,14 @@ trait SpotTrait
     /**
      * @param float $bestWindDirection
      * @param float $windDirection
+     * @param float $windSpeed Speed of wind at 10m above sea level in meters per second.
      * @return float note between -1 and 1
      */
-    private function calculNoteForWind(float $bestWindDirection, float $windDirection): float
+    private function calculNoteForWind(float $bestWindDirection, float $windDirection, float $windSpeed): float
     {
         $e = abs($bestWindDirection - $windDirection) % 360;
         $note = (90 - $e) / 90;
+        $note = $note * $windSpeed / 20;
         return $note;
     }
 
