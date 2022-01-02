@@ -74,7 +74,7 @@
                             </tr>
                             <tr>
                                 <th>Marées</th>
-                                <td v-for="(weather, date) in weathers" :class="{'actual-day rounded-b' : date === today}">
+                                <td v-for="(weather, date) in weathers" :class="{'actual-day' : date === today}">
                                     <div v-for="tide in tides">
                                         <span v-if="formatDateToYmd(new Date(tide.time)) === formatDateToYmd(new Date(date))">
                                             <strong>{{ tide.type === 'low' ? 'basse' : 'haute' }}</strong> :
@@ -85,7 +85,7 @@
                             </tr>
                             <tr>
                                 <th>Sun</th>
-                                <td v-for="(forecast, date) in forecasts" :class="{'actual-day' : date === today}">
+                                <td v-for="(forecast, date) in forecasts" :class="{'actual-day rounded-b' : date === today}">
                                     {{ forecast.sun.sunrise }}<br>{{ forecast.sun.sunset }}
                                 </td>
                             </tr>
