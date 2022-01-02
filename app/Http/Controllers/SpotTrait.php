@@ -21,22 +21,14 @@ trait SpotTrait
             }
             $forecastsSum[$date]['count']++;
             foreach ($weather as $key => $value) {
-                switch ($key) {
-                    case 'swellHeight':
-                        $note += $this->calculNoteForSwell($value);
-                        $note = $note < 0 ? 0 : ($note > 10 ? 10 : $note);
-                        $forecastsSum[$date]['note'] += $note;
-                        break;
-                    case 'windDirection':
-                        $note += $this->calculNoteForWind($spot->optimal_wind_direction, $value);
-                        $note = $note < 0 ? 0 : ($note > 10 ? 10 : $note);
-                        $forecastsSum[$date]['note'] += $note;
-                        break;
-                }
                 if ($key !== 'time') {
                     $forecastsSum[$date][$key] = (empty($forecastsSum[$date][$key]) ? 0 : $forecastsSum[$date][$key]) + $value;
                 }
             }
+            $note += $this->calculNoteForSwell($weather['swellHeight']);
+            $note += $this->calculNoteForWind($spot->optimal_wind_direction, $weather['windDirection']);
+            $note = $note < 0 ? 0 : ($note > 10 ? 10 : $note);
+            $forecastsSum[$date]['note'] += $note;
         }
 
         $forecasts = [];
