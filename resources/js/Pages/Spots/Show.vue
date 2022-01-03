@@ -49,20 +49,8 @@
                             </tr>
                             <tr>
                                 <th>windDirection</th>
-                                <td v-for="(weather, date) in weathers" :class="{'actual-day' : date === today}"
-                                    :title="`${Math.round(weather.windDirection)}°`">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         x="0px" y="0px"
-                                         width="20px" height="20px" viewBox="0 0 493.356 493.356" class="inline-block"
-                                         style="enable-background:new 0 0 493.356 493.356;"
-                                         :style="{transform: 'rotate(' + (weather.windDirection + 180) + 'deg)', fill: numberToColor(weather.windSpeed * 1.9438, 0, 20)}"
-                                         xml:space="preserve">
-                                            <path d="M442.627,185.388L265.083,7.844C260.019,2.78,253.263,0,245.915,0c-7.204,0-13.956,2.78-19.02,7.844L49.347,185.388
-                                                    c-10.488,10.492-10.488,27.568,0,38.052l16.12,16.128c5.064,5.06,11.82,7.844,19.028,7.844c7.204,0,14.192-2.784,19.252-7.844
-                                                    l103.808-103.584v329.084c0,14.832,11.616,26.932,26.448,26.932h22.8c14.832,0,27.624-12.1,27.624-26.932V134.816l104.396,104.752
-                                                    c5.06,5.06,11.636,7.844,18.844,7.844s13.864-2.784,18.932-7.844l16.072-16.128C453.163,212.952,453.123,195.88,442.627,185.388z"
-                                            />
-                                    </svg>
+                                <td v-for="(weather, date) in weathers" :class="{'actual-day' : date === today}">
+                                  <WindArrow :direction="weather.windDirection" :wind-speed="weather.windSpeed" />
                                 </td>
                             </tr>
                             <tr>
@@ -93,8 +81,17 @@
                     </table>
                 </div>
 
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 mt-5">
-                    <Map :markers="markers()" :link-on-marker="false" />
+                <div class="flex bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 mt-5">
+                  <div>
+                    <strong>{{ spot.name }}</strong>
+                    <ul>
+                      <li>
+                        Vent favorable :
+                        <WindArrow :direction.="spot.optimal_wind_direction" />
+                      </li>
+                    </ul>
+                  </div>
+                  <Map :markers="markers()" :link-on-marker="false" />
                 </div>
             </div>
         </div>
@@ -112,9 +109,11 @@ import { defineComponent } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Map from "@/Components/Map";
 import dayjs from "dayjs";
+import WindArrow from "@/Components/WindArrow";
 
 export default defineComponent({
     components: {
+        WindArrow,
         AppLayout,
         Map,
     },
