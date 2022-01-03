@@ -31,4 +31,8 @@ use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 class Spot extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'optimal_wind_direction' => 'integer',
+    ];
 }
