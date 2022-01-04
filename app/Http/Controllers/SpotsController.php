@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SpotStoreRequest;
 use App\Models\Spot;
 use App\Services\StormGlassAPI;
+use Carbon\Carbon;
 use Inertia\Inertia;
 
 class SpotsController extends Controller
@@ -43,7 +44,7 @@ class SpotsController extends Controller
 
         $weathers = $this->getWeatherPointAvgByDay($stormGlassAPI, $spot);
 
-        $tides = $stormGlassAPI->getTideExtremesPoint($spot->lat , $spot->lng, (new \DateTime())->sub(new \DateInterval('P5D')));
+        $tides = $stormGlassAPI->getTideExtremesPoint($spot->lat , $spot->lng, Carbon::create('today -5 days'));
 
         return Inertia::render('Spots/Show', compact('spot', 'weathers', 'tides'));
     }

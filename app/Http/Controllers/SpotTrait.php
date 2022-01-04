@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Spot;
 use App\Services\StormGlassAPI;
+use Carbon\Carbon;
 
 trait SpotTrait
 {
     private function getWeatherPointAvgByDay(StormGlassAPI $stormGlassAPI, Spot $spot): array
     {
-        $weathers = $stormGlassAPI->getWeatherPoint($spot->lat, $spot->lng, (new \DateTime())->sub(new \DateInterval('P5D')));
+        $weathers = $stormGlassAPI->getWeatherPoint($spot->lat, $spot->lng, Carbon::today()->sub(new \DateInterval('P5D')));
 
         $forecastsSum = [];
         $note = 5;
@@ -33,9 +34,11 @@ trait SpotTrait
 
         $forecasts = [];
         foreach ($forecastsSum as $date => $value) {
-            foreach ($value as $key => $sum) {
-                if ($key !== 'count') {
-                    $forecasts[$date][$key] = round($sum / $value['count'], PHP_ROUND_HALF_UP);
+            if ($value['count'] === 24) {
+                foreach ($value as $key => $sum) {
+                    if ($key !== 'count') {
+                        $forecasts[$date][$key] = round($sum / $value['count'], PHP_ROUND_HALF_UP);
+                    }
                 }
             }
         }
