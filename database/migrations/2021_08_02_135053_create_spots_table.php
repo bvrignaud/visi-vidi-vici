@@ -19,6 +19,7 @@ class CreateSpotsTable extends Migration
             $table->float('lng', 7, 4);
             $table->float('lat', 7, 4);
             $table->integer('optimal_wind_direction', false, true);
+            $table->string('timezone');
             $table->timestamps();
         });
     }

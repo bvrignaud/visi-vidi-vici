@@ -37,6 +37,7 @@ class SpotsTest extends AbstractFeatureTestCase
             'lng' => $this->faker->longitude,
             'lat' => $this->faker->latitude,
             'optimal_wind_direction' => rand(0, 360),
+            'timezone' => $this->faker->timezone,
         ]);
         $response->assertRedirect();
         $this->assertCount($spotCount + 1, Spot::all());
@@ -51,6 +52,7 @@ class SpotsTest extends AbstractFeatureTestCase
             'lng' => $this->faker->longitude,
             'lat' => $this->faker->latitude,
             'optimal_wind_direction' => rand(0, 360),
+            'timezone' => $this->faker->timezone,
         ]);
         $response->assertRedirect();
         $spot->refresh();
