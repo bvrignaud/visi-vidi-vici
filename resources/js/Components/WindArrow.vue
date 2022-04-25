@@ -1,5 +1,5 @@
 <template>
-  <span :title="`${Math.round(direction)}°`">
+  <span :title="`${Math.round(windSpeed * 1.9438)}nd - ${Math.round(direction)}°`">
     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
          width="20px" height="20px" viewBox="0 0 493.356 493.356" class="inline-block"
          :style="style"
