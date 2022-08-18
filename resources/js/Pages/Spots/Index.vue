@@ -49,8 +49,8 @@
 import { defineComponent } from 'vue'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import { Link } from '@inertiajs/inertia-vue3'
-import Map from "@/Components/Map";
-import Button from "@/Jetstream/Button";
+import Map from "@/Components/Map.vue";
+import Button from "@/Jetstream/Button.vue";
 
 export default defineComponent({
     components: {

@@ -264,7 +264,7 @@
     import JetNavLink from '@/Jetstream/NavLink.vue'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink.vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
-    import Footer from "@/Layouts/Partials/Footer";
+    import Footer from "@/Layouts/Partials/Footer.vue";
 
     export default defineComponent({
         props: {

@@ -62,12 +62,12 @@
 <script>
 import { defineComponent } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
-import FormSection from "@/Jetstream/FormSection";
-import JetInput from "@/Jetstream/Input";
-import Label from "@/Jetstream/Label";
-import InputError from "@/Jetstream/InputError";
-import ActionMessage from "@/Jetstream/ActionMessage";
-import Button from "@/Jetstream/Button";
+import FormSection from "@/Jetstream/FormSection.vue";
+import JetInput from "@/Jetstream/Input.vue";
+import Label from "@/Jetstream/Label.vue";
+import InputError from "@/Jetstream/InputError.vue";
+import ActionMessage from "@/Jetstream/ActionMessage.vue";
+import Button from "@/Jetstream/Button.vue";
 
 export default defineComponent({
     components: {

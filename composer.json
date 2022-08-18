@@ -9,7 +9,7 @@
         "fruitcake/laravel-cors": "^3.0",
         "goldspecdigital/laravel-eloquent-uuid": "^9.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "inertiajs/inertia-laravel": "^0.5.4",
+        "inertiajs/inertia-laravel": "^v0.6.3",
         "laravel-lang/lang": "^10.1",
         "laravel/framework": "^9.0",
         "laravel/jetstream": "^2.4",

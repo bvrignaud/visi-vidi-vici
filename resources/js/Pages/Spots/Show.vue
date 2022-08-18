@@ -200,10 +200,10 @@
 <script>
 import { defineComponent } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
-import Map from "@/Components/Map";
+import Map from "@/Components/Map.vue";
 import dayjs from "dayjs";
 import { meanBy } from "lodash";
-import WindArrow from "@/Components/WindArrow";
+import WindArrow from "@/Components/WindArrow.vue";
 
 export default defineComponent({
     components: {

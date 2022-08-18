@@ -8,19 +8,12 @@
 
         @laravelPWA
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
         <!-- Scripts -->
         @routes
-        <script src="{{ mix('js/app.js') }}" defer></script>
-
+        @vite('resources/js/app.js')
+        @inertiaHead
     </head>
     <body class="font-sans antialiased">
         @inertia
-
-        @env ('local')
-            <script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
-        @endenv
     </body>
 </html>

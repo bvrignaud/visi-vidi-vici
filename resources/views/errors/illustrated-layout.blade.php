@@ -6,7 +6,7 @@
 
         <title>@yield('title')</title>
 
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        @vite(['resources/scss/app.scss'])
 
         <!-- Styles -->
         <style>
