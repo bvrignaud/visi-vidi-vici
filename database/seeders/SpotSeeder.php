@@ -34,7 +34,7 @@ class SpotSeeder extends Seeder
         ];
 
         foreach ($spots as $spot) {
-            DB::table('spots')->insert(array_merge($spot,  [
+            DB::table('spots')->insert(array_merge($spot, [
                 'id' => \Str::uuid(),
             ]));
         }

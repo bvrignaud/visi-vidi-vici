@@ -25,6 +25,7 @@ class ContactController extends Controller
         ]);
 
         Mail::to(config('mail.contact.address'))->send(new Contact($validated));
+
         return back()->with('message_sent', 'Votre message vient d\'être envoyé');
     }
 }

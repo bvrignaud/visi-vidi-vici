@@ -12,9 +12,11 @@ class Contact extends Mailable implements ShouldQueue
     use Queueable, SerializesModels;
 
     /**
-     * @param array<string, mixed> $details
+     * @param  array<string, mixed>  $details
      */
-    public function __construct(private array $details) {}
+    public function __construct(private array $details)
+    {
+    }
 
     /**
      * Build the message.

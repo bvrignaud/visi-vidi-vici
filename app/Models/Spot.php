@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * App\Models\Spot
@@ -16,6 +16,7 @@ use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
  * @property string $timezone
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ *
  * @method static \Database\Factories\SpotFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Spot newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Spot newQuery()

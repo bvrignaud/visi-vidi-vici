@@ -44,7 +44,7 @@ class SpotsTest extends AbstractFeatureTestCase
     }
 
     /** @test */
-    public function  a_spot_can_be_updated() :void
+    public function a_spot_can_be_updated(): void
     {
         $spot = Spot::factory()->create();
         $response = $this->actingAs(User::factory()->create())->patch(route('spots.update', $spot), [

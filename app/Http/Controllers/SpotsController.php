@@ -31,6 +31,7 @@ class SpotsController extends Controller
             'optimal_wind_direction',
             'timezone',
         ]));
+
         return redirect('/')->with([
             'flash.banner' => "'{$request->name}' à été ajouté à la liste des spots. Merci pour votre contribution.",
             'flash.bannerStyle' => 'success',
@@ -64,6 +65,7 @@ class SpotsController extends Controller
             'lat',
             'timezone',
         ]));
+
         return back()->with([
             'flash.banner' => "'{$request->name}' à bien été modifié. Merci pour votre contribution.",
             'flash.bannerStyle' => 'success',
@@ -80,5 +82,4 @@ class SpotsController extends Controller
     {
         //
     }
-
 }

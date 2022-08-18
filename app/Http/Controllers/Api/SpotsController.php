@@ -35,12 +35,12 @@ class SpotsController extends Controller
             $forecast['note'] = $note;
         }
 
-        $tides = $stormGlassAPI->getTideExtremesPoint($spot->lat , $spot->lng, Carbon::create('today -5 days'));
+        $tides = $stormGlassAPI->getTideExtremesPoint($spot->lat, $spot->lng, Carbon::create('today -5 days'));
 
         $sun_infos = [];
         foreach ($carbonPeriod as $carbon) {
             $sun_infos[$carbon->format('Y-m-d')] = array_map(
-                fn($timestamp): string => Carbon::createFromTimestamp($timestamp)
+                fn ($timestamp): string => Carbon::createFromTimestamp($timestamp)
                     ->setTimezone($spot->timezone)->format('H:i'),
                 date_sun_info($carbon->getTimestamp(), $spot->lat, $spot->lng)
             );
@@ -48,5 +48,4 @@ class SpotsController extends Controller
 
         return new Response(compact('spot', 'forecasts', 'tides', 'sun_infos'));
     }
-
 }

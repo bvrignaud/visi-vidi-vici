@@ -47,9 +47,9 @@ trait SpotTrait
     }
 
     /**
-     * @param float $bestWindDirection
-     * @param float $windDirection
-     * @param float $windSpeed Speed of wind at 10m above sea level in meters per second.
+     * @param  float  $bestWindDirection
+     * @param  float  $windDirection
+     * @param  float  $windSpeed Speed of wind at 10m above sea level in meters per second.
      * @return float note between -1 and 1
      */
     private function calculNoteForWind(float $bestWindDirection, float $windDirection, float $windSpeed): float
@@ -57,6 +57,7 @@ trait SpotTrait
         $e = abs($bestWindDirection - $windDirection) % 360;
         $note = (90 - $e) / 90;
         $note = $note * $windSpeed / 20;
+
         return $note;
     }
 

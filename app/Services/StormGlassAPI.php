@@ -1,15 +1,11 @@
 <?php
 
-
 namespace App\Services;
 
-
-use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 /**
  * Class StormGlassAPI
- * @package App\Services
  *
  * @see https://docs.stormglass.io
  */
@@ -21,7 +17,7 @@ class StormGlassAPI
         $cacheKey .= $start ? "&start={$start->format('Y-m-d')}" : '';
         $cacheKey .= $end ? "&end={$end->format('Y-m-d')}" : '';
 
-        return \Cache::remember($cacheKey, 3600, function() use ($lat, $lng, $start, $end) {
+        return \Cache::remember($cacheKey, 3600, function () use ($lat, $lng, $start, $end) {
             $response = Http::withHeaders([
                 'Authorization' => config('app.stormglass_key'),
             ])->get('https://api.stormglass.io/v2/weather/point', [
@@ -50,7 +46,7 @@ class StormGlassAPI
 
     public function getTideExtremesPoint(float $lat, float $lng, ?\DateTime $start = null): array
     {
-        return \Cache::remember("StormGlassTideExtremesPoint?lat=$lat&lng=$lng&start={$start?->format('Ymd')}", 3600, function() use ($lat, $lng, $start) {
+        return \Cache::remember("StormGlassTideExtremesPoint?lat=$lat&lng=$lng&start={$start?->format('Ymd')}", 3600, function () use ($lat, $lng, $start) {
             $response = Http::withHeaders([
                 'Authorization' => config('app.stormglass_key'),
             ])->get('https://api.stormglass.io/v2/tide/extremes/point', [
@@ -58,6 +54,7 @@ class StormGlassAPI
                 'lng' => $lng,
                 'start' => $start?->getTimestamp(),
             ]);
+
             return $response->json()['data'];
         });
     }
