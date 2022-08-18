@@ -13,6 +13,11 @@ https://github.com/barryvdh/laravel-ide-helper est intégré au _composer.json_ 
 Elle permet de générer automatiquement la documentation des models pour aider l’ide.
 Pour mettre à jour les models : `php artisan ide-helper:models -W -R`
 
+#### [Larastan](https://github.com/nunomaduro/larastan)
+```bash
+./vendor/bin/larastan
+```
+
 #### Code style fixer ([pint](https://laravel.com/docs/9.x/pint))
 ```bash
 ./vendor/bin/pint
