@@ -45,7 +45,7 @@ export default {
         zoomFitToMarkers() {
             if (this.markers.length > 1) {
                 this.$refs.map.leafletObject.fitBounds(this.markers.map(m => m.coordinates));
-            } else {
+            } else if (this.markers.length) {
                 this.center = this.markers[0].coordinates;
             }
         },
