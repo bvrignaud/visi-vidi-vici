@@ -26,44 +26,37 @@
   </l-map>
 </template>
 
-<script>
+<script setup>
 import "leaflet/dist/leaflet.css"
 import {LMap, LMarker, LTileLayer} from "@vue-leaflet/vue-leaflet";
+import {ref} from "vue";
+import {Inertia} from "@inertiajs/inertia";
 
-export default {
-  components: {
-    LMap,
-    LMarker,
-    LTileLayer,
+const center = ref([46.47, -1.75]);
+const map = ref(null);
+const props = defineProps({
+  linkOnMarker: {
+    type: Boolean,
+    default: true,
   },
-  data() {
-    return {
-      center: [46.47, -1.75],
-    };
-  },
-  props: {
-    linkOnMarker: {
-      type: Boolean,
-      default: true,
-    },
-    markers: {
-      type: Array,
-      default: []
-    }
-  },
-  methods: {
-    zoomFitToMarkers() {
-      if (this.markers.length > 1) {
-        this.$refs.map.leafletObject.fitBounds(this.markers.map(m => m.coordinates));
-      } else if (this.markers.length) {
-        this.center = this.markers[0].coordinates;
-      }
-    },
-    goToSpot(spotId) {
-      if (this.linkOnMarker) {
-        this.$inertia.visit(route('spots.show', spotId));
-      }
-    },
-  },
-};
+  markers: {
+    type: Array,
+    default: []
+  }
+});
+
+function zoomFitToMarkers() {
+  if (props.markers.length > 1) {
+    map.value.leafletObject.fitBounds(props.markers.map(m => m.coordinates));
+    map.value.leafletObject.fitBounds(props.markers.map(m => m.coordinates));
+  } else if (props.markers.length) {
+    center.value = props.markers[0].coordinates;
+  }
+}
+
+function goToSpot(spotId) {
+  if (props.linkOnMarker) {
+    Inertia.visit(route('spots.show', spotId));
+  }
+}
 </script>
