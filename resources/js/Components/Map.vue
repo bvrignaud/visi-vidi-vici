@@ -29,7 +29,7 @@
 <script setup>
 import "leaflet/dist/leaflet.css"
 import {LMap, LMarker, LTileLayer} from "@vue-leaflet/vue-leaflet";
-import {ref} from "vue";
+import {ref, watch} from "vue";
 import {Inertia} from "@inertiajs/inertia";
 
 const center = ref([46.47, -1.75]);
@@ -44,6 +44,13 @@ const props = defineProps({
     default: []
   }
 });
+
+watch(
+  () => props.markers,
+  () => {
+    zoomFitToMarkers();
+  }
+);
 
 function zoomFitToMarkers() {
   if (props.markers.length > 1) {
