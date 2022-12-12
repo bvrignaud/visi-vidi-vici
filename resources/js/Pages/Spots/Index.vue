@@ -45,7 +45,7 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 import { Link } from '@inertiajs/inertia-vue3';
 import AppLayout from "../../Layouts/AppLayout.vue";
 import Map from "../../Components/Map.vue";
