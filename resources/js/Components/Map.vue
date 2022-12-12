@@ -21,7 +21,7 @@
               :key="marker.id"
               :lat-lng="marker.coordinates"
               :options="marker.options"
-              @click="goToSpot(marker.id)"
+              @click="goTo(marker.url)"
     />
   </l-map>
 </template>
@@ -61,9 +61,13 @@ function zoomFitToMarkers() {
   }
 }
 
-function goToSpot(spotId) {
+function goTo(url) {
   if (props.linkOnMarker) {
-    Inertia.visit(route('spots.show', spotId));
+    if (url.startsWith(window.location.href)) {
+      Inertia.visit(url);
+    } else {
+      window.open(url);
+    }
   }
 }
 </script>

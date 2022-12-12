@@ -61,6 +61,7 @@ function markers() {
       id: spot.id,
       coordinates: [spot.lat, spot.lng],
       options: {title: spot.name},
+      url: route('spots.show', spot.id),
     };
   });
 }
