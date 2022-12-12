@@ -45,33 +45,23 @@
 </template>
 
 
-<script>
-import { defineComponent } from 'vue'
-import AppLayout from '@/Layouts/AppLayout.vue'
-import { Link } from '@inertiajs/inertia-vue3'
-import Map from "@/Components/Map.vue";
-import Button from "@/Jetstream/Button.vue";
+<script setup>
+import { Link } from '@inertiajs/inertia-vue3';
+import AppLayout from "../../Layouts/AppLayout.vue";
+import Map from "../../Components/Map.vue";
+import Button from "../../Jetstream/Button.vue";
 
-export default defineComponent({
-    components: {
-        Button,
-        Link,
-        Map,
-        AppLayout,
-    },
-    props: {
-        spots: Array,
-    },
-    methods: {
-        markers() {
-            return this.spots.map(spot => {
-                return {
-                    id: spot.id,
-                    coordinates: [spot.lat, spot.lng],
-                    options: {title: spot.name},
-                };
-            });
-        },
-    },
-})
+const props = defineProps({
+  spots: Array,
+});
+
+function markers() {
+  return props.spots.map(spot => {
+    return {
+      id: spot.id,
+      coordinates: [spot.lat, spot.lng],
+      options: {title: spot.name},
+    };
+  });
+}
 </script>
