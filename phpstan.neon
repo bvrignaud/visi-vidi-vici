@@ -7,12 +7,22 @@ parameters:
         - app
 
     # The level 9 is the highest level
-    level: 5
+    level: 7
 
     ignoreErrors:
         - '#PHPDoc tag @var#'
+        - '#Method App\\Actions\\Fortify\\[a-zA-Z0-9\\_]+\::[a-zA-Z0-9\\_]+\(\) has parameter \$input with no value type specified in iterable type array#'
+        - '#Method App\\Actions\\Fortify\\[a-zA-Z0-9\\_]+\::passwordRules\(\) return type has no value type specified in iterable type array#'
+        - '#Parameter \#1 \$timestamp of static method Carbon\\Carbon\:\:createFromTimestamp\(\) expects float\|int\|string, bool\|int given#'
+        - '#Method App\\Http\\Middleware\\HandleInertiaRequests::share\(\) return type has no value type specified in iterable type array#'
+        -
+          message: '#Method [a-zA-Z0-9\\_]+::rules\(\) return type has no value type specified in iterable type array.#'
+          paths:
+            - app/Http/Requests/*
+        - '#Property App\\Models\\[a-zA-Z0-9\\_]+\::\$casts type has no value type specified in iterable type array.#'
+        - '#Method App\\Services\\StormGlassAPI\::[a-zA-Z0-9\\_]+\(\) return type has no value type specified in iterable type array#'
 
-    excludePaths:
-        - ./*/*/FileToBeExcluded.php
-
-    checkMissingIterableValueType: false
+#    excludePaths:
+#        - ./*/*/FileToBeExcluded.php
+#
+#    checkMissingIterableValueType: false

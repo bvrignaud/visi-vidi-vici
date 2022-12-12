@@ -14,6 +14,9 @@ class SpotsController extends Controller
 {
     use SpotTrait;
 
+    /**
+     * @return \Illuminate\Support\Collection<int, Spot>
+     */
     public function index(): \Illuminate\Support\Collection
     {
         return Spot::orderBy('name')->get();
@@ -35,7 +38,7 @@ class SpotsController extends Controller
             $forecast['note'] = $note;
         }
 
-        $tides = $stormGlassAPI->getTideExtremesPoint($spot->lat, $spot->lng, Carbon::create('today -5 days'));
+        $tides = $stormGlassAPI->getTideExtremesPoint($spot->lat, $spot->lng, Carbon::parse('today -5 days'));
 
         $sun_infos = [];
         foreach ($carbonPeriod as $carbon) {

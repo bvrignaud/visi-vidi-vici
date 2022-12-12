@@ -43,16 +43,16 @@ class SpotsController extends Controller
         return Inertia::render('Spots/Show', compact('spot'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Spot  $spot
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Spot $spot)
-    {
-        //
-    }
+//    /**
+//     * Show the form for editing the specified resource.
+//     *
+//     * @param  \App\Models\Spot  $spot
+//     * @return \Illuminate\Http\Response
+//     */
+//    public function edit(Spot $spot)
+//    {
+//        //
+//    }
 
     /**
      * Update the specified resource in storage.
@@ -72,14 +72,14 @@ class SpotsController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Spot  $spot
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Spot $spot)
-    {
-        //
-    }
+//    /**
+//     * Remove the specified resource from storage.
+//     *
+//     * @param  \App\Models\Spot  $spot
+//     * @return \Illuminate\Http\Response
+//     */
+//    public function destroy(Spot $spot)
+//    {
+//        //
+//    }
 }
