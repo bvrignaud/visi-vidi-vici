@@ -15,7 +15,7 @@ Pour mettre à jour les models : `php artisan ide-helper:models -W -R`
 
 #### [Larastan](https://github.com/nunomaduro/larastan)
 ```bash
-./vendor/bin/larastan
+./vendor/bin/phpstan analyse
 ```
 
 #### Code style fixer ([pint](https://laravel.com/docs/9.x/pint))
