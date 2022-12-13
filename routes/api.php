@@ -22,3 +22,5 @@ Route::post('/contact', [\App\Http\Controllers\Api\ContactController::class, 'se
 
 Route::get('/spots', [\App\Http\Controllers\Api\SpotsController::class, 'index']);
 Route::get('/spots/{spot}/forecast', [\App\Http\Controllers\Api\SpotsController::class, 'getForecast']);
+
+Route::get('/webcams', [\App\Http\Controllers\Api\WebcamsController::class, 'index']);

@@ -40,3 +40,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
 Route::get('spots', [Controllers\SpotsController::class, 'index'])->name('spots.index');
 Route::get('spots/{spot}', [Controllers\SpotsController::class, 'show'])->name('spots.show');
+
+Route::get('webcams', [Controllers\WebcamsController::class, 'index'])->name('webcams.index');
