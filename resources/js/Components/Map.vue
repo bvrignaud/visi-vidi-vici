@@ -17,20 +17,27 @@
       url="https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"
       attribution='Map data: &copy; <a href="https://www.openseamap.org">OpenSeaMap</a> contributors'
     />
-    <l-marker v-for="marker in markers"
-              :key="marker.id"
-              :lat-lng="marker.coordinates"
-              :options="marker.options"
-              @click="goTo(marker.url)"
-    />
+    <l-marker
+      v-for="marker in markers"
+      :key="marker.id"
+      :lat-lng="marker.coordinates"
+      :options="marker.options"
+      @click="goTo(marker.url)"
+    >
+      <l-icon v-if="marker.type === MarkerType.Webcam">
+        <WebcamIcon />
+      </l-icon>
+    </l-marker>
   </l-map>
 </template>
 
 <script setup>
 import "leaflet/dist/leaflet.css"
-import {LMap, LMarker, LTileLayer} from "@vue-leaflet/vue-leaflet";
+import {LIcon, LMap, LMarker, LTileLayer} from "@vue-leaflet/vue-leaflet";
 import {ref, watch} from "vue";
 import {Inertia} from "@inertiajs/inertia";
+import MarkerType from "../Enums/MarkerType";
+import WebcamIcon from "./Icons/WebcamIcon.vue";
 
 const center = ref([46.47, -1.75]);
 const map = ref(null);

@@ -7,7 +7,7 @@
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 mt-5">
-          <Map :markers="markers" :link-on-marker="true"/>
+          <Map :markers="markers" :link-on-marker="true" />
         </div>
       </div>
     </div>
@@ -19,6 +19,7 @@ import AppLayout from "../../Layouts/AppLayout.vue";
 import Map from "../../Components/Map.vue"
 import {onMounted, ref} from "vue";
 import Marker from "../../Types/Marker";
+import MarkerType from "../../Enums/MarkerType";
 
 const markers = ref<Array<Marker>>([]);
 
@@ -32,6 +33,7 @@ onMounted(async () => {
           coordinates: [webcam.lat, webcam.lng],
           options: {title: webcam.title},
           url: webcam.url,
+          type: MarkerType.Webcam,
         };
       });
     })
