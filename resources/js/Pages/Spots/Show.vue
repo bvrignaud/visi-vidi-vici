@@ -207,126 +207,96 @@ table.detailed td {
 }
 </style>
 
-<script>
-import {defineComponent} from 'vue';
-import AppLayout from '@/Layouts/AppLayout.vue';
-import Map from "@/Components/Map.vue";
+<script setup lang="ts">
+import {onMounted, ref} from 'vue';
+import AppLayout from "../../Layouts/AppLayout.vue";
+import Map from "../../Components/Map.vue"
 import dayjs from "dayjs";
 import {meanBy} from "lodash";
-import WindArrow from "@/Components/WindArrow.vue";
+import WindArrow from "../../Components/WindArrow.vue";
 
-export default defineComponent({
-  components: {
-    WindArrow,
-    AppLayout,
-    Map,
-  },
-  props: {
-    spot: Object,
-  },
-  data() {
-    return {
-      days: [],
-      startTime: dayjs().startOf('day').subtract(5, 'days'),
-      endTime: dayjs().startOf('day').add(5, 'days'),
-      forecasts: [],
-      forecastsAvg: {},
-      sunInfos: [],
-      tides: [],
-      tidesRows: {},
-      today: dayjs().format('YYYY-MM-DD'),
-    }
-  },
-  async mounted() {
-    // let day = dayjs().startOf('day').subtract(5, 'days')
-    // for(let i = 0; i < 10; i++) {
-    //   this.days.push(day)
-    //   this.forecastsAvg.push(day)
-    //   day = day.add(1, 'day')
-    // }
-    fetch(`/api/spots/${this.spot.id}/forecast`)
-      .then(response => response.json())
-      .then(data => {
-        this.forecasts = data.forecasts
-        this.sunInfos = data.sun_infos
-        // let lastForecast
-        this.calculateAvgForecasts(data.forecasts)
-        this.forecasts.forEach(forecast => {
-          const key = dayjs(forecast.time).format('YYYY-MM-DD')
-          if (!this.tidesRows[key]) {
-            this.tidesRows[key] = {
-              colspan: 0,
-              tides: [],
-            }
+const props = defineProps({
+  spot: Object,
+});
+
+const days = ref([]);
+const forecasts = ref([]);
+const forecastsAvg = ref({});
+const sunInfos = ref([]);
+const tidesRows = ref({});
+const today = ref(dayjs().format('YYYY-MM-DD'));
+
+onMounted(async () => {
+  fetch(`/api/spots/${props.spot.id}/forecast`)
+    .then(response => response.json())
+    .then(data => {
+      forecasts.value = data.forecasts
+      sunInfos.value = data.sun_infos
+      calculateAvgForecasts(data.forecasts)
+      forecasts.value.forEach(forecast => {
+        const key = dayjs(forecast.time).format('YYYY-MM-DD')
+        if (!tidesRows[key]) {
+          tidesRows.value[key] = {
+            colspan: 0,
+            tides: [],
           }
-          if (this.sunInfos[key] !== undefined) {
-            if (this.sunInfos[key].colspan === undefined) {
-              this.sunInfos[key].colspan = 1
-            } else {
-              this.sunInfos[key].colspan++
-            }
-          }
-          this.tidesRows[key].colspan++
-        })
-        data.tides.forEach(tide => {
-          this.tidesRows[dayjs(tide.time).format('YYYY-MM-DD')].tides.push(tide)
-        })
-      })
-  },
-  methods: {
-    calculateAvgForecasts(forecasts) {
-      let day = dayjs().startOf('day').subtract(5, 'days')
-      for (let i = 0; i < 10; i++) {
-        const key = day.format('YYYY-MM-DD')
-        const forecastsFiltered = forecasts.filter(forecast => dayjs(forecast.time).format('YYYY-MM-DD') === key)
-        this.forecastsAvg[key] = {
-          note: meanBy(forecastsFiltered, 'note'),
-          airTemperature: meanBy(forecastsFiltered, 'airTemperature'),
-          cloudCover: meanBy(forecastsFiltered, 'cloudCover'),
-          swellHeight: meanBy(forecastsFiltered, 'swellHeight'),
-          windDirection: meanBy(forecastsFiltered, 'windDirection'),
-          windSpeed: meanBy(forecastsFiltered, 'windSpeed'),
         }
-        day = day.add(1, 'day')
-      }
-      // this.forecastsAvg.forEach((forecastAvg, index) => {
-      //   const forecastsFiltered = forecasts.filter(forecast => dayjs(forecast.time).format('YYYY-MM-DD') === index)
-      //   forecastAvg = {
-      //     note: meanBy(forecastsFiltered, note)
-      //   }
-      // })
-      // forecasts.forEach(forecast => {
-      //
-      // })
-    },
-    dayjs: dayjs,
-    formatDateToYmd(date) {
-      return `${date.getFullYear()}${date.getMonth() + 1}${date.getDate()}`;
-    },
-    isNow(time) {
-      return dayjs(time).format('YYYY-MM-DD') === this.today
-    },
-    numberToColor(i, min, max) {
-      let R = 0;
-      let G = 0;
-      let B = 0;
+        if (sunInfos[key] !== undefined) {
+          if (sunInfos[key].colspan === undefined) {
+            sunInfos[key].colspan = 1
+          } else {
+            sunInfos[key].colspan++
+          }
+        }
+        tidesRows.value[key].colspan++
+      })
+      data.tides.forEach(tide => {
+        tidesRows.value[dayjs(tide.time).format('YYYY-MM-DD')].tides.push(tide)
+      })
+    })
+});
 
-      let percentage = (i * 100) / (max - min);
-
-      if (percentage > 50) {
-        R = (255 * percentage) / 100;
-      } else if (percentage < 50) {
-        G = 255 - ((255 * percentage) / 100);
-      }
-      return `rgb(${R},${G},${B})`;
-    },
-    markers() {
-      return [{
-        id: this.spot.id,
-        coordinates: [+this.spot.lat, +this.spot.lng],
-        options: {title: this.spot.name},
-      }];
-    },
+function calculateAvgForecasts(forecasts) {
+  let day = dayjs().startOf('day').subtract(5, 'days')
+  for (let i = 0; i < 10; i++) {
+    const key = day.format('YYYY-MM-DD')
+    const forecastsFiltered = forecasts.filter(forecast => dayjs(forecast.time).format('YYYY-MM-DD') === key)
+    forecastsAvg.value[key] = {
+      note: meanBy(forecastsFiltered, 'note'),
+      airTemperature: meanBy(forecastsFiltered, 'airTemperature'),
+      cloudCover: meanBy(forecastsFiltered, 'cloudCover'),
+      swellHeight: meanBy(forecastsFiltered, 'swellHeight'),
+      windDirection: meanBy(forecastsFiltered, 'windDirection'),
+      windSpeed: meanBy(forecastsFiltered, 'windSpeed'),
+    }
+    day = day.add(1, 'day')
   }
-})
+}
+
+function isNow(time) {
+  return dayjs(time).format('YYYY-MM-DD') === today.value;
+}
+
+function numberToColor(i, min, max) {
+  let R = 0;
+  let G = 0;
+  let B = 0;
+
+  let percentage = (i * 100) / (max - min);
+
+  if (percentage > 50) {
+    R = (255 * percentage) / 100;
+  } else if (percentage < 50) {
+    G = 255 - ((255 * percentage) / 100);
+  }
+  return `rgb(${R},${G},${B})`;
+}
+
+function markers() {
+  return [{
+    id: props.spot.id,
+    coordinates: [+props.spot.lat, +props.spot.lng],
+    options: {title: props.spot.name},
+  }];
+}
 </script>
