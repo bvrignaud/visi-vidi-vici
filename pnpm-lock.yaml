@@ -9,6 +9,7 @@ specifiers:
   '@tailwindcss/forms': ^0.5.3
   '@tailwindcss/typography': ^0.5.8
   '@types/leaflet': ^1.9.0
+  '@types/lodash': ^4.14.191
   '@vitejs/plugin-vue': ^3.2.0
   '@vue-leaflet/vue-leaflet': ^0.7.0
   '@vue/compiler-sfc': ^3.2.45
@@ -46,6 +47,7 @@ devDependencies:
   '@inertiajs/progress': 0.2.7_@inertiajs+inertia@0.11.1
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.4
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
+  '@types/lodash': 4.14.191
   '@vitejs/plugin-vue': 3.2.0_vite@3.2.5+vue@3.2.45
   '@vue/compiler-sfc': 3.2.45
   autoprefixer: 10.4.5_postcss@8.4.19
@@ -247,6 +249,10 @@ packages:
     dependencies:
       '@types/geojson': 7946.0.10
     dev: false
+
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
+    dev: true
 
   /@types/node/18.11.12:
     resolution: {integrity: sha512-FgD3NtTAKvyMmD44T07zz2fEf+OKwutgBCEVM8GcvMGVGaDktiLNTDvPwC/LUe3PinMW+X6CuLOF2Ui1mAlSXg==}
