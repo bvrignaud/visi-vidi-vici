@@ -20,14 +20,14 @@ import Map from "../../Components/Map.vue"
 import {onMounted, ref} from "vue";
 import Marker from "../../Types/Marker";
 import MarkerType from "../../Enums/MarkerType";
+import {webcamsService} from "../../Services/Api/webcamsService";
 
 const markers = ref<Array<Marker>>([]);
 
 onMounted(async () => {
-  fetch(`/api/webcams`)
-    .then(response => response.json())
+  webcamsService.getAll()
     .then(data => {
-      markers.value = data.data.map((webcam: object) => {
+      markers.value = data.map((webcam: object) => {
         return {
           id: webcam.id,
           coordinates: [webcam.lat, webcam.lng],
@@ -36,6 +36,6 @@ onMounted(async () => {
           type: MarkerType.Webcam,
         };
       });
-    })
+    });
 });
 </script>
