@@ -176,9 +176,10 @@
                 Vent favorable :
                 <WindArrow :direction.="spot.optimal_wind_direction"/>
               </li>
+              <li>lat : {{ spot.lat }}, lon : {{ spot.lng }}</li>
             </ul>
           </div>
-          <Map :markers="markers()" :link-on-marker="false"/>
+          <Map :markers="markers" :link-on-marker="false"/>
         </div>
       </div>
     </div>
@@ -214,6 +215,8 @@ import Map from "../../Components/Map.vue"
 import dayjs from "dayjs";
 import {meanBy} from "lodash";
 import WindArrow from "../../Components/WindArrow.vue";
+import {webcamsService} from "../../Services/Api/webcamsService";
+import MarkerType from "../../Enums/MarkerType";
 
 const props = defineProps({
   spot: Object,
@@ -225,6 +228,7 @@ const forecastsAvg = ref({});
 const sunInfos = ref([]);
 const tidesRows = ref({});
 const today = ref(dayjs().format('YYYY-MM-DD'));
+const markers = ref([]);
 
 onMounted(async () => {
   fetch(`/api/spots/${props.spot.id}/forecast`)
@@ -254,6 +258,26 @@ onMounted(async () => {
         tidesRows.value[dayjs(tide.time).format('YYYY-MM-DD')].tides.push(tide)
       })
     })
+  ;
+  webcamsService.getAll({lat: props.spot.lat, lng: props.spot.lng})
+    .then(data => {
+      const webcams = data.map((webcam: object) => {
+        return {
+          id: webcam.id,
+          coordinates: [webcam.lat, webcam.lng],
+          options: {title: webcam.title},
+          url: webcam.url,
+          type: MarkerType.Webcam,
+        };
+      });
+      markers.value = markers.value.concat(webcams);
+    })
+  ;
+  markers.value.push({
+    id: props.spot.id,
+    coordinates: [+props.spot.lat, +props.spot.lng],
+    options: {title: props.spot.name},
+  });
 });
 
 function calculateAvgForecasts(forecasts) {
@@ -292,11 +316,4 @@ function numberToColor(i, min, max) {
   return `rgb(${R},${G},${B})`;
 }
 
-function markers() {
-  return [{
-    id: props.spot.id,
-    coordinates: [+props.spot.lat, +props.spot.lng],
-    options: {title: props.spot.name},
-  }];
-}
 </script>
