@@ -233,6 +233,4 @@ return [
 
     ],
 
-    'stormglass_key' => env('STORMGLASS_KEY'),
-
 ];
