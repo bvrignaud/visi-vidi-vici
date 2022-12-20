@@ -19,7 +19,7 @@ class StormGlassAPI
 
         return \Cache::remember($cacheKey, 3600, function () use ($lat, $lng, $start, $end) {
             $response = Http::withHeaders([
-                'Authorization' => config('service.stormglass.key'),
+                'Authorization' => config('services.stormglass.key'),
             ])->get('https://api.stormglass.io/v2/weather/point', [
                 'lat' => $lat,
                 'lng' => $lng,
@@ -48,7 +48,7 @@ class StormGlassAPI
     {
         return \Cache::remember("StormGlassTideExtremesPoint?lat=$lat&lng=$lng&start={$start?->format('Ymd')}", 3600, function () use ($lat, $lng, $start) {
             $response = Http::withHeaders([
-                'Authorization' => config('service.stormglass.key'),
+                'Authorization' => config('services.stormglass.key'),
             ])->get('https://api.stormglass.io/v2/tide/extremes/point', [
                 'lat' => $lat,
                 'lng' => $lng,
