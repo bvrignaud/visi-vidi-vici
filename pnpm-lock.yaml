@@ -17,13 +17,13 @@ specifiers:
   axios: ^0.26.1
   dayjs: ^1.11.7
   laravel-vite-plugin: ^0.5.4
-  laravel-vue-i18n: ^2.3.1
+  laravel-vue-i18n: ^2.3.2
   leaflet: ^1.9.3
   lodash: ^4.17.21
   postcss: ^8.4.20
   postcss-import: ^14.1.0
   resolve-url-loader: ^5.0.0
-  sass: ^1.56.2
+  sass: ^1.57.1
   sass-loader: ^12.6.0
   tailwindcss: ^3.2.4
   vite: ^3.2.5
@@ -37,7 +37,7 @@ dependencies:
   '@types/leaflet': 1.9.0
   '@vue-leaflet/vue-leaflet': 0.7.0_leaflet@1.9.3+vue@3.2.45
   dayjs: 1.11.7
-  laravel-vue-i18n: 2.3.1
+  laravel-vue-i18n: 2.3.2
   leaflet: 1.9.3
   webpack: 5.75.0
 
@@ -57,10 +57,10 @@ devDependencies:
   postcss: 8.4.20
   postcss-import: 14.1.0_postcss@8.4.20
   resolve-url-loader: 5.0.0
-  sass: 1.56.2
-  sass-loader: 12.6.0_sass@1.56.2+webpack@5.75.0
+  sass: 1.57.1
+  sass-loader: 12.6.0_sass@1.57.1+webpack@5.75.0
   tailwindcss: 3.2.4_postcss@8.4.20
-  vite: 3.2.5_sass@1.56.2
+  vite: 3.2.5_sass@1.57.1
   vue: 3.2.45
   vue-loader: 17.0.1_ceoavo7i67lvjzxxtqa4yhrx7m
 
@@ -254,8 +254,8 @@ packages:
     resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
     dev: true
 
-  /@types/node/18.11.15:
-    resolution: {integrity: sha512-VkhBbVo2+2oozlkdHXLrb3zjsRkpdnaU2bXmX8Wgle3PUi569eLRaHGlgETQHR7lLL1w7GiG3h9SnePhxNDecw==}
+  /@types/node/18.11.17:
+    resolution: {integrity: sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==}
 
   /@vitejs/plugin-vue/3.2.0_vite@3.2.5+vue@3.2.45:
     resolution: {integrity: sha512-E0tnaL4fr+qkdCNxJ+Xd0yM31UwMkQje76fsDVBBUCoGOUPexu2VDUYHL8P4CwV+zMvWw6nlRw19OnRKmYAJpw==}
@@ -264,7 +264,7 @@ packages:
       vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 3.2.5_sass@1.56.2
+      vite: 3.2.5_sass@1.57.1
       vue: 3.2.45
     dev: true
 
@@ -576,7 +576,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001439
       electron-to-chromium: 1.4.284
-      node-releases: 2.0.7
+      node-releases: 2.0.8
       update-browserslist-db: 1.0.10_browserslist@4.21.4
 
   /buffer-from/1.1.2:
@@ -1084,7 +1084,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 18.11.15
+      '@types/node': 18.11.17
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -1094,8 +1094,8 @@ packages:
   /json-schema-traverse/0.4.1:
     resolution: {integrity: sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==}
 
-  /json5/2.2.1:
-    resolution: {integrity: sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==}
+  /json5/2.2.2:
+    resolution: {integrity: sha512-46Tk9JiOL2z7ytNQWFLpj99RZkVgeHf87yGQKsIkaPz1qSH9UczKH1rO7K3wgRselo0tYMUNfecYpm/p1vC7tQ==}
     engines: {node: '>=6'}
     hasBin: true
     dev: true
@@ -1111,12 +1111,12 @@ packages:
     peerDependencies:
       vite: ^3.0.0
     dependencies:
-      vite: 3.2.5_sass@1.56.2
+      vite: 3.2.5_sass@1.57.1
       vite-plugin-full-reload: 1.0.5_vite@3.2.5
     dev: true
 
-  /laravel-vue-i18n/2.3.1:
-    resolution: {integrity: sha512-FPOFpbwXV7AgQaXZuYt4dquouIysbgagVTidTnh+pWZo80xov4EXQbl/ZSfuLcDjCvmBKhO/kQlCT0YyWwhJuA==}
+  /laravel-vue-i18n/2.3.2:
+    resolution: {integrity: sha512-MJWbRngi931s5ehVveQIeDvcO/a5Nmq6l4szCZyYLAHXaTNP2Psh0YjuO/ImAcl8Hl4UhLxN5rtEE54KfViGtg==}
     peerDependencies:
       laravel-mix: ^6.0.43
     dependencies:
@@ -1143,7 +1143,7 @@ packages:
     dependencies:
       big.js: 5.2.2
       emojis-list: 3.0.0
-      json5: 2.2.1
+      json5: 2.2.2
     dev: true
 
   /lodash.castarray/4.4.0:
@@ -1218,8 +1218,8 @@ packages:
   /neo-async/2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
-  /node-releases/2.0.7:
-    resolution: {integrity: sha512-EJ3rzxL9pTWPjk5arA0s0dgXpnyiAbJDE6wHT62g7VsgrgQgmmZ+Ru++M1BFofncWja+Pnn3rEr3fieRySAdKQ==}
+  /node-releases/2.0.8:
+    resolution: {integrity: sha512-dFSmB8fFHEH/s81Xi+Y/15DQY6VHW81nXRj86EMSL3lmuTmK1e+aT4wrFCkTbm+gSwkw4KpX+rT/pMM2c1mF+A==}
 
   /normalize-path/3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
@@ -1430,7 +1430,7 @@ packages:
   /safe-buffer/5.2.1:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
 
-  /sass-loader/12.6.0_sass@1.56.2+webpack@5.75.0:
+  /sass-loader/12.6.0_sass@1.57.1+webpack@5.75.0:
     resolution: {integrity: sha512-oLTaH0YCtX4cfnJZxKSLAyglED0naiYfNG1iXfU5w1LNZ+ukoA5DtyDIN5zmKVZwYNJP4KRc5Y3hkWga+7tYfA==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
@@ -1451,12 +1451,12 @@ packages:
     dependencies:
       klona: 2.0.5
       neo-async: 2.6.2
-      sass: 1.56.2
+      sass: 1.57.1
       webpack: 5.75.0
     dev: true
 
-  /sass/1.56.2:
-    resolution: {integrity: sha512-ciEJhnyCRwzlBCB+h5cCPM6ie/6f8HrhZMQOf5vlU60Y1bI1rx5Zb0vlDZvaycHsg/MqFfF1Eq2eokAa32iw8w==}
+  /sass/1.57.1:
+    resolution: {integrity: sha512-O2+LwLS79op7GI0xZ8fqzF7X2m/m8WFfI02dHOdsK5R2ECeS5F62zrwg/relM1rjSLy7Vd/DiMNIvPrQGsA0jw==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
@@ -1630,10 +1630,10 @@ packages:
     dependencies:
       picocolors: 1.0.0
       picomatch: 2.3.1
-      vite: 3.2.5_sass@1.56.2
+      vite: 3.2.5_sass@1.57.1
     dev: true
 
-  /vite/3.2.5_sass@1.56.2:
+  /vite/3.2.5_sass@1.57.1:
     resolution: {integrity: sha512-4mVEpXpSOgrssFZAOmGIr85wPHKvaDAcXqxVxVRZhljkJOMZi1ibLibzjLHzJvcok8BMguLc7g1W6W/GqZbLdQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -1662,7 +1662,7 @@ packages:
       postcss: 8.4.20
       resolve: 1.22.1
       rollup: 2.79.1
-      sass: 1.56.2
+      sass: 1.57.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
