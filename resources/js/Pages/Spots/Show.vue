@@ -174,9 +174,9 @@
             <ul>
               <li>
                 Vent favorable :
-                <WindArrow :direction.="spot.optimal_wind_direction"/>
+                <WindArrow :direction.="props.spot.optimal_wind_direction"/>
               </li>
-              <li>lat : {{ spot.lat }}, lon : {{ spot.lng }}</li>
+              <li>lat : {{ props.spot.lat }}, lon : {{ props.spot.lng }}</li>
             </ul>
           </div>
           <Map :markers="markers" :link-on-marker="false"/>
@@ -217,10 +217,11 @@ import {meanBy} from "lodash";
 import WindArrow from "../../Components/WindArrow.vue";
 import {webcamsService} from "../../Services/Api/webcamsService";
 import MarkerType from "../../Enums/MarkerType";
+import Spot from "../../Types/Spot";
 
-const props = defineProps({
-  spot: Object,
-});
+const props = defineProps<{
+  spot: Spot,
+}>();
 
 const days = ref([]);
 const forecasts = ref([]);
