@@ -31,7 +31,7 @@
   </l-map>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import "leaflet/dist/leaflet.css"
 import {LIcon, LMap, LMarker, LTileLayer} from "@vue-leaflet/vue-leaflet";
 import {ref, watch} from "vue";

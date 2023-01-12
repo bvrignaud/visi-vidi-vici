@@ -179,7 +179,7 @@
               <li>lat : {{ props.spot.lat }}, lon : {{ props.spot.lng }}</li>
             </ul>
           </div>
-          <Map :markers="markers" :link-on-marker="false"/>
+          <Map :markers="markers" :link-on-marker="true"/>
         </div>
       </div>
     </div>
