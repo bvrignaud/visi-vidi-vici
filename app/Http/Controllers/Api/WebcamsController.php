@@ -8,18 +8,31 @@ use App\Models\Webcams;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Support\Facades\DB;
 
 class WebcamsController extends Controller
 {
     public function index(Request $request): AnonymousResourceCollection
     {
-        $webcams = Webcams::orderBy('title')
-            ->when($request->lat && $request->lng, function (Builder $query) use ($request) {
+        $webcams = Webcams::select([
+                'id',
+                'title',
+                'url',
+                'lat',
+                'lng',
+            ])
+            ->when($request['lat'] && $request['lng'], function (Builder $query) use ($request) {
                 $query
-                    ->whereBetween('lat', [$request->lat - 0.1, $request->lat + 0.1])
-                    ->whereBetween('lng', [$request->lng - 0.1, $request->lng + 0.1])
+                    ->selectRaw(
+                        "ACOS(SIN(PI() * ? / 180.0)*SIN(PI()*lat/180.0)+COS(PI() * ? / 180.0)*COS(PI()*lat/180.0)*COS(PI()*lng/180.0-PI() * ? / 180.0))*6371 distance",
+                        [(float)$request['lat'], (float)$request['lat'], (float)$request['lng']]
+                    )
+                    ->whereBetween('lat', [$request['lat'] - 0.1, $request['lat'] + 0.1])
+                    ->whereBetween('lng', [$request['lng'] - 0.1, $request['lng'] + 0.1])
+                    ->orderBy('distance')
                 ;
             })
+            ->orderBy('title')
             ->get();
         return WebcamResource::collection($webcams);
     }
