@@ -224,19 +224,19 @@ import {webcamsService} from "../../Services/Api/webcamsService";
 import MarkerType from "../../Enums/MarkerType";
 import Spot from "../../Types/Spot";
 import WebcamThumbnail from "../../Components/WebcamThumbnail.vue";
+import Webcam from "../../Types/Webcam";
 
 const props = defineProps<{
   spot: Spot,
 }>();
 
-const days = ref([]);
-const forecasts = ref([]);
+const forecasts = ref<Array<any>>([]);
 const forecastsAvg = ref({});
 const sunInfos = ref([]);
 const tidesRows = ref({});
-const today = ref(dayjs().format('YYYY-MM-DD'));
-const markers = ref([]);
-const webcams = ref([]);
+const today: string = dayjs().format('YYYY-MM-DD');
+const markers = ref<Array<any>>([]);
+const webcams = ref<Array<Webcam>>([]);
 
 onMounted(async () => {
   fetch(`/api/spots/${props.spot.id}/forecast`)
@@ -288,7 +288,7 @@ onMounted(async () => {
   });
 });
 
-function calculateAvgForecasts(forecasts) {
+function calculateAvgForecasts(forecasts): void {
   let day = dayjs().startOf('day').subtract(5, 'days')
   for (let i = 0; i < 10; i++) {
     const key = day.format('YYYY-MM-DD')
@@ -306,7 +306,7 @@ function calculateAvgForecasts(forecasts) {
 }
 
 function isNow(time) {
-  return dayjs(time).format('YYYY-MM-DD') === today.value;
+  return dayjs(time).format('YYYY-MM-DD') === today;
 }
 
 function numberToColor(i, min, max) {

@@ -39,7 +39,7 @@ import {Inertia} from "@inertiajs/inertia";
 import MarkerType from "../Enums/MarkerType";
 import WebcamIcon from "./Icons/WebcamIcon.vue";
 
-const center = ref([46.47, -1.75]);
+const center = ref<Array<number>>([46.47, -1.75]);
 const map = ref(null);
 const props = defineProps({
   linkOnMarker: {
@@ -59,7 +59,7 @@ watch(
   }
 );
 
-function zoomFitToMarkers() {
+function zoomFitToMarkers(): void {
   if (props.markers.length > 1) {
     map.value.leafletObject.fitBounds(props.markers.map(m => m.coordinates));
     map.value.leafletObject.fitBounds(props.markers.map(m => m.coordinates));
@@ -68,7 +68,7 @@ function zoomFitToMarkers() {
   }
 }
 
-function goTo(url) {
+function goTo(url): void {
   if (props.linkOnMarker) {
     if (url.startsWith(window.location.href)) {
       Inertia.visit(url);
