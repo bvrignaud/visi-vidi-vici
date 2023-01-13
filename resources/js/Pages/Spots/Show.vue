@@ -168,18 +168,23 @@
           </table>
         </div>
 
-        <div class="flex bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 mt-5">
-          <div>
+        <div class="flex flex-row flex-wrap sm:flex-nowrap bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 mt-5">
+          <div class="sm:basis-1/5">
             <strong>{{ spot.name }}</strong>
             <ul>
               <li>
                 Vent favorable :
                 <WindArrow :direction.="props.spot.optimal_wind_direction"/>
               </li>
-              <li>lat : {{ props.spot.lat }}, lon : {{ props.spot.lng }}</li>
+              <li>lat : {{ props.spot.lat }}<br> lon : {{ props.spot.lng }}</li>
             </ul>
           </div>
-          <Map :markers="markers" :link-on-marker="true"/>
+          <Map class="flex-auto" :markers="markers" :link-on-marker="true" />
+        </div>
+        <div v-if="webcams.length" class="flex flex-wrap gap-1 justify-around bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 mt-5">
+          <div v-for="(webcam, i) in webcams" class="">
+            <WebcamThumbnail :webcam="webcam" />
+          </div>
         </div>
       </div>
     </div>
@@ -218,6 +223,7 @@ import WindArrow from "../../Components/WindArrow.vue";
 import {webcamsService} from "../../Services/Api/webcamsService";
 import MarkerType from "../../Enums/MarkerType";
 import Spot from "../../Types/Spot";
+import WebcamThumbnail from "../../Components/WebcamThumbnail.vue";
 
 const props = defineProps<{
   spot: Spot,
@@ -230,6 +236,7 @@ const sunInfos = ref([]);
 const tidesRows = ref({});
 const today = ref(dayjs().format('YYYY-MM-DD'));
 const markers = ref([]);
+const webcams = ref([]);
 
 onMounted(async () => {
   fetch(`/api/spots/${props.spot.id}/forecast`)
@@ -262,7 +269,7 @@ onMounted(async () => {
   ;
   webcamsService.getAll({lat: props.spot.lat, lng: props.spot.lng})
     .then(data => {
-      const webcams = data.map((webcam: object) => {
+      webcams.value = data.map((webcam: object) => {
         return {
           id: webcam.id,
           coordinates: [webcam.lat, webcam.lng],
@@ -271,7 +278,7 @@ onMounted(async () => {
           type: MarkerType.Webcam,
         };
       });
-      markers.value = markers.value.concat(webcams);
+      markers.value = markers.value.concat(webcams.value);
     })
   ;
   markers.value.push({
