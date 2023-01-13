@@ -181,7 +181,10 @@
           </div>
           <Map class="flex-auto" :markers="markers" :link-on-marker="true" />
         </div>
-        <div v-if="webcams.length" class="flex flex-wrap gap-1 justify-around bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 mt-5">
+        <div
+          v-if="webcams.length"
+          class="flex flex-wrap gap-1 justify-around bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 mt-5"
+        >
           <div v-for="(webcam, i) in webcams" class="">
             <WebcamThumbnail :webcam="webcam" />
           </div>
