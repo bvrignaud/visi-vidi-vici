@@ -319,7 +319,6 @@
     "Log Out": "Déconnexion",
     "Log Out Other Browser Sessions": "Déconnecter les sessions ouvertes sur d'autres navigateurs",
     "Login": "Connexion",
-    "Logout": "Déconnexion",
     "Luxembourg": "Luxembourg",
     "Macao": "Macao",
     "Macedonia": "Macédoine",
@@ -708,5 +707,17 @@
     "Zambia": "Zambie",
     "Zimbabwe": "Zimbabwe",
     "Zip \/ Postal Code": "Code postal",
-    "Åland Islands": "Les îles d'Åland"
+    "Åland Islands": "Les îles d'Åland",
+
+    "Add a new Spot": "Ajouter un nouveau Spot",
+
+    "Air temperature": "Température de l'air",
+    "Cloud cover": "Couverture nuageuse",
+    "Favorable wind": "Vent favorbale",
+    "Sun": "Soleil",
+    "Swell height": "Hauteur de la houle",
+    "Tides": "Marées",
+    "Wind": "Vent",
+    "Wind direction": "Orientation du vent",
+    "Wind speed": "Vitesse du vent"
 }

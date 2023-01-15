@@ -57,23 +57,23 @@
                                             <!-- Team Management -->
                                             <template v-if="$page.props.jetstream.hasTeamFeatures">
                                                 <div class="block px-4 py-2 text-xs text-gray-400">
-                                                    Manage Team
+                                                  {{ $t('Manage Team') }}
                                                 </div>
 
                                                 <!-- Team Settings -->
                                                 <jet-dropdown-link :href="route('teams.show', $page.props.user.current_team)">
-                                                    Team Settings
+                                                  {{ $t('Team Settings') }}
                                                 </jet-dropdown-link>
 
                                                 <jet-dropdown-link :href="route('teams.create')" v-if="$page.props.jetstream.canCreateTeams">
-                                                    Create New Team
+                                                  {{ $t('Create New Team') }}
                                                 </jet-dropdown-link>
 
                                                 <div class="border-t border-gray-100"></div>
 
                                                 <!-- Team Switcher -->
                                                 <div class="block px-4 py-2 text-xs text-gray-400">
-                                                    Switch Teams
+                                                  {{ $t('Switch Teams') }}
                                                 </div>
 
                                                 <template v-for="team in $page.props.user.all_teams" :key="team.id">
@@ -114,7 +114,7 @@
                                     <template #content>
                                         <!-- Account Management -->
                                         <div class="block px-4 py-2 text-xs text-gray-400">
-                                            Gérer le compte
+                                          {{ $t('Manage Account') }}
                                         </div>
 
                                         <jet-dropdown-link :href="route('profile.show')">
@@ -130,7 +130,7 @@
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
                                             <jet-dropdown-link as="button">
-                                                Déconnexion
+                                              {{ $t('Log Out') }}
                                             </jet-dropdown-link>
                                         </form>
                                     </template>
@@ -194,7 +194,7 @@
                             <!-- Authentication -->
                             <form method="POST" @submit.prevent="logout">
                                 <jet-responsive-nav-link as="button">
-                                    Déconnexion
+                                  {{ $t('Log Out') }}
                                 </jet-responsive-nav-link>
                             </form>
 
@@ -203,23 +203,23 @@
                                 <div class="border-t border-gray-200"></div>
 
                                 <div class="block px-4 py-2 text-xs text-gray-400">
-                                    Manage Team
+                                  {{ $t('Manage Team') }}
                                 </div>
 
                                 <!-- Team Settings -->
                                 <jet-responsive-nav-link :href="route('teams.show', $page.props.user.current_team)" :active="route().current('teams.show')">
-                                    Team Settings
+                                  {{ $t('Team Settings') }}
                                 </jet-responsive-nav-link>
 
                                 <jet-responsive-nav-link :href="route('teams.create')" :active="route().current('teams.create')" v-if="$page.props.jetstream.canCreateTeams">
-                                    Create New Team
+                                  {{ $t('Create New Team') }}
                                 </jet-responsive-nav-link>
 
                                 <div class="border-t border-gray-200"></div>
 
                                 <!-- Team Switcher -->
                                 <div class="block px-4 py-2 text-xs text-gray-400">
-                                    Switch Teams
+                                  {{ $t('Switch Teams') }}
                                 </div>
 
                                 <template v-for="team in $page.props.user.all_teams" :key="team.id">
@@ -288,7 +288,8 @@
                 showingNavigationDropdown: false,
                 navLinks: [
                     {
-                        label: 'Accueil',
+                        // label: 'Accueil',
+                        label: $t('Home'),
                         route: 'home',
                     },
                     {

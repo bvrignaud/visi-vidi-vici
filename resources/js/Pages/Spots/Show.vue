@@ -31,7 +31,7 @@
               </td>
             </tr>
             <tr>
-              <th class="sticky-col">cloudCover</th>
+              <th class="sticky-col">{{ $t('Cloud cover') }}</th>
               <td
                 v-for="(forecast, date) in forecastsAvg"
                 :class="{ 'actual-day' : isNow(date) }"
@@ -41,7 +41,7 @@
               </td>
             </tr>
             <tr>
-              <th class="sticky-col">airTemperature</th>
+              <th class="sticky-col">{{ $t('Air temperature') }}</th>
               <td
                 v-for="(forecast, date) in forecastsAvg"
                 :class="{ 'actual-day' : isNow(date) }"
@@ -51,7 +51,7 @@
               </td>
             </tr>
             <tr>
-              <th class="sticky-col">wind</th>
+              <th class="sticky-col">{{ $t('Wind') }}</th>
               <td
                 v-for="(forecast, date) in forecastsAvg"
                 :class="{ 'actual-day' : isNow(date) }"
@@ -60,7 +60,7 @@
               </td>
             </tr>
             <tr>
-              <th class="sticky-col">swellHeight</th>
+              <th class="sticky-col">{{ $t('Swell height') }}</th>
               <td
                 v-for="(forecast, date) in forecastsAvg"
                 :class="{ 'actual-day' : isNow(date) }"
@@ -70,7 +70,7 @@
               </td>
             </tr>
             <tr>
-              <th class="sticky-col">Marées</th>
+              <th class="sticky-col">{{ $t('Tides') }}</th>
               <td
                 v-for="(tidesRow, key) in tidesRows"
                 :class="{ 'actual-day' : dayjs().format('YYYY-MM-DD') === key }"
@@ -82,7 +82,7 @@
               </td>
             </tr>
             <tr>
-              <th class="sticky-col">Sun</th>
+              <th class="sticky-col">{{ $t('Sun') }}</th>
               <td
                 v-for="(sunInfo, date) in sunInfos"
                 :class="{ 'actual-day rounded-b' : isNow(date) }"
@@ -95,7 +95,7 @@
         </div>
 
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 mt-5 overflow-x-auto">
-          <h3>Détails</h3>
+          <h3>{{ $t('Details') }}</h3>
           <table class="detailed">
             <thead>
             <tr>
@@ -125,7 +125,7 @@
               </td>
             </tr>
             <tr>
-              <th class="sticky-col">airTemperature</th>
+              <th class="sticky-col">{{ $t('Air temperature') }}</th>
               <td v-for="forecast in forecasts"
                   :class="{ 'actual-day' : isNow(forecast.time) }"
                   :style="{ color: numberToColor(forecast.airTemperature, 0, 40)}">
@@ -133,7 +133,7 @@
               </td>
             </tr>
             <tr>
-              <th class="sticky-col">cloudCover</th>
+              <th class="sticky-col">{{ $t('Cloud cover') }}</th>
               <td v-for="forecast in forecasts"
                   :class="{ 'actual-day' : isNow(forecast.time) }"
                   :style="{ color: numberToColor(forecast.cloudCover, 0, 100)}">
@@ -141,7 +141,7 @@
               </td>
             </tr>
             <tr>
-              <th class="sticky-col">swellHeight</th>
+              <th class="sticky-col">{{ $t('Swell height') }}</th>
               <td v-for="forecast in forecasts"
                   :class="{ 'actual-day' : isNow(forecast.time) }"
                   :style="{ color: numberToColor(forecast.swellHeight, 0, 2)}">
@@ -149,7 +149,7 @@
               </td>
             </tr>
             <tr>
-              <th class="sticky-col">windDirection</th>
+              <th class="sticky-col">{{ $t('Wind direction') }}</th>
               <td v-for="forecast in forecasts"
                   :class="{ 'actual-day' : isNow(forecast.time) }"
               >
@@ -157,7 +157,7 @@
               </td>
             </tr>
             <tr>
-              <th class="sticky-col">windSpeed</th>
+              <th class="sticky-col">{{ $t('Wind speed') }}</th>
               <td v-for="forecast in forecasts"
                   :class="{ 'actual-day' : isNow(forecast.time) }"
                   :style="{ color: numberToColor(forecast.windSpeed * 1.9438, 0, 20)}">
@@ -173,7 +173,7 @@
             <strong>{{ spot.name }}</strong>
             <ul>
               <li>
-                Vent favorable :
+                {{ $t('Favorable wind') }} :
                 <WindArrow :direction.="props.spot.optimal_wind_direction"/>
               </li>
               <li>lat : {{ props.spot.lat }}<br> lon : {{ props.spot.lng }}</li>
@@ -185,7 +185,7 @@
           v-if="webcams.length"
           class="flex flex-wrap gap-1 justify-around bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 mt-5"
         >
-          <div v-for="(webcam, i) in webcams" class="">
+          <div v-for="(webcam) in webcams" class="">
             <WebcamThumbnail :webcam="webcam" />
           </div>
         </div>

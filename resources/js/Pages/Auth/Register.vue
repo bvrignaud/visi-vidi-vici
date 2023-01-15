@@ -37,7 +37,14 @@
                         <jet-checkbox name="terms" id="terms" v-model:checked="form.terms" />
 
                         <div class="ml-2">
-                            I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
+                          I agree to the
+                          <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                            Terms of Service
+                          </a>
+                          and
+                          <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                            Privacy Policy
+                          </a>
                         </div>
                     </div>
                 </jet-label>
@@ -45,7 +52,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Déjà inscrit(e) ?
+                    {{ $t('Already registered?') }}
                 </Link>
 
                 <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">

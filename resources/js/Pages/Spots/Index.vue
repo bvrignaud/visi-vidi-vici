@@ -11,7 +11,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Nom</th>
+                                <th>{{ $t('Name') }}</th>
                                 <th class="hidden sm:table-cell">Longitude</th>
                                 <th class="hidden sm:table-cell">Latitude</th>
                             </tr>
@@ -31,7 +31,7 @@
                         </tbody>
                     </table>
                     <Link v-if="$page.props.user" :href="route('spots.create')">
-                        <Button>Ajouter un nouveau Spot</Button>
+                        <Button>{{ $t('Add a new Spot') }}</Button>
                     </Link>
                 </div>
 
