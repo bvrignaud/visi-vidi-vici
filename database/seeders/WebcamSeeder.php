@@ -11,6 +11,12 @@ class WebcamSeeder extends Seeder
     {
         $webcams = [
             [
+                'title' => 'Piriac sur mer (44)',
+                'url' => 'https://youtu.be/EBTJzfIZMy8',
+                'lat' => 47.38184,
+                'lng' => -2.54297,
+            ],
+            [
                 'title' => 'Port Bourgenay - Capitainerie',
                 'url' => 'https://youtu.be/ZktdEyLtYPo',
                 'lat' => 46.43877,
@@ -33,6 +39,12 @@ class WebcamSeeder extends Seeder
                 'url' => 'https://pv.viewsurf.com/1070/Les-Sables-d-Olonne?i=NDkxMDo',
                 'lat' => 46.63840,
                 'lng' => -1.89534,
+            ],
+            [
+                'title' => 'La Perroche',
+                'url' => 'https://youtu.be/xjlaExcaEt0',
+                'lat' => 45.90008,
+                'lng' => -1.29574,
             ],
         ];
 
