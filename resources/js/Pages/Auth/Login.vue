@@ -1,5 +1,5 @@
 <template>
-    <Head title="{{ $t('Log in') }}" />
+    <Head :title="$t('Log in')" />
 
     <jet-authentication-card>
         <template #logo>

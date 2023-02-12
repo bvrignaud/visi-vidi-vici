@@ -265,6 +265,7 @@
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink.vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
     import Footer from "@/Layouts/Partials/Footer.vue";
+    import {trans} from "laravel-vue-i18n";
 
     export default defineComponent({
         props: {
@@ -289,7 +290,7 @@
                 navLinks: [
                     {
                         // label: 'Accueil',
-                        label: $t('Home'),
+                        label: trans('Home'),
                         route: 'home',
                     },
                     {
