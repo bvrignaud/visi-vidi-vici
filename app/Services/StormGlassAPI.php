@@ -13,7 +13,7 @@ class StormGlassAPI
 {
     public function getWeatherPoint(float $lat, float $lng, ?\DateTime $start = null, ?\DateTime $end = null): array
     {
-        $cacheKey = "StormGlassWeatherPoint?lat=$lat&lng=$lng";
+        $cacheKey = "StormGlassWeatherPoint?lat={$lat}&lng={$lng}";
         $cacheKey .= $start ? "&start={$start->format('Y-m-d')}" : '';
         $cacheKey .= $end ? "&end={$end->format('Y-m-d')}" : '';
 
@@ -46,7 +46,7 @@ class StormGlassAPI
 
     public function getTideExtremesPoint(float $lat, float $lng, ?\DateTime $start = null): array
     {
-        return \Cache::remember("StormGlassTideExtremesPoint?lat=$lat&lng=$lng&start={$start?->format('Ymd')}", 3600, function () use ($lat, $lng, $start) {
+        return \Cache::remember("StormGlassTideExtremesPoint?lat={$lat}&lng={$lng}&start={$start?->format('Ymd')}", 3600, function () use ($lat, $lng, $start) {
             $response = Http::withHeaders([
                 'Authorization' => config('services.stormglass.key'),
             ])->get('https://api.stormglass.io/v2/tide/extremes/point', [
