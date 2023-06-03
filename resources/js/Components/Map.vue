@@ -8,6 +8,7 @@
     :maxZoom="19"
     style="height:50vh"
     @ready="zoomFitToMarkers()"
+    :useGlobalLeaflet="false"
   >
     <l-tile-layer
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
