@@ -25,7 +25,7 @@ php artisan insights
 
 #### Code style fixer ([pint](https://laravel.com/docs/9.x/pint))
 ```bash
-./vendor/bin/pint
+composer pintd
 ```
 
 ## Code of Conduct
