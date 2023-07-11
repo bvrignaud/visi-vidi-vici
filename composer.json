@@ -63,6 +63,9 @@
         ],
         "pintd": [
             "@php ./vendor/bin/pint --dirty"
+        ],
+        "stan": [
+            "@php ./vendor/bin/phpstan analyse"
         ]
     },
     "extra": {
