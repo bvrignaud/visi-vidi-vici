@@ -15,6 +15,7 @@ parameters:
         - '#Method App\\Actions\\Fortify\\[a-zA-Z0-9\\_]+\::passwordRules\(\) return type has no value type specified in iterable type array#'
         - '#Parameter \#1 \$timestamp of static method Carbon\\Carbon\:\:createFromTimestamp\(\) expects float\|int\|string, bool\|int given#'
         - '#Method App\\Http\\Middleware\\HandleInertiaRequests::share\(\) return type has no value type specified in iterable type array#'
+        - '#Return type \(App\\Models\\User\) of method App\\Actions\\Fortify\\CreateNewUser::create\(\) should be compatible with return type \(Illuminate\\Foundation\\Auth\\User\) of method Laravel\\Fortify\\Contracts\\CreatesNewUsers::create\(\)#'
         -
           message: '#Method [a-zA-Z0-9\\_]+::rules\(\) return type has no value type specified in iterable type array.#'
           paths:
