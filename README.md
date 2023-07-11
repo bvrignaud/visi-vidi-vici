@@ -13,6 +13,11 @@ https://github.com/barryvdh/laravel-ide-helper est intégré au _composer.json_ 
 Elle permet de générer automatiquement la documentation des models pour aider l’ide.
 Pour mettre à jour les models : `php artisan ide-helper:models -W -R`
 
+###
+```bash
+composer clean
+```
+
 #### [PHP Insights](https://phpinsights.com)
 ```bash
 php artisan insights
