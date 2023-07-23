@@ -18,17 +18,23 @@
       url="https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"
       attribution='Map data: &copy; <a href="https://www.openseamap.org">OpenSeaMap</a> contributors'
     />
-    <l-marker
+    <template
       v-for="marker in markers"
       :key="marker.id"
-      :lat-lng="marker.coordinates"
-      :options="marker.options"
-      @click="goTo(marker.url)"
     >
-      <l-icon v-if="marker.type === MarkerType.Webcam">
-        <WebcamIcon />
-      </l-icon>
-    </l-marker>
+      <l-marker v-if="marker.type === MarkerType.Webcam"
+        :lat-lng="marker.coordinates"
+        :options="marker.options"
+        @click="goTo(marker.url)"
+      >
+        <l-icon icon-url="/images/icons/cam.png" :icon-size="[20, 20]" />
+      </l-marker>
+      <l-marker v-else
+        :lat-lng="marker.coordinates"
+        :options="marker.options"
+        @click="goTo(marker.url)"
+      />
+    </template>
   </l-map>
 </template>
 
