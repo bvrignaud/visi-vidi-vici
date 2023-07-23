@@ -11,7 +11,7 @@ specifiers:
   '@types/leaflet': ^1.9.3
   '@types/lodash': ^4.14.195
   '@vitejs/plugin-vue': ^4.2.3
-  '@vue-leaflet/vue-leaflet': ^0.9.0
+  '@vue-leaflet/vue-leaflet': ^0.10.1
   '@vue/compiler-sfc': ^3.3.4
   autoprefixer: 10.4.13
   axios: ^1.4.0
@@ -35,7 +35,7 @@ dependencies:
   '@babel/runtime': 7.22.6
   '@fontsource/nunito': 4.5.12
   '@types/leaflet': 1.9.3
-  '@vue-leaflet/vue-leaflet': 0.9.0_519ed8d6845c8d92ad6ea51bb347ed8e
+  '@vue-leaflet/vue-leaflet': 0.10.1_519ed8d6845c8d92ad6ea51bb347ed8e
   dayjs: 1.11.9
   laravel-vue-i18n: 2.6.1
   leaflet: 1.9.4
@@ -444,8 +444,8 @@ packages:
       vue: 3.3.4
     dev: true
 
-  /@vue-leaflet/vue-leaflet/0.9.0_519ed8d6845c8d92ad6ea51bb347ed8e:
-    resolution: {integrity: sha512-B5sxleSIFP0RK+7418BQirZ7oXa0t2dZrwfGI/0ABgaFLCWmHWP26w4soqrF5MlpThvhieAIUVIVuTdgXUenmA==}
+  /@vue-leaflet/vue-leaflet/0.10.1_519ed8d6845c8d92ad6ea51bb347ed8e:
+    resolution: {integrity: sha512-RNEDk8TbnwrJl8ujdbKgZRFygLCxd0aBcWLQ05q/pGv4+d0jamE3KXQgQBqGAteE1mbQsk3xoNcqqUgaIGfWVg==}
     peerDependencies:
       '@types/leaflet': ^1.5.7
       leaflet: ^1.6.0
