@@ -11,7 +11,7 @@ class SpotTraitTest extends TestCase
 
     public function test_calculNoteForWind(): void
     {
-        $this->assertEquals(1, $this->calculNoteForWind(230, 230));
-        $this->assertEquals(-1, $this->calculNoteForWind(230, 50));
+        $this->assertEquals(1, $this->calculNoteForWind(230, 230, 20));
+        $this->assertEquals(-1, $this->calculNoteForWind(230, 50, 20));
     }
 }
