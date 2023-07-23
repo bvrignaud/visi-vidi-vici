@@ -6,26 +6,14 @@
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 pt-0">
+              <div class="flex flex-row">
+                <div class="basis-1/3 bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 pt-0">
                     <h3>Spots</h3>
                     <table>
-                        <thead>
-                            <tr>
-                                <th>{{ $t('Name') }}</th>
-                                <th class="hidden sm:table-cell">Longitude</th>
-                                <th class="hidden sm:table-cell">Latitude</th>
-                            </tr>
-                        </thead>
                         <tbody>
                             <tr v-for="spot in spots">
                                 <td>
                                     <Link :href="`${route('spots.show', spot)}`">{{ spot.name }}</Link>
-                                </td>
-                                <td class="hidden sm:table-cell">
-                                    {{ spot.lng }}
-                                </td>
-                                <td class="hidden sm:table-cell">
-                                    {{ spot.lat }}
                                 </td>
                             </tr>
                         </tbody>
@@ -35,10 +23,10 @@
                     </Link>
                 </div>
 
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 mt-5">
+                <div class="basis-2/3 bg-white overflow-hidden shadow-xl sm:rounded-lg p-2">
                    <Map :markers="markers()" :link-on-marker="true" />
                 </div>
-
+              </div>
             </div>
         </div>
     </app-layout>
