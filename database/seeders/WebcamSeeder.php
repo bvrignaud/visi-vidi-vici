@@ -18,7 +18,7 @@ class WebcamSeeder extends Seeder
             ],
             [
                 'title' => 'Port Bourgenay - Capitainerie',
-                'url' => 'https://youtu.be/ZktdEyLtYPo',
+                'url' => 'https://youtu.be/ckfTC8PPmgM',
                 'lat' => 46.43877,
                 'lng' => -1.68034,
             ],
