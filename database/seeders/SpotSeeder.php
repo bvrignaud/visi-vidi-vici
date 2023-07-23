@@ -11,7 +11,7 @@ class SpotSeeder extends Seeder
     {
         $spots = [
             [
-                'name' => 'Cap Gris-Nez',
+                'name' => 'Cap Gris-Nez (62 - Audinghen)',
                 'lat' => 50.863568,
                 'lng' => 1.577159,
                 'optimal_wind_direction' => 90,
@@ -46,14 +46,14 @@ class SpotSeeder extends Seeder
                 'timezone' => 'Europe/Paris',
             ],
             [
-                'name' => 'Anse du vieux moulin',
+                'name' => 'Anse du vieux moulin (85 - Les sables d\'olonne)',
                 'lat' => 46.4666,
                 'lng' => -1.7395,
                 'optimal_wind_direction' => 45,
                 'timezone' => 'Europe/Paris',
             ],
             [
-                'name' => 'La chaume',
+                'name' => 'La chaume (85 - Les sables d\'olonne)',
                 'lat' => 46.48848,
                 'lng' => -1.79662,
                 'optimal_wind_direction' => 45,
@@ -81,7 +81,7 @@ class SpotSeeder extends Seeder
                 'timezone' => 'Europe/Paris',
             ],
             [
-                'name' => 'Palavas les flots',
+                'name' => 'Palavas les flots (34)',
                 'lat' => 43.52271,
                 'lng' => 3.92885,
                 'optimal_wind_direction' => 315,
