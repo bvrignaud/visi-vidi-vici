@@ -25,14 +25,14 @@
                                 <jet-nav-link v-for="navLink in navLinks" :href="route(navLink.route)" :active="route().current(navLink.route)">
                                     {{ navLink.label }}
                                 </jet-nav-link>
-                                <template v-if="! $page.props.user">
-                                    <jet-nav-link :href="route('login')" :active="route().current('login')">
-                                        {{ $t('Log in') }}
-                                    </jet-nav-link>
-                                    <jet-nav-link :href="route('register')" :active="route().current('register')">
-                                        {{ $t('Register') }}
-                                    </jet-nav-link>
-                                </template>
+<!--                                <template v-if="! $page.props.user">-->
+<!--                                    <jet-nav-link :href="route('login')" :active="route().current('login')">-->
+<!--                                        {{ $t('Log in') }}-->
+<!--                                    </jet-nav-link>-->
+<!--                                    <jet-nav-link :href="route('register')" :active="route().current('register')">-->
+<!--                                        {{ $t('Register') }}-->
+<!--                                    </jet-nav-link>-->
+<!--                                </template>-->
                             </div>
                         </div>
 
