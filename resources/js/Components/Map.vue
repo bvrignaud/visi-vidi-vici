@@ -42,7 +42,7 @@
 import "leaflet/dist/leaflet.css"
 import {LIcon, LMap, LMarker, LTileLayer} from "@vue-leaflet/vue-leaflet";
 import {ref, watch} from "vue";
-import {Inertia} from "@inertiajs/inertia";
+import { router } from "@inertiajs/vue3";
 import MarkerType from "../Enums/MarkerType";
 import WebcamIcon from "./Icons/WebcamIcon.vue";
 
@@ -78,7 +78,7 @@ function zoomFitToMarkers(): void {
 function goTo(url): void {
   if (props.linkOnMarker) {
     if (url.startsWith(window.location.href)) {
-      Inertia.visit(url);
+      router.visit(url);
     } else {
       window.open(url);
     }
