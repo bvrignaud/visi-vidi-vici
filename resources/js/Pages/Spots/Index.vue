@@ -18,7 +18,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <Link v-if="$page.props.user" :href="route('spots.create')">
+                    <Link v-if="$page.props.auth.user" :href="route('spots.create')">
                         <Button>{{ $t('Add a new Spot') }}</Button>
                     </Link>
                 </div>

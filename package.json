@@ -1,5 +1,6 @@
 {
     "private": true,
+    "type": "module",
     "engines": {
         "node": ">=18.0.0"
     },
@@ -16,7 +17,7 @@
         "@types/lodash": "^4.14.202",
         "@vitejs/plugin-vue": "^4.6.2",
         "@vue/compiler-sfc": "^3.4.15",
-        "autoprefixer": "10.4.13",
+        "autoprefixer": "10.4.17",
         "axios": "^1.6.7",
         "laravel-vite-plugin": "^1.0.1",
         "lodash": "^4.17.21",
