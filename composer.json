@@ -6,7 +6,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "goldspecdigital/laravel-eloquent-uuid": "^10.0.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^v0.6.3",
         "laravel/framework": "^10.10",

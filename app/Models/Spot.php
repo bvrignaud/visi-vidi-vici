@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\Models\Spot
@@ -34,9 +35,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class Spot extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
     protected $casts = [
         'optimal_wind_direction' => 'integer',
+    ];
+
+    protected $fillable = [
+        'name',
+        'lng',
+        'lat',
+        'optimal_wind_direction',
+        'timezone',
     ];
 }

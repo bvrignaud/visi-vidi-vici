@@ -32,13 +32,15 @@ class SpotsTest extends AbstractFeatureTestCase
     public function store_spot(): void
     {
         $spotCount = Spot::count();
-        $response = $this->actingAs(User::factory()->create())->post(route('spots.store'), [
-            'name' => $this->faker->name,
-            'lng' => $this->faker->longitude,
-            'lat' => $this->faker->latitude,
-            'optimal_wind_direction' => rand(0, 360),
-            'timezone' => $this->faker->timezone,
-        ]);
+        $response = $this
+            ->withoutExceptionHandling()
+            ->actingAs(User::factory()->create())->post(route('spots.store'), [
+                'name' => $this->faker->name,
+                'lng' => $this->faker->longitude,
+                'lat' => $this->faker->latitude,
+                'optimal_wind_direction' => rand(0, 360),
+                'timezone' => $this->faker->timezone,
+            ]);
         $response->assertRedirect();
         $this->assertCount($spotCount + 1, Spot::all());
     }
