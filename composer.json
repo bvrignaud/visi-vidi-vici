@@ -5,7 +5,7 @@
     "keywords": ["apnea", "sea", "spearfishing", "turbidity", "visibility"],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^v0.6.3",
         "laravel/framework": "^10.10",
