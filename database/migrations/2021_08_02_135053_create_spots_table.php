@@ -16,8 +16,8 @@ class CreateSpotsTable extends Migration
         Schema::create('spots', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name', 100);
-            $table->float('lng', 7, 4);
-            $table->float('lat', 7, 4);
+            $table->float('lng', 4);
+            $table->float('lat', 4);
             $table->integer('optimal_wind_direction', false, true);
             $table->string('timezone');
             $table->timestamps();

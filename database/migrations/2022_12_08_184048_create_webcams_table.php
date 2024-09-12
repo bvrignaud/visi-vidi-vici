@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('url');
-            $table->float('lng', 7, 4);
-            $table->float('lat', 7, 4);
+            $table->float('lng', 4);
+            $table->float('lat', 4);
             $table->timestamps();
         });
     }
