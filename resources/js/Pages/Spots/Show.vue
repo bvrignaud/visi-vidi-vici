@@ -51,6 +51,16 @@
               </td>
             </tr>
             <tr>
+              <th class="sticky-col">{{ $t('Water temperature') }}</th>
+              <td
+                v-for="(forecast, date) in forecastsAvg"
+                :class="{ 'actual-day' : isNow(date) }"
+                :style="{ color: numberToColor(forecast.waterTemperature, 0, 40)}"
+              >
+                {{ Math.round(forecast.waterTemperature) }}°
+              </td>
+            </tr>
+            <tr>
               <th class="sticky-col">{{ $t('Wind') }}</th>
               <td
                 v-for="(forecast, date) in forecastsAvg"
@@ -130,6 +140,14 @@
                   :class="{ 'actual-day' : isNow(forecast.time) }"
                   :style="{ color: numberToColor(forecast.airTemperature, 0, 40)}">
                 {{ Math.round(forecast.airTemperature) }}°
+              </td>
+            </tr>
+            <tr>
+              <th class="sticky-col">{{ $t('Water temperature') }}</th>
+              <td v-for="forecast in forecasts"
+                  :class="{ 'actual-day' : isNow(forecast.time) }"
+                  :style="{ color: numberToColor(forecast.waterTemperature, 0, 40)}">
+                {{ Math.round(forecast.waterTemperature) }}°
               </td>
             </tr>
             <tr>
@@ -301,6 +319,7 @@ function calculateAvgForecasts(forecasts): void {
       airTemperature: meanBy(forecastsFiltered, 'airTemperature'),
       cloudCover: meanBy(forecastsFiltered, 'cloudCover'),
       swellHeight: meanBy(forecastsFiltered, 'swellHeight'),
+      waterTemperature: meanBy(forecastsFiltered, 'waterTemperature'),
       windDirection: meanBy(forecastsFiltered, 'windDirection'),
       windSpeed: meanBy(forecastsFiltered, 'windSpeed'),
     }

@@ -23,7 +23,7 @@ class StormGlassAPI
             ])->get('https://api.stormglass.io/v2/weather/point', [
                 'lat' => $lat,
                 'lng' => $lng,
-                'params' => 'airTemperature,cloudCover,windSpeed,windDirection,swellHeight',
+                'params' => 'airTemperature,cloudCover,waterTemperature,windSpeed,windDirection,swellHeight',
                 'start' => $start?->getTimestamp(),
                 'end' => $end?->getTimestamp(),
             ]);
@@ -36,6 +36,7 @@ class StormGlassAPI
                 $hour['cloudCover'] = round(array_sum(array_values($hour['cloudCover'])) / count($hour['cloudCover']), 1);
                 $hour['airTemperature'] = round(array_sum(array_values($hour['airTemperature'])) / count($hour['airTemperature']), 1);
                 $hour['swellHeight'] = empty($hour['swellHeight']) ? null : round(array_sum(array_values($hour['swellHeight'])) / count($hour['swellHeight']), 1);
+                $hour['waterTemperature'] = round(array_sum(array_values($hour['waterTemperature'])) / count($hour['waterTemperature']), 0);
                 $hour['windDirection'] = round(array_sum(array_values($hour['windDirection'])) / count($hour['windDirection']), 0);
                 $hour['windSpeed'] = round(array_sum(array_values($hour['windSpeed'])) / count($hour['windSpeed']), 0);
             }
