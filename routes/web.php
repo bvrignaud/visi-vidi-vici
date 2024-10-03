@@ -23,7 +23,6 @@ use Illuminate\Support\Facades\Route;
 //        'phpVersion' => PHP_VERSION,
 //    ]);
 //});
-//Route::get('/', [Controllers\SpotsController::class, 'index'])->name('home');
 Route::get('/', [Controllers\SpotsController::class, 'index'])->name('home');
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
