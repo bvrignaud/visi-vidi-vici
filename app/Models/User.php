@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,15 +14,17 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens;
-    use HasFactory;
     use HasProfilePhoto;
     use HasUuids, TwoFactorAuthenticatable;
     use Notifiable;
 
+    /** @use HasFactory<UserFactory> */
+    use HasFactory;
+
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<string>
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',
@@ -42,16 +45,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
-
-    /**
      * The accessors to append to the model's array form.
      *
      * @var array<int, string>
@@ -59,4 +52,17 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
 }
