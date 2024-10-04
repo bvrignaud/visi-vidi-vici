@@ -13,7 +13,7 @@
         "laravel/tinker": "^2.9",
         "sentry/sentry-laravel": "^4.2.0",
         "silviolleite/laravelpwa": "^2.0",
-        "tightenco/ziggy": "^1.0"
+        "tightenco/ziggy": "^2.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
@@ -48,8 +48,7 @@
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi",
-            "@php artisan lang:update",
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
+            "@php artisan lang:update"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -83,5 +82,6 @@
             "php-http/discovery": true
         }
     },
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
