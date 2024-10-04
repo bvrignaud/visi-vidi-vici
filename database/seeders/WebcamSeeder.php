@@ -17,12 +17,6 @@ class WebcamSeeder extends Seeder
                 'lng' => -2.54297,
             ],
             [
-                'title' => 'Port Bourgenay - Capitainerie',
-                'url' => 'https://youtu.be/ckfTC8PPmgM',
-                'lat' => 46.43877,
-                'lng' => -1.68034,
-            ],
-            [
                 'title' => 'Grande Plage des Sables d\'Olonne',
                 'url' => 'https://youtu.be/xjlaExcaEt0',
                 'lat' => 46.49325,
