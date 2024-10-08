@@ -4,18 +4,104 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+**Welcome to Visi-vidi-vici!**
+Visi-vidi-vici is a marine weather forecasting application for determining water clarity for all divers.
+
+## Installation
+Visi-vidi-vici is a regular Laravel application; it's build on top of Laravel 11 and uses Inertia / Vue / Tailwind CSS for the frontend.
+
+In terms of local development, you can use the following requirements:
+
+- PHP 8.3 - with SQLite, and other common extensions.
+- Node.js 20 or more recent.
+
+If you have these requirements, you can start by cloning the repository and installing the dependencies:
+
+```bash
+git clone https://github.com/bvrignaud/visi-vidi-vici.git
+
+cd visi-vidi-vici
+```
+
+Next, install the dependencies using [Composer](https://getcomposer.org) and [pnpm](https://pnpm.io):
+
+```bash
+composer install
+
+pnpm install
+```
+
+After that, set up your `.env` file:
+
+```bash
+cp .env.example .env
+
+php artisan key:generate
+```
+
+Prepare your database and run the migrations:
+
+```bash
+touch database/database.sqlite
+
+php artisan migrate --seed
+```
+
+Link the storage to the public folder:
+
+```bash
+php artisan storage:link
+```
+
+In a **separate terminal**, build the assets in watch mode:
+
+```bash
+pnpm run dev
+```
+
+Also in a **separate terminal**, run the queue worker:
+
+```bash
+php artisan queue:work
+```
+
+Finally, start the development server:
+
+```bash
+php artisan serve
+```
+
+Once you are done with the code changes, be sure to run the test suite to ensure everything is still working:
+
+```bash
+php artisan test
+```
+
 ## Contributing
 
 Thank you for considering contributing to the [Visi Vidi Vici website](https://visi-vidi-vici.tangue.fr)! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-### Aides au développement
-https://github.com/barryvdh/laravel-ide-helper est intégré au _composer.json_ pour le dev.
-Elle permet de générer automatiquement la documentation des models pour aider l’ide.
-Pour mettre à jour les models : `php artisan ide-helper:models -W -R`
+> **Don't push directly to the `main` branch**. Instead, create a new branch and push it to your branch.
 
-###
 ```bash
-composer clean
+git clone https://github.com/bvrignaud/visi-vidi-vici.git
+
+cd visi-vidi-vici
+
+git checkout -b feat/your-feature # or fix/your-fix
+```
+
+## Tooling
+Visi-vidi-vici uses a few tools to ensure the code quality and consistency.
+
+In terms of code style, we use [Laravel Pint](https://laravel.com/docs/11.x/pint) to ensure the code is consistent and
+follows the Laravel conventions.
+
+You run these tools individually using the following commands:
+
+```bash
+# Run the test suite
+php artisan test
 ```
 
 #### [PHP Insights](https://phpinsights.com)
