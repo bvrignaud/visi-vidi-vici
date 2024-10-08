@@ -46,6 +46,20 @@ class SpotSeeder extends Seeder
                 'timezone' => 'Europe/Paris',
             ],
             [
+                'name' => 'Les cinq pineaux (85 - Saint Hilaire de riez)',
+                'lat' => 46.704067,
+                'lng' => -1.984849,
+                'optimal_wind_direction' => 45,
+                'timezone' => 'Europe/Paris',
+            ],
+            [
+                'name' => 'Grande roche (85 - Brétignolles sur mer)',
+                'lat' => 46.614592,
+                'lng' => -1.867231,
+                'optimal_wind_direction' => 45,
+                'timezone' => 'Europe/Paris',
+            ],
+            [
                 'name' => 'Anse du vieux moulin (85 - Les sables d\'olonne)',
                 'lat' => 46.4666,
                 'lng' => -1.7395,
