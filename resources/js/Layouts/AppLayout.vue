@@ -36,6 +36,10 @@ const navLinks = ref([
     route: 'home',
   },
   {
+    label: trans('Webcams'),
+    route: 'webcams.index',
+  },
+  {
     label: 'Contact',
     route: 'contact',
   },
