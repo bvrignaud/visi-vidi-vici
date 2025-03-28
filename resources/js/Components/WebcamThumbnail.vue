@@ -8,8 +8,8 @@
 </template>
 
 <script setup lang="ts">
+import type Webcam from '@/types/Webcam'
 import { computed } from 'vue'
-import Webcam from '../Types/Webcam'
 
 const props = defineProps<{
   webcam: Webcam

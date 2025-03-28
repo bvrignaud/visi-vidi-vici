@@ -15,12 +15,12 @@
 </template>
 
 <script setup lang="ts">
+import type Marker from '@/types/Marker'
 import { onMounted, ref } from 'vue'
 import Map from '../../Components/Map.vue'
 import MarkerType from '../../Enums/MarkerType'
 import AppLayout from '../../Layouts/AppLayout.vue'
 import { webcamsService } from '../../Services/Api/webcamsService'
-import Marker from '../../Types/Marker'
 
 const markers = ref<Array<Marker>>([])
 

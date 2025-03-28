@@ -3,6 +3,7 @@ interface Forecast {
   airTemperature: number
   cloudCover: number
   swellHeight: number
+  swellPeriod: number
   waterTemperature: number
   windDirection: number
   windSpeed: number

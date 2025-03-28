@@ -254,6 +254,8 @@ table.detailed td {
 </style>
 
 <script setup lang="ts">
+import type Spot from '@/types/Spot'
+import type Webcam from '@/types/Webcam'
 import dayjs from 'dayjs'
 import { meanBy } from 'lodash'
 import { onMounted, ref } from 'vue'
@@ -263,8 +265,6 @@ import WindArrow from '../../Components/WindArrow.vue'
 import MarkerType from '../../Enums/MarkerType'
 import AppLayout from '../../Layouts/AppLayout.vue'
 import { webcamsService } from '../../Services/Api/webcamsService'
-import Spot from '../../Types/Spot'
-import Webcam from '../../Types/Webcam'
 
 const props = defineProps<{
   spot: Spot
