@@ -38,6 +38,9 @@ importers:
       leaflet:
         specifier: ^1.9.4
         version: 1.9.4
+      tailwindcss:
+        specifier: ^3.4.17
+        version: 3.4.17
       vite:
         specifier: ^6.2.3
         version: 6.2.3(@types/node@22.13.14)(jiti@1.21.7)(sass@1.86.0)(terser@5.39.0)(yaml@2.7.0)
@@ -75,12 +78,21 @@ importers:
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
+      prettier-plugin-organize-imports:
+        specifier: ^4.1.0
+        version: 4.1.0(prettier@3.5.3)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))
+      prettier-plugin-tailwindcss:
+        specifier: ^0.6.11
+        version: 0.6.11(prettier-plugin-organize-imports@4.1.0(prettier@3.5.3)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2)))(prettier@3.5.3)
       resolve-url-loader:
         specifier: ^5.0.0
         version: 5.0.0
-      tailwindcss:
-        specifier: ^3.4.17
-        version: 3.4.17
+      typescript-eslint:
+        specifier: ^8.28.0
+        version: 8.28.0(eslint@9.23.0(jiti@1.21.7))(typescript@5.8.2)
+      vue-tsc:
+        specifier: ^2.2.8
+        version: 2.2.8(typescript@5.8.2)
 
 packages:
 
@@ -632,6 +644,15 @@ packages:
       vite: ^5.0.0 || ^6.0.0
       vue: ^3.2.25
 
+  '@volar/language-core@2.4.12':
+    resolution: {integrity: sha512-RLrFdXEaQBWfSnYGVxvR2WrO6Bub0unkdHYIdC31HzIEqATIuuhRRzYu76iGPZ6OtA4Au1SnW0ZwIqPP217YhA==}
+
+  '@volar/source-map@2.4.12':
+    resolution: {integrity: sha512-bUFIKvn2U0AWojOaqf63ER0N/iHIBYZPpNGogfLPQ68F5Eet6FnLlyho7BS0y2HJ1jFhSif7AcuTx1TqsCzRzw==}
+
+  '@volar/typescript@2.4.12':
+    resolution: {integrity: sha512-HJB73OTJDgPc80K30wxi3if4fSsZZAOScbj2fcicMuOPoOkcf9NNAINb33o+DzhBdF9xTKC1gnPmIRDous5S0g==}
+
   '@vue-leaflet/vue-leaflet@0.10.1':
     resolution: {integrity: sha512-RNEDk8TbnwrJl8ujdbKgZRFygLCxd0aBcWLQ05q/pGv4+d0jamE3KXQgQBqGAteE1mbQsk3xoNcqqUgaIGfWVg==}
     peerDependencies:
@@ -653,6 +674,9 @@ packages:
   '@vue/compiler-ssr@3.5.13':
     resolution: {integrity: sha512-wMH6vrYHxQl/IybKJagqbquvxpWCuVYpoUJfCqFZwa/JY1GdATAQ+TgVtgrwwMZ0D07QhA99rs/EAAWfvG6KpA==}
 
+  '@vue/compiler-vue2@2.7.16':
+    resolution: {integrity: sha512-qYC3Psj9S/mfu9uVi5WvNZIzq+xnXMhOwbTFKKDD7b1lhpnn71jXSFdTQ+WsIEk0ONCd7VV2IMm7ONl6tbQ86A==}
+
   '@vue/eslint-config-typescript@14.5.0':
     resolution: {integrity: sha512-5oPOyuwkw++AP5gHDh5YFmST50dPfWOcm3/W7Nbh42IK5O3H74ytWAw0TrCRTaBoD/02khnWXuZf1Bz1xflavQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -660,6 +684,14 @@ packages:
       eslint: ^9.10.0
       eslint-plugin-vue: ^9.28.0 || ^10.0.0
       typescript: '>=4.8.4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
+  '@vue/language-core@2.2.8':
+    resolution: {integrity: sha512-rrzB0wPGBvcwaSNRriVWdNAbHQWSf0NlGqgKHK5mEkXpefjUlVRP62u03KvwZpvKVjRnBIQ/Lwre+Mx9N6juUQ==}
+    peerDependencies:
+      typescript: '*'
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -697,6 +729,9 @@ packages:
 
   ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
+
+  alien-signals@1.0.10:
+    resolution: {integrity: sha512-pBrgovDvA/c55/aA+ar5pxNCvjQB5IlODtpOQXmUyrpclWIsHmUMsfIuCWsSU/l1iLU2O3ZhICdPaYTsuvGu8Q==}
 
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -840,6 +875,9 @@ packages:
 
   dayjs@1.11.13:
     resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
+
+  de-indent@1.0.2:
+    resolution: {integrity: sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==}
 
   debug@4.4.0:
     resolution: {integrity: sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==}
@@ -1104,6 +1142,10 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
+  he@1.2.0:
+    resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
+    hasBin: true
+
   ignore@5.3.2:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
     engines: {node: '>= 4'}
@@ -1269,6 +1311,9 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
+  muggle-string@0.4.1:
+    resolution: {integrity: sha512-VNTrAak/KhO2i8dqqnqnAHOa3cYBwXEZe9h+D5h/1ZqFSTEFHdM65lR7RoIqq3tBBYavsOXV84NoHXZ0AkPyqQ==}
+
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
 
@@ -1327,6 +1372,9 @@ packages:
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
     engines: {node: '>=6'}
+
+  path-browserify@1.0.1:
+    resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==}
 
   path-exists@4.0.0:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}
@@ -1409,6 +1457,71 @@ packages:
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+
+  prettier-plugin-organize-imports@4.1.0:
+    resolution: {integrity: sha512-5aWRdCgv645xaa58X8lOxzZoiHAldAPChljr/MT0crXVOWTZ+Svl4hIWlz+niYSlO6ikE5UXkN1JrRvIP2ut0A==}
+    peerDependencies:
+      prettier: '>=2.0'
+      typescript: '>=2.9'
+      vue-tsc: ^2.1.0
+    peerDependenciesMeta:
+      vue-tsc:
+        optional: true
+
+  prettier-plugin-tailwindcss@0.6.11:
+    resolution: {integrity: sha512-YxaYSIvZPAqhrrEpRtonnrXdghZg1irNg4qrjboCXrpybLWVs55cW2N3juhspVJiO0JBvYJT8SYsJpc8OQSnsA==}
+    engines: {node: '>=14.21.3'}
+    peerDependencies:
+      '@ianvs/prettier-plugin-sort-imports': '*'
+      '@prettier/plugin-pug': '*'
+      '@shopify/prettier-plugin-liquid': '*'
+      '@trivago/prettier-plugin-sort-imports': '*'
+      '@zackad/prettier-plugin-twig': '*'
+      prettier: ^3.0
+      prettier-plugin-astro: '*'
+      prettier-plugin-css-order: '*'
+      prettier-plugin-import-sort: '*'
+      prettier-plugin-jsdoc: '*'
+      prettier-plugin-marko: '*'
+      prettier-plugin-multiline-arrays: '*'
+      prettier-plugin-organize-attributes: '*'
+      prettier-plugin-organize-imports: '*'
+      prettier-plugin-sort-imports: '*'
+      prettier-plugin-style-order: '*'
+      prettier-plugin-svelte: '*'
+    peerDependenciesMeta:
+      '@ianvs/prettier-plugin-sort-imports':
+        optional: true
+      '@prettier/plugin-pug':
+        optional: true
+      '@shopify/prettier-plugin-liquid':
+        optional: true
+      '@trivago/prettier-plugin-sort-imports':
+        optional: true
+      '@zackad/prettier-plugin-twig':
+        optional: true
+      prettier-plugin-astro:
+        optional: true
+      prettier-plugin-css-order:
+        optional: true
+      prettier-plugin-import-sort:
+        optional: true
+      prettier-plugin-jsdoc:
+        optional: true
+      prettier-plugin-marko:
+        optional: true
+      prettier-plugin-multiline-arrays:
+        optional: true
+      prettier-plugin-organize-attributes:
+        optional: true
+      prettier-plugin-organize-imports:
+        optional: true
+      prettier-plugin-sort-imports:
+        optional: true
+      prettier-plugin-style-order:
+        optional: true
+      prettier-plugin-svelte:
+        optional: true
 
   prettier@3.5.3:
     resolution: {integrity: sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw==}
@@ -1658,6 +1771,9 @@ packages:
       yaml:
         optional: true
 
+  vscode-uri@3.1.0:
+    resolution: {integrity: sha512-/BpdSx+yCQGnCvecbyXdxHDkuk55/G3xwnC0GqY4gmQ3j+A+g8kzzgB4Nk/SINjqn6+waqw3EgbVF2QKExkRxQ==}
+
   vue-eslint-parser@10.1.1:
     resolution: {integrity: sha512-bh2Z/Au5slro9QJ3neFYLanZtb1jH+W2bKqGHXAoYD4vZgNG3KeotL7JpPv5xzY4UXUXJl7TrIsnzECH63kd3Q==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -1669,6 +1785,12 @@ packages:
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=6.0.0'
+
+  vue-tsc@2.2.8:
+    resolution: {integrity: sha512-jBYKBNFADTN+L+MdesNX/TB3XuDSyaWynKMDgR+yCSln0GQ9Tfb7JS2lr46s2LiFUT1WsmfWsSvIElyxzOPqcQ==}
+    hasBin: true
+    peerDependencies:
+      typescript: '>=5.0.0'
 
   vue@3.5.13:
     resolution: {integrity: sha512-wmeiSMxkZCSc+PM2w2VRsOYAZC8GdipNFRTsLSfodVqI9mbejKeXEGr8SckuLnrQPGe3oJN5c3K0vpoU9q/wCQ==}
@@ -2158,6 +2280,18 @@ snapshots:
       vite: 6.2.3(@types/node@22.13.14)(jiti@1.21.7)(sass@1.86.0)(terser@5.39.0)(yaml@2.7.0)
       vue: 3.5.13(typescript@5.8.2)
 
+  '@volar/language-core@2.4.12':
+    dependencies:
+      '@volar/source-map': 2.4.12
+
+  '@volar/source-map@2.4.12': {}
+
+  '@volar/typescript@2.4.12':
+    dependencies:
+      '@volar/language-core': 2.4.12
+      path-browserify: 1.0.1
+      vscode-uri: 3.1.0
+
   '@vue-leaflet/vue-leaflet@0.10.1(@types/leaflet@1.9.17)(leaflet@1.9.4)(typescript@5.8.2)':
     dependencies:
       leaflet: 1.9.4
@@ -2197,6 +2331,11 @@ snapshots:
       '@vue/compiler-dom': 3.5.13
       '@vue/shared': 3.5.13
 
+  '@vue/compiler-vue2@2.7.16':
+    dependencies:
+      de-indent: 1.0.2
+      he: 1.2.0
+
   '@vue/eslint-config-typescript@14.5.0(eslint-plugin-vue@9.33.0(eslint@9.23.0(jiti@1.21.7)))(eslint@9.23.0(jiti@1.21.7))(typescript@5.8.2)':
     dependencies:
       '@typescript-eslint/utils': 8.28.0(eslint@9.23.0(jiti@1.21.7))(typescript@5.8.2)
@@ -2209,6 +2348,19 @@ snapshots:
       typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
+
+  '@vue/language-core@2.2.8(typescript@5.8.2)':
+    dependencies:
+      '@volar/language-core': 2.4.12
+      '@vue/compiler-dom': 3.5.13
+      '@vue/compiler-vue2': 2.7.16
+      '@vue/shared': 3.5.13
+      alien-signals: 1.0.10
+      minimatch: 9.0.5
+      muggle-string: 0.4.1
+      path-browserify: 1.0.1
+    optionalDependencies:
+      typescript: 5.8.2
 
   '@vue/reactivity@3.5.13':
     dependencies:
@@ -2251,6 +2403,8 @@ snapshots:
       fast-json-stable-stringify: 2.1.0
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
+
+  alien-signals@1.0.10: {}
 
   ansi-regex@5.0.1: {}
 
@@ -2392,6 +2546,8 @@ snapshots:
   csstype@3.1.3: {}
 
   dayjs@1.11.13: {}
+
+  de-indent@1.0.2: {}
 
   debug@4.4.0:
     dependencies:
@@ -2691,6 +2847,8 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
+  he@1.2.0: {}
+
   ignore@5.3.2: {}
 
   immutable@5.1.1:
@@ -2828,6 +2986,8 @@ snapshots:
 
   ms@2.1.3: {}
 
+  muggle-string@0.4.1: {}
+
   mz@2.7.0:
     dependencies:
       any-promise: 1.3.0
@@ -2879,6 +3039,8 @@ snapshots:
   parent-module@1.0.1:
     dependencies:
       callsites: 3.1.0
+
+  path-browserify@1.0.1: {}
 
   path-exists@4.0.0: {}
 
@@ -2944,6 +3106,19 @@ snapshots:
       source-map-js: 1.2.1
 
   prelude-ls@1.2.1: {}
+
+  prettier-plugin-organize-imports@4.1.0(prettier@3.5.3)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2)):
+    dependencies:
+      prettier: 3.5.3
+      typescript: 5.8.2
+    optionalDependencies:
+      vue-tsc: 2.2.8(typescript@5.8.2)
+
+  prettier-plugin-tailwindcss@0.6.11(prettier-plugin-organize-imports@4.1.0(prettier@3.5.3)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2)))(prettier@3.5.3):
+    dependencies:
+      prettier: 3.5.3
+    optionalDependencies:
+      prettier-plugin-organize-imports: 4.1.0(prettier@3.5.3)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))
 
   prettier@3.5.3: {}
 
@@ -3217,6 +3392,8 @@ snapshots:
       terser: 5.39.0
       yaml: 2.7.0
 
+  vscode-uri@3.1.0: {}
+
   vue-eslint-parser@10.1.1(eslint@9.23.0(jiti@1.21.7)):
     dependencies:
       debug: 4.4.0
@@ -3242,6 +3419,12 @@ snapshots:
       semver: 7.7.1
     transitivePeerDependencies:
       - supports-color
+
+  vue-tsc@2.2.8(typescript@5.8.2):
+    dependencies:
+      '@volar/typescript': 2.4.12
+      '@vue/language-core': 2.2.8(typescript@5.8.2)
+      typescript: 5.8.2
 
   vue@3.5.13(typescript@5.8.2):
     dependencies:
