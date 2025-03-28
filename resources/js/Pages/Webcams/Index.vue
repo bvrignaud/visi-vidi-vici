@@ -1,12 +1,12 @@
 <template>
   <app-layout title="Webcams">
     <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">Webcams</h2>
+      <h2 class="text-xl font-semibold leading-tight text-gray-800">Webcams</h2>
     </template>
 
     <div class="py-12">
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2 mt-5">
+      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="mt-5 overflow-hidden bg-white p-2 shadow-xl sm:rounded-lg">
           <Map :markers="markers" :link-on-marker="true" />
         </div>
       </div>
@@ -15,27 +15,26 @@
 </template>
 
 <script setup lang="ts">
-import AppLayout from "../../Layouts/AppLayout.vue";
-import Map from "../../Components/Map.vue"
-import {onMounted, ref} from "vue";
-import Marker from "../../Types/Marker";
-import MarkerType from "../../Enums/MarkerType";
-import {webcamsService} from "../../Services/Api/webcamsService";
+import { onMounted, ref } from 'vue'
+import Map from '../../Components/Map.vue'
+import MarkerType from '../../Enums/MarkerType'
+import AppLayout from '../../Layouts/AppLayout.vue'
+import { webcamsService } from '../../Services/Api/webcamsService'
+import Marker from '../../Types/Marker'
 
-const markers = ref<Array<Marker>>([]);
+const markers = ref<Array<Marker>>([])
 
 onMounted(async () => {
-  webcamsService.getAll()
-    .then(data => {
-      markers.value = data.map((webcam: object) => {
-        return {
-          id: webcam.id,
-          coordinates: [webcam.lat, webcam.lng],
-          options: {title: webcam.title},
-          url: webcam.url,
-          type: MarkerType.Webcam,
-        };
-      });
-    });
-});
+  webcamsService.getAll().then((data) => {
+    markers.value = data.map((webcam: object) => {
+      return {
+        id: webcam.id,
+        coordinates: [webcam.lat, webcam.lng],
+        options: { title: webcam.title },
+        url: webcam.url,
+        type: MarkerType.Webcam,
+      }
+    })
+  })
+})
 </script>

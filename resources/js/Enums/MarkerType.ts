@@ -2,4 +2,4 @@ enum MarkerType {
   Webcam,
 }
 
-export default MarkerType;
+export default MarkerType

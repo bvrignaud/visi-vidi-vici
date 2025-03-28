@@ -6,37 +6,37 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
-    h1 {
-        @apply mt-2 text-3xl sm:text-4xl leading-8 font-extrabold tracking-tight;
-    }
+  h1 {
+    @apply mt-2 text-3xl font-extrabold leading-8 tracking-tight sm:text-4xl;
+  }
 
-    h2 {
-        @apply mt-2 text-2xl sm:text-3xl leading-8 font-extrabold tracking-tight;
-    }
+  h2 {
+    @apply mt-2 text-2xl font-extrabold leading-8 tracking-tight sm:text-3xl;
+  }
 
-    h3 {
-        @apply my-5 font-bold;
-    }
+  h3 {
+    @apply my-5 font-bold;
+  }
 
-    h4 {
-        @apply italic;
-    }
+  h4 {
+    @apply italic;
+  }
 
-    h5 {
-    }
+  h5 {
+  }
 
-    a {
-        @apply underline;
-    }
+  a {
+    @apply underline;
+  }
 
-    p {
-        margin-top: 0;
-        margin-bottom: 1rem;
-    }
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
 
-    td, th {
-        @apply p-2;
-    }
+  td,
+  th {
+    @apply p-2;
+  }
 }
