@@ -45,7 +45,7 @@ export default defineComponent({
     },
 
     setup() {
-        let open = ref(false)
+        const open = ref(false)
 
         const closeOnEscape = (e) => {
             if (open.value && e.keyCode === 27) {

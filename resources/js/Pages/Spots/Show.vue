@@ -334,9 +334,9 @@ function isNow(time) {
 function numberToColor(i, min, max) {
   let R = 0;
   let G = 0;
-  let B = 0;
+  const B = 0;
 
-  let percentage = (i * 100) / (max - min);
+  const percentage = (i * 100) / (max - min);
 
   if (percentage > 50) {
     R = (255 * percentage) / 100;
