@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature;
 
 use App\Mail\Contact;
@@ -11,13 +13,13 @@ class ContactTest extends TestCase
 {
     use WithFaker;
 
-    public function testGetPageContactShouldReturn_200(): void
+    public function test_get_page_contact_should_return_200(): void
     {
         $response = $this->get(route('contact'));
         $response->assertStatus(200);
     }
 
-    public function testPostPageContactShouldReturn_302(): void
+    public function test_post_page_contact_should_return_302(): void
     {
         Mail::fake();
         $response = $this->post(route('contact.send'), [

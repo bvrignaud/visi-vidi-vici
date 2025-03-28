@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -27,8 +29,7 @@ class WebcamsController extends Controller
                 )
                 ->whereBetween('lat', [$request['lat'] - 0.1, $request['lat'] + 0.1])
                 ->whereBetween('lng', [$request['lng'] - 0.1, $request['lng'] + 0.1])
-                ->orderBy('distance')
-            ;
+                ->orderBy('distance');
         })
             ->orderBy('title')
             ->get();

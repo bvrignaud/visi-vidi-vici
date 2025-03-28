@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
@@ -15,19 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
+// Route::get('/', function () {
 //    return Inertia::render('Welcome', [
 //        'canLogin' => Route::has('login'),
 //        'canRegister' => Route::has('register'),
 //        'laravelVersion' => Application::VERSION,
 //        'phpVersion' => PHP_VERSION,
 //    ]);
-//});
+// });
 Route::get('/', [Controllers\SpotsController::class, 'index'])->name('home');
 
-//Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    return Inertia::render('Dashboard');
-//})->name('dashboard');
+// })->name('dashboard');
 
 Route::get('/contact', [Controllers\ContactController::class, 'index'])->name('contact');
 Route::post('/contact/send', [Controllers\ContactController::class, 'send'])->name('contact.send');

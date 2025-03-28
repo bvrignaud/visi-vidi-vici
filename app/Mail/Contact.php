@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
@@ -14,9 +16,7 @@ class Contact extends Mailable implements ShouldQueue
     /**
      * @param  array<string, mixed>  $details
      */
-    public function __construct(private array $details)
-    {
-    }
+    public function __construct(private array $details) {}
 
     /**
      * Build the message.

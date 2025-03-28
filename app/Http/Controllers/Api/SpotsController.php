@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -9,22 +11,23 @@ use App\Services\StormGlassAPI;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Response;
+use Illuminate\Support\Collection;
 
 class SpotsController extends Controller
 {
     use SpotTrait;
 
     /**
-     * @return \Illuminate\Support\Collection<int, Spot>
+     * @return Collection<int, Spot>
      */
-    public function index(): \Illuminate\Support\Collection
+    public function index(): Collection
     {
         return Spot::orderBy('name')->get();
     }
 
     public function getForecast(Spot $spot): Response
     {
-        $stormGlassAPI = new StormGlassAPI();
+        $stormGlassAPI = new StormGlassAPI;
 
         $carbonPeriod = CarbonPeriod::create('today -5 days', '1 days', 10);
 
