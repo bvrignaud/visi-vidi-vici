@@ -1,23 +1,26 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature;
 
 use App\Models\Spot;
 use App\Models\User;
 use Illuminate\Foundation\Testing\WithFaker;
+use PHPUnit\Framework\Attributes\Test;
 
 class SpotsTest extends AbstractFeatureTestCase
 {
     use WithFaker;
 
-    /** @test */
+    #[Test]
     public function get_spot_should_return_200(): void
     {
         $response = $this->get(route('spots.show', ['spot' => Spot::inRandomOrder()->first()]));
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function get_create_spot(): void
     {
         $response = $this->get(route('spots.create'));
@@ -28,7 +31,7 @@ class SpotsTest extends AbstractFeatureTestCase
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function store_spot(): void
     {
         $spotCount = Spot::count();
@@ -45,7 +48,7 @@ class SpotsTest extends AbstractFeatureTestCase
         $this->assertCount($spotCount + 1, Spot::all());
     }
 
-    /** @test */
+    #[Test]
     public function a_spot_can_be_updated(): void
     {
         $spot = Spot::factory()->create();
