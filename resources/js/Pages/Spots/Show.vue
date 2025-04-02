@@ -17,13 +17,11 @@
                   :class="{ 'actual-day rounded-t text-xl': isNow(date) }"
                 >
                   {{
-                    dayjs(date)
-                      .toDate()
-                      .toLocaleString(undefined, {
-                        weekday: 'short',
-                        month: 'numeric',
-                        day: 'numeric',
-                      })
+                    dayjs(date).toDate().toLocaleString(undefined, {
+                      weekday: 'short',
+                      month: 'numeric',
+                      day: 'numeric',
+                    })
                   }}
                 </th>
               </tr>
@@ -254,7 +252,8 @@ table.detailed td {
 </style>
 
 <script setup lang="ts">
-import type Spot from '@/types/Spot'
+import { webcamsService } from '@/Services/Api/webcamsService'
+import type { Spot } from '@/types/Spot'
 import type Webcam from '@/types/Webcam'
 import dayjs from 'dayjs'
 import { meanBy } from 'lodash'
@@ -264,16 +263,15 @@ import WebcamThumbnail from '../../Components/WebcamThumbnail.vue'
 import WindArrow from '../../Components/WindArrow.vue'
 import MarkerType from '../../Enums/MarkerType'
 import AppLayout from '../../Layouts/AppLayout.vue'
-import { webcamsService } from '../../Services/Api/webcamsService'
 
 const props = defineProps<{
   spot: Spot
 }>()
 
-const forecasts = ref<Array<any>>([])
-const forecastsAvg = ref({})
-const sunInfos = ref([])
-const tidesRows = ref({})
+const forecasts = ref<Array<Forecast>>([])
+const forecastsAvg = ref<{ [date: string]: ForecastAvg }>({})
+const sunInfos = ref<SunInfo[]>([])
+const tidesRows = ref<{ [date: string]: { colspan: number; tides: Array<any> } }>({})
 const today: string = dayjs().format('YYYY-MM-DD')
 const markers = ref<Array<any>>([])
 const webcams = ref<Array<Webcam>>([])
@@ -325,7 +323,7 @@ onMounted(async () => {
   })
 })
 
-function calculateAvgForecasts(forecasts): void {
+function calculateAvgForecasts(forecasts: Forecast[]): void {
   let day = dayjs().startOf('day').subtract(5, 'days')
   for (let i = 0; i < 10; i++) {
     const key = day.format('YYYY-MM-DD')
@@ -345,11 +343,11 @@ function calculateAvgForecasts(forecasts): void {
   }
 }
 
-function isNow(time) {
+function isNow(time: string) {
   return dayjs(time).format('YYYY-MM-DD') === today
 }
 
-function numberToColor(i, min, max) {
+function numberToColor(i: number, min: number, max: number) {
   let R = 0
   let G = 0
   const B = 0
