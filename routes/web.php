@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,10 @@ Route::get('/', [Controllers\SpotsController::class, 'index'])->name('home');
 
 Route::get('/contact', [Controllers\ContactController::class, 'index'])->name('contact');
 Route::post('/contact/send', [Controllers\ContactController::class, 'send'])->name('contact.send');
+
+Route::get('/mentions-legales', function () {
+    return Inertia::render('MentionsLegales');
+})->name('mentions-legales');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/spots/create', [Controllers\SpotsController::class, 'create'])->name('spots.create');
