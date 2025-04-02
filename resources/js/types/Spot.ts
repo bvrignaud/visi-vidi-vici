@@ -1,9 +1,7 @@
-interface Spot {
-  id: number
+export interface Spot {
+  id: string
   name: string
   lat: number
   lng: number
   optimal_wind_direction: number
 }
-
-export default Spot

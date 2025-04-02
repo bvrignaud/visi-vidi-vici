@@ -1,4 +1,5 @@
-interface Forecast {
+export interface Forecast {
+  time: string
   note: number
   airTemperature: number
   cloudCover: number
@@ -9,4 +10,4 @@ interface Forecast {
   windSpeed: number
 }
 
-export default Forecast
+export interface ForecastAvg extends Omit<Forecast, 'time'> {}
