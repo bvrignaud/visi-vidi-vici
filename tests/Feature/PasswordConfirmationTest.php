@@ -16,7 +16,10 @@ class PasswordConfirmationTest extends TestCase
     {
         $user = User::factory()->withPersonalTeam()->create();
 
-        $response = $this->actingAs($user)->get('/user/confirm-password');
+        $response = $this
+            ->withoutExceptionHandling()
+            ->actingAs($user)
+            ->get('/user/confirm-password');
 
         $response->assertStatus(200);
     }

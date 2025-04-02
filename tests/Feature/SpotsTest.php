@@ -27,7 +27,10 @@ class SpotsTest extends AbstractFeatureTestCase
         $response->assertStatus(302);
 
         $user = User::factory()->create();
-        $response = $this->actingAs($user)->get(route('spots.create'));
+        $response = $this
+            ->withoutExceptionHandling()
+            ->actingAs($user)
+            ->get(route('spots.create'));
         $response->assertStatus(200);
     }
 
