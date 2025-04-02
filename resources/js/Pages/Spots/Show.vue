@@ -10,100 +10,111 @@
           <h3>Prévisions</h3>
           <table>
             <thead>
-              <tr>
-                <td class="sticky-col"></td>
-                <th
-                  v-for="(forecast, date) in forecastsAvg"
-                  :class="{ 'actual-day rounded-t text-xl': isNow(date) }"
-                >
-                  {{
-                    dayjs(date).toDate().toLocaleString(undefined, {
-                      weekday: 'short',
-                      month: 'numeric',
-                      day: 'numeric',
-                    })
-                  }}
-                </th>
-              </tr>
+            <tr>
+              <td class="sticky-col"></td>
+              <th
+                v-for="(forecast, date) in forecastsAvg"
+                :class="{ 'actual-day rounded-t text-xl': isNow(date) }"
+              >
+                {{
+                  dayjs(date).toDate().toLocaleString(undefined, {
+                    weekday: 'short',
+                    month: 'numeric',
+                    day: 'numeric'
+                  })
+                }}
+              </th>
+            </tr>
             </thead>
             <tbody>
-              <tr>
-                <th class="sticky-col">Note</th>
-                <td
-                  v-for="(forecast, date) in forecastsAvg"
-                  :class="{ 'actual-day': isNow(date) }"
-                  :style="{ color: numberToColor(forecast.note, 0, 10) }"
-                >
-                  {{ Math.round(forecast.note) }}
-                </td>
-              </tr>
-              <tr>
-                <th class="sticky-col">{{ $t('Cloud cover') }}</th>
-                <td
-                  v-for="(forecast, date) in forecastsAvg"
-                  :class="{ 'actual-day': isNow(date) }"
-                  :style="{ color: numberToColor(forecast.cloudCover, 0, 100) }"
-                >
-                  {{ Math.round(forecast.cloudCover) }}%
-                </td>
-              </tr>
-              <tr>
-                <th class="sticky-col">{{ $t('Air temperature') }}</th>
-                <td
-                  v-for="(forecast, date) in forecastsAvg"
-                  :class="{ 'actual-day': isNow(date) }"
-                  :style="{ color: numberToColor(forecast.airTemperature, 0, 40) }"
-                >
-                  {{ Math.round(forecast.airTemperature) }}°
-                </td>
-              </tr>
-              <tr>
-                <th class="sticky-col">{{ $t('Water temperature') }}</th>
-                <td
-                  v-for="(forecast, date) in forecastsAvg"
-                  :class="{ 'actual-day': isNow(date) }"
-                  :style="{ color: numberToColor(forecast.waterTemperature, 0, 40) }"
-                >
-                  {{ Math.round(forecast.waterTemperature) }}°
-                </td>
-              </tr>
-              <tr>
-                <th class="sticky-col">{{ $t('Wind') }}</th>
-                <td v-for="(forecast, date) in forecastsAvg" :class="{ 'actual-day': isNow(date) }">
-                  <WindArrow :direction="forecast.windDirection" :wind-speed="forecast.windSpeed" />
-                </td>
-              </tr>
-              <tr>
-                <th class="sticky-col">{{ $t('Swell height') }}</th>
-                <td
-                  v-for="(forecast, date) in forecastsAvg"
-                  :class="{ 'actual-day': isNow(date) }"
-                  :style="{ color: numberToColor(forecast.swellHeight, 0, 2) }"
-                >
-                  {{ forecast.swellHeight.toPrecision(1) }}m
-                </td>
-              </tr>
-              <tr>
-                <th class="sticky-col">{{ $t('Tides') }}</th>
-                <td
-                  v-for="(tidesRow, key) in tidesRows"
-                  :class="{ 'actual-day': dayjs().format('YYYY-MM-DD') === key }"
-                >
-                  <div v-for="tide in tidesRow.tides">
-                    <strong>{{ tide.type === 'low' ? 'basse' : 'haute' }}</strong> :
-                    {{ dayjs(tide.time).format('HH[h]mm') }} ({{ tide.height.toFixed(1) }}m)
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th class="sticky-col">{{ $t('Sun') }}</th>
-                <td
-                  v-for="(sunInfo, date) in sunInfos"
-                  :class="{ 'actual-day rounded-b': isNow(date) }"
-                >
-                  {{ sunInfo.sunrise }}<br />{{ sunInfo.sunset }}
-                </td>
-              </tr>
+            <tr>
+              <th class="sticky-col">Note</th>
+              <td
+                v-for="(forecast, date) in forecastsAvg"
+                :class="{ 'actual-day': isNow(date) }"
+                :style="{ color: numberToColor(forecast.note, 0, 10) }"
+              >
+                {{ Math.round(forecast.note) }}
+              </td>
+            </tr>
+            <tr>
+              <th class="sticky-col">{{ $t('Cloud cover') }}</th>
+              <td
+                v-for="(forecast, date) in forecastsAvg"
+                :class="{ 'actual-day': isNow(date) }"
+                :style="{ color: numberToColor(forecast.cloudCover, 0, 100) }"
+              >
+                {{ Math.round(forecast.cloudCover) }}%
+              </td>
+            </tr>
+            <tr>
+              <th class="sticky-col">{{ $t('Air temperature') }}</th>
+              <td
+                v-for="(forecast, date) in forecastsAvg"
+                :class="{ 'actual-day': isNow(date) }"
+                :style="{ color: numberToColor(forecast.airTemperature, 0, 40) }"
+              >
+                {{ Math.round(forecast.airTemperature) }}°
+              </td>
+            </tr>
+            <tr>
+              <th class="sticky-col">{{ $t('Water temperature') }}</th>
+              <td
+                v-for="(forecast, date) in forecastsAvg"
+                :class="{ 'actual-day': isNow(date) }"
+                :style="{ color: numberToColor(forecast.waterTemperature, 0, 40) }"
+              >
+                {{ Math.round(forecast.waterTemperature) }}°
+              </td>
+            </tr>
+            <tr>
+              <th class="sticky-col">{{ $t('Wind') }}</th>
+              <td v-for="(forecast, date) in forecastsAvg" :class="{ 'actual-day': isNow(date) }">
+                <WindArrow :direction="forecast.windDirection" :wind-speed="forecast.windSpeed" />
+              </td>
+            </tr>
+            <tr>
+              <th class="sticky-col">{{ $t('Swell height') }}</th>
+              <td
+                v-for="(forecast, date) in forecastsAvg"
+                :class="{ 'actual-day': isNow(date) }"
+                :style="{ color: numberToColor(forecast.swellHeight, 0, 2) }"
+              >
+                {{ forecast.swellHeight.toPrecision(1) }}m
+              </td>
+            </tr>
+            <tr>
+              <th class="sticky-col">{{ $t('Swell period') }}</th>
+              <td
+                v-for="(forecast, date) in forecastsAvg"
+                :key="date"
+                :class="{ 'actual-day': isNow(date as string) }"
+                :style="{ color: numberToColor(forecast.swellPeriod, 0, 18) }"
+              >
+                {{ forecast.swellPeriod }}s
+              </td>
+            </tr>
+            <tr>
+              <th class="sticky-col">{{ $t('Tides') }}</th>
+              <td
+                v-for="(tidesRow, key) in tidesRows"
+                :class="{ 'actual-day': dayjs().format('YYYY-MM-DD') === key }"
+              >
+                <div v-for="tide in tidesRow.tides">
+                  <strong>{{ tide.type === 'low' ? 'basse' : 'haute' }}</strong> :
+                  {{ dayjs(tide.time).format('HH[h]mm') }} ({{ tide.height.toFixed(1) }}m)
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th class="sticky-col">{{ $t('Sun') }}</th>
+              <td
+                v-for="(sunInfo, date) in sunInfos"
+                :class="{ 'actual-day rounded-b': isNow(date) }"
+              >
+                {{ sunInfo.sunrise }}<br />{{ sunInfo.sunset }}
+              </td>
+            </tr>
             </tbody>
           </table>
         </div>
@@ -112,87 +123,100 @@
           <h3>{{ $t('Details') }}</h3>
           <table class="detailed">
             <thead>
-              <tr>
-                <td class="sticky-col"></td>
-                <th v-for="forecast in forecasts" :class="{ 'actual-day': isNow(forecast.time) }">
-                  {{
-                    new Date(forecast.time).toLocaleString(undefined, {
-                      weekday: 'short',
-                      month: 'numeric',
-                      day: 'numeric',
-                    })
-                  }}
-                  {{ new Date(forecast.time).toLocaleString(undefined, { hour: 'numeric' }) }}
-                </th>
-              </tr>
+            <tr>
+              <td class="sticky-col"></td>
+              <th v-for="forecast in forecasts" :class="{ 'actual-day': isNow(forecast.time) }">
+                {{
+                  new Date(forecast.time).toLocaleString(undefined, {
+                    weekday: 'short',
+                    month: 'numeric',
+                    day: 'numeric'
+                  })
+                }}
+                {{ new Date(forecast.time).toLocaleString(undefined, { hour: 'numeric' }) }}
+              </th>
+            </tr>
             </thead>
             <tbody>
-              <tr>
-                <th class="sticky-col">Note</th>
-                <td
-                  v-for="forecast in forecasts"
-                  :class="{ 'actual-day': isNow(forecast.time) }"
-                  :style="{ color: numberToColor(forecast.note, 0, 10) }"
-                >
-                  {{ Math.round(forecast.note) }}
-                </td>
-              </tr>
-              <tr>
-                <th class="sticky-col">{{ $t('Air temperature') }}</th>
-                <td
-                  v-for="forecast in forecasts"
-                  :class="{ 'actual-day': isNow(forecast.time) }"
-                  :style="{ color: numberToColor(forecast.airTemperature, 0, 40) }"
-                >
-                  {{ Math.round(forecast.airTemperature) }}°
-                </td>
-              </tr>
-              <tr>
-                <th class="sticky-col">{{ $t('Water temperature') }}</th>
-                <td
-                  v-for="forecast in forecasts"
-                  :class="{ 'actual-day': isNow(forecast.time) }"
-                  :style="{ color: numberToColor(forecast.waterTemperature, 0, 40) }"
-                >
-                  {{ Math.round(forecast.waterTemperature) }}°
-                </td>
-              </tr>
-              <tr>
-                <th class="sticky-col">{{ $t('Cloud cover') }}</th>
-                <td
-                  v-for="forecast in forecasts"
-                  :class="{ 'actual-day': isNow(forecast.time) }"
-                  :style="{ color: numberToColor(forecast.cloudCover, 0, 100) }"
-                >
-                  {{ Math.round(forecast.cloudCover) }}%
-                </td>
-              </tr>
-              <tr>
-                <th class="sticky-col">{{ $t('Swell height') }}</th>
-                <td
-                  v-for="forecast in forecasts"
-                  :class="{ 'actual-day': isNow(forecast.time) }"
-                  :style="{ color: numberToColor(forecast.swellHeight, 0, 2) }"
-                >
-                  {{ forecast.swellHeight }}m
-                </td>
-              </tr>
-              <tr>
-                <th class="sticky-col">{{ $t('Wind direction') }}</th>
-                <td v-for="forecast in forecasts" :class="{ 'actual-day': isNow(forecast.time) }">
-                  <WindArrow :direction="forecast.windDirection" :wind-speed="forecast.windSpeed" />
-                </td>
-              </tr>
-              <tr>
-                <th class="sticky-col">{{ $t('Wind speed') }}</th>
-                <td
-                  v-for="forecast in forecasts"
-                  :class="{ 'actual-day': isNow(forecast.time) }"
-                  :style="{ color: numberToColor(forecast.windSpeed * 1.9438, 0, 20) }"
-                >
-                  {{ Math.round(forecast.windSpeed * 1.9438) }}
-                </td>
-              </tr>
+            <tr>
+              <th class="sticky-col">Note</th>
+              <td
+                v-for="forecast in forecasts"
+                :class="{ 'actual-day': isNow(forecast.time) }"
+                :style="{ color: numberToColor(forecast.note, 0, 10) }"
+              >
+                {{ Math.round(forecast.note) }}
+              </td>
+            </tr>
+            <tr>
+              <th class="sticky-col">{{ $t('Air temperature') }}</th>
+              <td
+                v-for="forecast in forecasts"
+                :class="{ 'actual-day': isNow(forecast.time) }"
+                :style="{ color: numberToColor(forecast.airTemperature, 0, 40) }"
+              >
+                {{ Math.round(forecast.airTemperature) }}°
+              </td>
+            </tr>
+            <tr>
+              <th class="sticky-col">{{ $t('Water temperature') }}</th>
+              <td
+                v-for="forecast in forecasts"
+                :class="{ 'actual-day': isNow(forecast.time) }"
+                :style="{ color: numberToColor(forecast.waterTemperature, 0, 40) }"
+              >
+                {{ Math.round(forecast.waterTemperature) }}°
+              </td>
+            </tr>
+            <tr>
+              <th class="sticky-col">{{ $t('Cloud cover') }}</th>
+              <td
+                v-for="forecast in forecasts"
+                :class="{ 'actual-day': isNow(forecast.time) }"
+                :style="{ color: numberToColor(forecast.cloudCover, 0, 100) }"
+              >
+                {{ Math.round(forecast.cloudCover) }}%
+              </td>
+            </tr>
+            <tr>
+              <th class="sticky-col">{{ $t('Swell height') }}</th>
+              <td
+                v-for="forecast in forecasts"
+                :class="{ 'actual-day': isNow(forecast.time) }"
+                :style="{ color: numberToColor(forecast.swellHeight, 0, 2) }"
+              >
+                {{ forecast.swellHeight }}m
+              </td>
+            </tr>
+
+            <tr>
+              <th class="sticky-col">{{ $t('Swell period') }}</th>
+              <td
+                v-for="forecast in forecasts"
+                :key="forecast.time"
+                :class="{ 'actual-day': isNow(forecast.time) }"
+                :style="{ color: numberToColor(forecast.swellPeriod, 0, 18) }"
+              >
+                {{ forecast.swellPeriod }}s
+              </td>
+            </tr>
+
+            <tr>
+              <th class="sticky-col">{{ $t('Wind direction') }}</th>
+              <td v-for="forecast in forecasts" :class="{ 'actual-day': isNow(forecast.time) }">
+                <WindArrow :direction="forecast.windDirection" :wind-speed="forecast.windSpeed" />
+              </td>
+            </tr>
+            <tr>
+              <th class="sticky-col">{{ $t('Wind speed') }}</th>
+              <td
+                v-for="forecast in forecasts"
+                :class="{ 'actual-day': isNow(forecast.time) }"
+                :style="{ color: numberToColor(forecast.windSpeed * 1.9438, 0, 20) }"
+              >
+                {{ Math.round(forecast.windSpeed * 1.9438) }}
+              </td>
+            </tr>
             </tbody>
           </table>
         </div>
@@ -252,8 +276,11 @@ table.detailed td {
 </style>
 
 <script setup lang="ts">
+import { useSpot } from '@/composables/useSpot'
 import { webcamsService } from '@/Services/Api/webcamsService'
+import type { Forecast, ForecastAvg } from '@/types/Forecast'
 import type { Spot } from '@/types/Spot'
+import { SunInfo } from '@/types/SunInfo'
 import type Webcam from '@/types/Webcam'
 import dayjs from 'dayjs'
 import { meanBy } from 'lodash'
@@ -263,6 +290,8 @@ import WebcamThumbnail from '../../Components/WebcamThumbnail.vue'
 import WindArrow from '../../Components/WindArrow.vue'
 import MarkerType from '../../Enums/MarkerType'
 import AppLayout from '../../Layouts/AppLayout.vue'
+
+const { fetchSpotForecast } = useSpot()
 
 const props = defineProps<{
   spot: Spot
@@ -277,49 +306,49 @@ const markers = ref<Array<any>>([])
 const webcams = ref<Array<Webcam>>([])
 
 onMounted(async () => {
-  fetch(`/api/spots/${props.spot.id}/forecast`)
-    .then((response) => response.json())
-    .then((data) => {
-      forecasts.value = data.forecasts
-      sunInfos.value = data.sun_infos
-      calculateAvgForecasts(data.forecasts)
-      forecasts.value.forEach((forecast) => {
-        const key = dayjs(forecast.time).format('YYYY-MM-DD')
-        if (!tidesRows[key]) {
-          tidesRows.value[key] = {
-            colspan: 0,
-            tides: [],
-          }
+  fetchSpotForecast(props.spot.id).then((data) => {
+    forecasts.value = data.forecasts
+    sunInfos.value = data.sun_infos
+    calculateAvgForecasts(data.forecasts)
+    forecasts.value.forEach((forecast) => {
+      const key = dayjs(forecast.time).format('YYYY-MM-DD')
+      if (!tidesRows[key]) {
+        tidesRows.value[key] = {
+          colspan: 0,
+          tides: []
         }
-        if (sunInfos[key] !== undefined) {
-          if (sunInfos[key].colspan === undefined) {
-            sunInfos[key].colspan = 1
-          } else {
-            sunInfos[key].colspan++
-          }
-        }
-        tidesRows.value[key].colspan++
-      })
-      data.tides.forEach((tide) => {
-        tidesRows.value[dayjs(tide.time).format('YYYY-MM-DD')].tides.push(tide)
-      })
-    })
-  webcamsService.getAll({ lat: props.spot.lat, lng: props.spot.lng }).then((data) => {
-    webcams.value = data.map((webcam: object) => {
-      return {
-        id: webcam.id,
-        coordinates: [webcam.lat, webcam.lng],
-        options: { title: webcam.title },
-        url: webcam.url,
-        type: MarkerType.Webcam,
       }
+      if (sunInfos[key] !== undefined) {
+        if (sunInfos[key].colspan === undefined) {
+          sunInfos[key].colspan = 1
+        } else {
+          sunInfos[key].colspan++
+        }
+      }
+      tidesRows.value[key].colspan++
     })
+    data.tides.forEach((tide) => {
+      tidesRows.value[dayjs(tide.time).format('YYYY-MM-DD')].tides.push(tide)
+    })
+  })
+  webcamsService.getAll({ lat: props.spot.lat, lng: props.spot.lng }).then((data) => {
+    webcams.value = data.map(
+      (webcam: { id: number; lat: number; lng: number; title: string; url: string }) => {
+        return {
+          id: webcam.id,
+          coordinates: [webcam.lat, webcam.lng],
+          options: { title: webcam.title },
+          url: webcam.url,
+          type: MarkerType.Webcam
+        }
+      }
+    )
     markers.value = markers.value.concat(webcams.value)
   })
   markers.value.push({
     id: props.spot.id,
     coordinates: [+props.spot.lat, +props.spot.lng],
-    options: { title: props.spot.name },
+    options: { title: props.spot.name }
   })
 })
 
@@ -328,16 +357,17 @@ function calculateAvgForecasts(forecasts: Forecast[]): void {
   for (let i = 0; i < 10; i++) {
     const key = day.format('YYYY-MM-DD')
     const forecastsFiltered = forecasts.filter(
-      (forecast) => dayjs(forecast.time).format('YYYY-MM-DD') === key,
+      (forecast) => dayjs(forecast.time).format('YYYY-MM-DD') === key
     )
     forecastsAvg.value[key] = {
       note: meanBy(forecastsFiltered, 'note'),
       airTemperature: meanBy(forecastsFiltered, 'airTemperature'),
       cloudCover: meanBy(forecastsFiltered, 'cloudCover'),
       swellHeight: meanBy(forecastsFiltered, 'swellHeight'),
+      swellPeriod: +meanBy(forecastsFiltered, 'swellPeriod').toFixed(),
       waterTemperature: meanBy(forecastsFiltered, 'waterTemperature'),
       windDirection: meanBy(forecastsFiltered, 'windDirection'),
-      windSpeed: meanBy(forecastsFiltered, 'windSpeed'),
+      windSpeed: meanBy(forecastsFiltered, 'windSpeed')
     }
     day = day.add(1, 'day')
   }
