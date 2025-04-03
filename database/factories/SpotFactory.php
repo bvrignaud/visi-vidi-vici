@@ -7,6 +7,9 @@ namespace Database\Factories;
 use App\Models\Spot;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends Factory<Spot>
+ */
 class SpotFactory extends Factory
 {
     /**
