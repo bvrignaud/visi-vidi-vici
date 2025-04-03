@@ -25,6 +25,6 @@ trait SpotTrait
 
     private function calculNoteForSwellPeriod(float $swellPeriod): float
     {
-        return 9 - $swellPeriod;
+        return (9 - $swellPeriod) / 10;
     }
 }

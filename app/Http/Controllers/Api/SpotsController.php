@@ -36,7 +36,7 @@ class SpotsController extends Controller
         $note = 5;
         foreach ($forecasts as &$forecast) {
             $note += $this->calculNoteForSwell($forecast['swellHeight']);
-            $note += $this->calculNoteForSwellPeriod($forecast['swellPeriod']) / 3;
+            $note += $this->calculNoteForSwellPeriod($forecast['swellPeriod']);
             $note += $this->calculNoteForWind($spot->optimal_wind_direction, $forecast['windDirection'], $forecast['windSpeed']);
             $note = $note < 0 ? 0 : min($note, 10);
             $forecast['note'] = $note;
