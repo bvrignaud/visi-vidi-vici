@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\WebcamResource;
-use App\Models\Webcams;
+use App\Models\Webcam;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -15,7 +15,7 @@ class WebcamsController extends Controller
 {
     public function index(Request $request): AnonymousResourceCollection
     {
-        $webcams = Webcams::select([
+        $webcams = Webcam::select([
             'id',
             'title',
             'url',

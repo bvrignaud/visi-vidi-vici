@@ -7,7 +7,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @mixin \App\Models\Webcams
+ * @mixin \App\Models\Webcam
  */
 class WebcamResource extends JsonResource
 {
