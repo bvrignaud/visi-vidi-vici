@@ -5,7 +5,7 @@ declare(strict_types=1);
 return [
     'name' => 'LaravelPWA',
     'manifest' => [
-        'name' => env('APP_NAME', 'My PWA App'),
+        'name' => env('APP_NAME', 'Visi vidi vici'),
         'short_name' => 'Visi vidi vici',
         'start_url' => '/',
         'background_color' => '#ffffff',
