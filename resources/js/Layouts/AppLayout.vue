@@ -74,7 +74,8 @@ const navLinks = ref([
                 <!--                                    Dashboard-->
                 <!--                                </jet-nav-link>-->
                 <jet-nav-link
-                  v-for="navLink in navLinks"
+                  v-for="(navLink, key) in navLinks"
+                  :key="key"
                   :href="route(navLink.route)"
                   :active="route().current(navLink.route)"
                 >
@@ -223,7 +224,7 @@ const navLinks = ref([
                       {{ $t('Manage Account') }}
                     </div>
 
-                    <jet-dropdown-link :href="route('profile.show')"> Profil </jet-dropdown-link>
+                    <jet-dropdown-link :href="route('profile.show')"> Profil</jet-dropdown-link>
 
                     <jet-dropdown-link
                       :href="route('api-tokens.index')"
@@ -288,7 +289,8 @@ const navLinks = ref([
             <!--                            Dashboard-->
             <!--                        </jet-responsive-nav-link>-->
             <jet-responsive-nav-link
-              v-for="navLink in navLinks"
+              v-for="(navLink, key) in navLinks"
+              :key="key"
               :href="route(navLink.route)"
               :active="route().current(navLink.route)"
             >
