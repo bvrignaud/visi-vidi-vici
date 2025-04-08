@@ -7,7 +7,7 @@ interface SpotForecast {
   spot: Spot
   forecasts: Array<Forecast>
   tides: Array<Tide>
-  sun_infos: Array<SunInfo>
+  sun_infos: Record<string, SunInfo>
 }
 
 export const useSpot = () => {

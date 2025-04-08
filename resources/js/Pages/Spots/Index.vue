@@ -11,7 +11,7 @@
             <h3>Spots</h3>
             <table>
               <tbody>
-                <tr v-for="spot in spots">
+                <tr v-for="spot in spots" :key="spot.id">
                   <td>
                     <Link :href="`${route('spots.show', spot)}`">{{ spot.name }}</Link>
                   </td>
@@ -33,14 +33,15 @@
 </template>
 
 <script setup lang="ts">
+import type { Spot } from '@/types/Spot'
 import { Link } from '@inertiajs/vue3'
 import Map from '../../Components/Map.vue'
 import Button from '../../Jetstream/Button.vue'
 import AppLayout from '../../Layouts/AppLayout.vue'
 
-const props = defineProps({
-  spots: Array,
-})
+const props = defineProps<{
+  spots: Spot[]
+}>()
 
 function markers() {
   return props.spots.map((spot) => {
