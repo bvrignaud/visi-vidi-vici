@@ -7,7 +7,7 @@
     <div class="py-12">
       <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <FormSection @submitted="submit">
-          <template #title> Information du spot </template>
+          <template #title>Information du spot</template>
 
           <template #description>
             Renseigner les différentes informations concernant le spot.
@@ -28,7 +28,7 @@
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-              <Label for="lng" value="Longitute" />
+              <Label for="lng" value="Longitude" />
               <JetInput
                 id="lng"
                 type="number"
@@ -41,7 +41,7 @@
               <InputError :message="form.errors.lng" class="mt-2" />
             </div>
             <div class="col-span-6 sm:col-span-4">
-              <Label for="lat" value="Longitute" />
+              <Label for="lat" value="Longitude" />
               <JetInput
                 id="lat"
                 type="number"
@@ -69,7 +69,7 @@
           </template>
 
           <template #actions>
-            <ActionMessage :on="form.recentlySuccessful" class="mr-3"> Sauvegardé. </ActionMessage>
+            <ActionMessage :on="form.recentlySuccessful" class="mr-3">Sauvegardé.</ActionMessage>
 
             <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
               Sauvegarder
@@ -81,7 +81,7 @@
   </app-layout>
 </template>
 
-<script>
+<script lang="ts">
 import ActionMessage from '@/Jetstream/ActionMessage.vue'
 import Button from '@/Jetstream/Button.vue'
 import FormSection from '@/Jetstream/FormSection.vue'

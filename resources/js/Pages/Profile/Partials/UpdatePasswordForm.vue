@@ -1,6 +1,6 @@
 <template>
   <jet-form-section @submitted="updatePassword">
-    <template #title> Mettre à jour le mot de passe </template>
+    <template #title>Mettre à jour le mot de passe</template>
 
     <template #description>
       Assurez-vous d'utiliser un mot de passe long et aléatoire pour sécuriser votre compte.
@@ -58,7 +58,7 @@
   </jet-form-section>
 </template>
 
-<script>
+<script lang="ts">
 import JetActionMessage from '@/Jetstream/ActionMessage.vue'
 import JetButton from '@/Jetstream/Button.vue'
 import JetFormSection from '@/Jetstream/FormSection.vue'

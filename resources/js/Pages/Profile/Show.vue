@@ -36,7 +36,7 @@
   </app-layout>
 </template>
 
-<script>
+<script lang="ts">
 import JetSectionBorder from '@/Jetstream/SectionBorder.vue'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import DeleteUserForm from '@/Pages/Profile/Partials/DeleteUserForm.vue'

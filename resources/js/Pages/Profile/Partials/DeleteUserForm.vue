@@ -1,8 +1,8 @@
 <template>
   <jet-action-section>
-    <template #title> Supprimer le compte </template>
+    <template #title>Supprimer le compte</template>
 
-    <template #description> Supprimer définitivement ce compte. </template>
+    <template #description>Supprimer définitivement ce compte.</template>
 
     <template #content>
       <div class="max-w-xl text-sm text-gray-600">
@@ -11,12 +11,12 @@
       </div>
 
       <div class="mt-5">
-        <jet-danger-button @click="confirmUserDeletion"> Supprimer le compte </jet-danger-button>
+        <jet-danger-button @click="confirmUserDeletion">Supprimer le compte</jet-danger-button>
       </div>
 
       <!-- Delete Account Confirmation Modal -->
       <jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
-        <template #title> Supprimer le compte </template>
+        <template #title>Supprimer le compte</template>
 
         <template #content>
           Êtes-vous sûr de vouloir supprimer votre compte ? Une fois que votre compte est supprimé,
@@ -38,7 +38,7 @@
         </template>
 
         <template #footer>
-          <jet-secondary-button @click="closeModal"> Annuler </jet-secondary-button>
+          <jet-secondary-button @click="closeModal">Annuler</jet-secondary-button>
 
           <jet-danger-button
             class="ml-2"
@@ -54,7 +54,7 @@
   </jet-action-section>
 </template>
 
-<script>
+<script lang="ts">
 import JetActionSection from '@/Jetstream/ActionSection.vue'
 import JetDangerButton from '@/Jetstream/DangerButton.vue'
 import JetDialogModal from '@/Jetstream/DialogModal.vue'

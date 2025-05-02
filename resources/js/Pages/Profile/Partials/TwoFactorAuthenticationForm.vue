@@ -1,6 +1,6 @@
 <template>
   <jet-action-section>
-    <template #title> Double authentification </template>
+    <template #title>Double authentification</template>
 
     <template #description>
       Ajouter une sécurité supplémentaire à votre compte en utilisant l'authentification à deux
@@ -85,7 +85,7 @@
   </jet-action-section>
 </template>
 
-<script>
+<script lang="ts">
 import JetActionSection from '@/Jetstream/ActionSection.vue'
 import JetButton from '@/Jetstream/Button.vue'
 import JetConfirmsPassword from '@/Jetstream/ConfirmsPassword.vue'
@@ -140,7 +140,7 @@ export default defineComponent({
     },
 
     regenerateRecoveryCodes() {
-      axios.post('/user/two-factor-recovery-codes').then((response) => {
+      axios.post('/user/two-factor-recovery-codes').then(() => {
         this.showRecoveryCodes()
       })
     },

@@ -1,6 +1,6 @@
 <template>
   <jet-form-section @submitted="updateProfileInformation">
-    <template #title> Information du profil </template>
+    <template #title>Information du profil</template>
 
     <template #description>
       Modifier le profil associé à votre compte ainsi que votre adresse e-mail.
@@ -81,7 +81,7 @@
   </jet-form-section>
 </template>
 
-<script>
+<script lang="ts">
 import JetActionMessage from '@/Jetstream/ActionMessage.vue'
 import JetButton from '@/Jetstream/Button.vue'
 import JetFormSection from '@/Jetstream/FormSection.vue'

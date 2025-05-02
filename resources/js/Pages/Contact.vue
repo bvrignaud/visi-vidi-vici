@@ -51,7 +51,7 @@
           </div>
         </template>
         <template #actions>
-          <ActionMessage :on="form.recentlySuccessful" class="mr-3"> Envoyé. </ActionMessage>
+          <ActionMessage :on="form.recentlySuccessful" class="mr-3">Envoyé.</ActionMessage>
           <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
             Envoyer
           </Button>
@@ -61,7 +61,7 @@
   </app-layout>
 </template>
 
-<script>
+<script lang="ts">
 import TextArea from '@/Components/TextArea.vue'
 import ActionMessage from '@/Jetstream/ActionMessage.vue'
 import Button from '@/Jetstream/Button.vue'
