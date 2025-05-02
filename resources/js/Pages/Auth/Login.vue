@@ -1,3 +1,31 @@
+<script setup lang="ts">
+import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue'
+import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
+import JetButton from '@/Jetstream/Button.vue'
+import JetCheckbox from '@/Jetstream/Checkbox.vue'
+import JetInput from '@/Jetstream/Input.vue'
+import JetLabel from '@/Jetstream/Label.vue'
+import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'
+import { Head, Link, useForm } from '@inertiajs/vue3'
+
+defineProps<{
+  status?: string
+  canResetPassword: boolean
+}>()
+
+const form = useForm({
+  email: '',
+  password: '',
+  remember: false,
+})
+
+const submit = () => {
+  form.post(route('login'), {
+    onFinish: () => form.reset('password'),
+  })
+}
+</script>
+
 <template>
   <Head :title="$t('Log in')" />
 
@@ -64,57 +92,3 @@
     </form>
   </jet-authentication-card>
 </template>
-
-<script>
-import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue'
-import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
-import JetButton from '@/Jetstream/Button.vue'
-import JetCheckbox from '@/Jetstream/Checkbox.vue'
-import JetInput from '@/Jetstream/Input.vue'
-import JetLabel from '@/Jetstream/Label.vue'
-import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'
-import { Head, Link } from '@inertiajs/vue3'
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  components: {
-    Head,
-    JetAuthenticationCard,
-    JetAuthenticationCardLogo,
-    JetButton,
-    JetInput,
-    JetCheckbox,
-    JetLabel,
-    JetValidationErrors,
-    Link,
-  },
-
-  props: {
-    canResetPassword: Boolean,
-    status: String,
-  },
-
-  data() {
-    return {
-      form: this.$inertia.form({
-        email: '',
-        password: '',
-        remember: false,
-      }),
-    }
-  },
-
-  methods: {
-    submit() {
-      this.form
-        .transform((data) => ({
-          ...data,
-          remember: this.form.remember ? 'on' : '',
-        }))
-        .post(this.route('login'), {
-          onFinish: () => this.form.reset('password'),
-        })
-    },
-  },
-})
-</script>
