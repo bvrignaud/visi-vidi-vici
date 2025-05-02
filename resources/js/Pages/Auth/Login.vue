@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import TextLink from '@/Components/TextLink.vue'
 import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
 import JetButton from '@/Jetstream/Button.vue'
@@ -40,7 +41,7 @@ const submit = () => {
       {{ status }}
     </div>
 
-    <form @submit.prevent="submit">
+    <form @submit.prevent="submit" class="flex flex-col gap-6">
       <div>
         <jet-label for="email" value="Email" />
         <jet-input
@@ -88,6 +89,13 @@ const submit = () => {
         >
           {{ $t('Log in') }}
         </jet-button>
+      </div>
+
+      <div class="text-muted-foreground text-center text-sm">
+        {{ $t('pages.login.dont_have_an_account') }}
+        <TextLink :href="route('register')" :tabindex="5">
+          {{ $t('pages.login.sign_up') }}
+        </TextLink>
       </div>
     </form>
   </jet-authentication-card>
