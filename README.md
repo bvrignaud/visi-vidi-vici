@@ -8,12 +8,14 @@
 Visi-vidi-vici is a marine weather forecasting application for determining water clarity for all divers.
 
 ## Installation
-Visi-vidi-vici is a regular Laravel application; it's build on top of Laravel 11 and uses Inertia / Vue / Tailwind CSS for the frontend.
+
+Visi-vidi-vici is a regular Laravel application; it's build on top of Laravel 11 and uses Inertia / Vue / Tailwind CSS
+for the frontend.
 
 In terms of local development, you can use the following requirements:
 
-- PHP 8.3 - with SQLite, and other common extensions.
-- Node.js 20 or more recent.
+- PHP 8.4 - with SQLite, and other common extensions.
+- Node.js 22 or more recent.
 
 If you have these requirements, you can start by cloning the repository and installing the dependencies:
 
@@ -79,7 +81,8 @@ php artisan test
 
 ## Contributing
 
-Thank you for considering contributing to the [Visi Vidi Vici website](https://visi-vidi-vici.tangue.fr)! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Thank you for considering contributing to the [Visi Vidi Vici website](https://visi-vidi-vici.tangue.fr)! The
+contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
 > **Don't push directly to the `main` branch**. Instead, create a new branch and push it to your branch.
 
@@ -92,6 +95,7 @@ git checkout -b feat/your-feature # or fix/your-fix
 ```
 
 ## Tooling
+
 Visi-vidi-vici uses a few tools to ensure the code quality and consistency.
 
 In terms of code style, we use [Laravel Pint](https://laravel.com/docs/11.x/pint) to ensure the code is consistent and
@@ -105,34 +109,41 @@ php artisan test
 ```
 
 #### [PHP Insights](https://phpinsights.com)
+
 ```bash
 php artisan insights
 ```
 
 #### [Larastan](https://github.com/nunomaduro/larastan)
+
 ```bash
 ./vendor/bin/phpstan analyse
 ```
 
 #### Code style fixer ([pint](https://laravel.com/docs/9.x/pint))
+
 ```bash
 composer pintd
 ```
 
 ## Code of Conduct
 
-In order to ensure that the Visi Vidi Vici community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+In order to ensure that the Visi Vidi Vici community is welcoming to all, please review and abide by
+the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Visi Vidi Vici, please send an e-mail to Benoit VRIGNAUD via [benoit.vrignaud@tangue.fr](mailto:benoit.vrignaud@tangue.fr).
+If you discover a security vulnerability within Visi Vidi Vici, please send an e-mail to Benoit VRIGNAUD
+via [benoit.vrignaud@tangue.fr](mailto:benoit.vrignaud@tangue.fr).
 All security vulnerabilities will be promptly addressed.
 
 ## License
 
-The Visi Vidi Vici website is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Visi Vidi Vici website is open-sourced software licensed under
+the [MIT license](https://opensource.org/licenses/MIT).
 
 ## Deploy script
+
 ```bash
 cd DEPPLOY_FOLDER
 git pull origin master
