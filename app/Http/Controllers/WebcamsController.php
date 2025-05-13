@@ -16,7 +16,7 @@ class WebcamsController extends Controller
      */
     public function index(): \Inertia\Response
     {
-        return Inertia::render('Webcams/Index');
+        return Inertia::render('webcams/Index');
     }
 
     //    /**

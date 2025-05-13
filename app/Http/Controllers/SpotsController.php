@@ -14,14 +14,14 @@ class SpotsController extends Controller
 
     public function index(): \Inertia\Response
     {
-        return Inertia::render('Spots/Index', [
+        return Inertia::render('spots/Index', [
             'spots' => Spot::orderBy('name')->get(),
         ]);
     }
 
     public function create(): \Inertia\Response
     {
-        return Inertia::render('Spots/Form');
+        return Inertia::render('spots/Form');
     }
 
     public function store(SpotStoreRequest $request): \Illuminate\Http\RedirectResponse
@@ -42,7 +42,7 @@ class SpotsController extends Controller
 
     public function show(Spot $spot): \Inertia\Response
     {
-        return Inertia::render('Spots/Show', compact('spot'));
+        return Inertia::render('spots/Show', compact('spot'));
     }
 
     //    /**

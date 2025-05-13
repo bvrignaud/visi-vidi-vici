@@ -1,4 +1,4 @@
-import MarkerType from '../Enums/MarkerType'
+import MarkerType from '@/enums/MarkerType'
 
 interface Marker {
   id: number
