@@ -6,7 +6,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import { i18nVue } from 'laravel-vue-i18n'
 import type { DefineComponent } from 'vue'
 import { createApp, h } from 'vue'
-import { ZiggyVue } from '../../vendor/tightenco/ziggy'
+import { ZiggyVue } from 'ziggy-js'
 
 // Extend ImportMeta interface for Vite...
 declare module 'vite/client' {
