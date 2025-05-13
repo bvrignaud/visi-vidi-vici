@@ -62,7 +62,7 @@ const navLinks = ref([
           <div class="flex h-16 justify-between">
             <div class="flex">
               <!-- Logo -->
-              <div class="flex flex-shrink-0 items-center">
+              <div class="flex shrink-0 items-center">
                 <Link href="/">
                   <jet-application-mark class="block h-9 w-auto" />
                 </Link>
@@ -100,7 +100,7 @@ const navLinks = ref([
                     <span class="inline-flex rounded-md">
                       <button
                         type="button"
-                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition hover:bg-gray-50 hover:text-gray-700 focus:bg-gray-50 focus:outline-none active:bg-gray-50"
+                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-500 transition hover:bg-gray-50 hover:text-gray-700 focus:bg-gray-50 focus:outline-hidden active:bg-gray-50"
                       >
                         {{ $page.props.auth.user.current_team.name }}
 
@@ -186,7 +186,7 @@ const navLinks = ref([
                   <template #trigger>
                     <button
                       v-if="$page.props.jetstream.managesProfilePhotos"
-                      class="flex rounded-full border-2 border-transparent text-sm transition focus:border-gray-300 focus:outline-none"
+                      class="flex rounded-full border-2 border-transparent text-sm transition focus:border-gray-300 focus:outline-hidden"
                     >
                       <img
                         class="h-8 w-8 rounded-full object-cover"
@@ -198,7 +198,7 @@ const navLinks = ref([
                     <span v-else class="inline-flex rounded-md">
                       <button
                         type="button"
-                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition hover:text-gray-700 focus:outline-none"
+                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-500 transition hover:text-gray-700 focus:outline-hidden"
                       >
                         {{ $page.props.auth.user.name }}
 
@@ -250,7 +250,7 @@ const navLinks = ref([
             <div class="-mr-2 flex items-center sm:hidden">
               <button
                 @click="showingNavigationDropdown = !showingNavigationDropdown"
-                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
+                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-hidden"
               >
                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                   <path
@@ -284,7 +284,7 @@ const navLinks = ref([
           :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }"
           class="sm:hidden"
         >
-          <div class="space-y-1 pb-3 pt-2">
+          <div class="space-y-1 pt-2 pb-3">
             <!--                        <jet-responsive-nav-link v-if="$page.props.auth.user" :href="route('dashboard')" :active="route().current('dashboard')">-->
             <!--                            Dashboard-->
             <!--                        </jet-responsive-nav-link>-->
@@ -310,9 +310,9 @@ const navLinks = ref([
           </div>
 
           <!-- Responsive Settings Options -->
-          <div v-if="$page.props.auth.user" class="border-t border-gray-200 pb-1 pt-4">
+          <div v-if="$page.props.auth.user" class="border-t border-gray-200 pt-4 pb-1">
             <div class="flex items-center px-4">
-              <div v-if="$page.props.jetstream.managesProfilePhotos" class="mr-3 flex-shrink-0">
+              <div v-if="$page.props.jetstream.managesProfilePhotos" class="mr-3 shrink-0">
                 <img
                   class="h-10 w-10 rounded-full object-cover"
                   :src="$page.props.auth.user.profile_photo_url"
@@ -412,7 +412,7 @@ const navLinks = ref([
       </nav>
 
       <!-- Page Heading -->
-      <header class="bg-white shadow" v-if="$slots.header">
+      <header class="bg-white shadow-xs" v-if="$slots.header">
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <slot name="header"></slot>
         </div>

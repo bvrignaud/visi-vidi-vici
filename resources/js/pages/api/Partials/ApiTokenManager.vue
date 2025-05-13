@@ -113,7 +113,7 @@
         <div>Please copy your new API token. For your security, it won't be shown again.</div>
 
         <div
-          class="mt-4 rounded bg-gray-100 px-4 py-2 font-mono text-sm text-gray-500"
+          class="mt-4 rounded-xs bg-gray-100 px-4 py-2 font-mono text-sm text-gray-500"
           v-if="$page.props.jetstream.flash.token"
         >
           {{ $page.props.jetstream.flash.token }}

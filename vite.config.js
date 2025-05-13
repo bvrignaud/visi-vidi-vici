@@ -1,22 +1,24 @@
-import { defineConfig } from 'vite'
-import i18n from 'laravel-vue-i18n/vite'
-import laravel from 'laravel-vite-plugin'
+import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
+import laravel from 'laravel-vite-plugin'
+import i18n from 'laravel-vue-i18n/vite'
+import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [
     laravel({
       input: 'resources/js/app.ts',
-      refresh: true
+      refresh: true,
     }),
+    tailwindcss(),
     vue({
       template: {
         transformAssetUrls: {
           base: null,
-          includeAbsolute: false
-        }
-      }
+          includeAbsolute: false,
+        },
+      },
     }),
-    i18n()
-  ]
+    i18n(),
+  ],
 })

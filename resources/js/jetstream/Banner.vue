@@ -4,7 +4,7 @@
       :class="{ 'bg-indigo-500': style == 'success', 'bg-red-700': style == 'danger' }"
       v-if="show && message"
     >
-      <div class="mx-auto max-w-screen-xl px-3 py-2 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-(--breakpoint-xl) px-3 py-2 sm:px-6 lg:px-8">
         <div class="flex flex-wrap items-center justify-between">
           <div class="flex w-0 min-w-0 flex-1 items-center">
             <span
@@ -49,10 +49,10 @@
             </p>
           </div>
 
-          <div class="flex-shrink-0 sm:ml-3">
+          <div class="shrink-0 sm:ml-3">
             <button
               type="button"
-              class="-mr-1 flex rounded-md p-2 transition focus:outline-none sm:-mr-2"
+              class="-mr-1 flex rounded-md p-2 transition focus:outline-hidden sm:-mr-2"
               :class="{
                 'hover:bg-indigo-600 focus:bg-indigo-600': style == 'success',
                 'hover:bg-red-600 focus:bg-red-600': style == 'danger',
