@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 import JetApplicationMark from '@/jetstream/ApplicationMark.vue'
 import JetBanner from '@/jetstream/Banner.vue'
@@ -8,13 +8,14 @@ import JetDropdownLink from '@/jetstream/DropdownLink.vue'
 import JetNavLink from '@/jetstream/NavLink.vue'
 import JetResponsiveNavLink from '@/jetstream/ResponsiveNavLink.vue'
 import Footer from '@/layouts/partials/Footer.vue'
-import { Head, Link, router } from '@inertiajs/vue3'
+import { Head, Link, router, usePage } from '@inertiajs/vue3'
 import { trans } from 'laravel-vue-i18n'
 
 defineProps({
   title: String,
 })
 
+const page = usePage()
 const showingNavigationDropdown = ref(false)
 
 const switchToTeam = (team) => {
@@ -33,7 +34,7 @@ const logout = () => {
   router.post(route('logout'))
 }
 
-const navLinks = ref([
+const baseNavLinks = [
   {
     label: trans('Home'),
     route: 'home',
@@ -46,7 +47,21 @@ const navLinks = ref([
     label: 'Contact',
     route: 'contact',
   },
-])
+]
+
+const navLinks = computed(() => {
+  const links = [...baseNavLinks]
+
+  // Add admin link if user is admin
+  if (page.props.auth.user?.is_admin) {
+    links.push({
+      label: trans('Admin'),
+      route: 'admin.users',
+    })
+  }
+
+  return links
+})
 </script>
 
 <template>
