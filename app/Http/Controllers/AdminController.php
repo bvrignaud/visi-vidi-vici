@@ -14,9 +14,6 @@ class AdminController extends Controller
      */
     public function users(): \Inertia\Response
     {
-        // Ensure only admins can access this page
-        abort_if(! auth()->user()->is_admin, 403);
-
         return Inertia::render('admin/Users', [
             'users' => User::all(),
         ]);

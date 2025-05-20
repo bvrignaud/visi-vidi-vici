@@ -26,7 +26,7 @@ class SpotsTest extends AbstractFeatureTestCase
         $response = $this->get(route('spots.create'));
         $response->assertStatus(302);
 
-        $user = User::factory()->create();
+        $user = User::factory()->create(['is_admin' => true]);
         $response = $this
             ->withoutExceptionHandling()
             ->actingAs($user)
@@ -40,7 +40,7 @@ class SpotsTest extends AbstractFeatureTestCase
         $spotCount = Spot::count();
         $response = $this
             ->withoutExceptionHandling()
-            ->actingAs(User::factory()->create())->post(route('spots.store'), [
+            ->actingAs(User::factory()->create(['is_admin' => true]))->post(route('spots.store'), [
                 'name' => $this->faker->name,
                 'lng' => $this->faker->longitude,
                 'lat' => $this->faker->latitude,
@@ -55,13 +55,15 @@ class SpotsTest extends AbstractFeatureTestCase
     public function a_spot_can_be_updated(): void
     {
         $spot = Spot::factory()->create();
-        $response = $this->actingAs(User::factory()->create())->patch(route('spots.update', $spot), [
-            'name' => 'New name',
-            'lng' => $this->faker->longitude,
-            'lat' => $this->faker->latitude,
-            'optimal_wind_direction' => rand(0, 360),
-            'timezone' => $this->faker->timezone,
-        ]);
+        $response = $this
+            ->actingAs(User::factory()->create(['is_admin' => true]))
+            ->patch(route('spots.update', $spot), [
+                'name' => 'New name',
+                'lng' => $this->faker->longitude,
+                'lat' => $this->faker->latitude,
+                'optimal_wind_direction' => rand(0, 360),
+                'timezone' => $this->faker->timezone,
+            ]);
         $response->assertRedirect();
         $spot->refresh();
         $this->assertEquals('New name', $spot->name);
