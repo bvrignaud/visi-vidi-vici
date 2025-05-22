@@ -1,7 +1,7 @@
 <template>
   <l-map
     ref="map"
-    :center="center"
+    :center
     :inertia="true"
     :zoom="16"
     :minZoom="3"
@@ -41,40 +41,41 @@
 import MarkerType from '@/enums/MarkerType'
 import { router } from '@inertiajs/vue3'
 import { LIcon, LMap, LMarker, LTileLayer } from '@vue-leaflet/vue-leaflet'
+import { PointTuple } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { ref, watch } from 'vue'
 
-const center = ref<Array<number>>([46.47, -1.75])
-const map = ref(null)
-const props = defineProps({
-  linkOnMarker: {
-    type: Boolean,
-    default: true,
-  },
-  markers: {
-    type: Array,
-    default: [],
-  },
-})
+const center = ref<PointTuple>([46.47, -1.75])
+const map = ref()
+const { linkOnMarker = true, markers = [] } = defineProps<{
+  linkOnMarker: boolean
+  markers: Array<{
+    id: number
+    coordinates: PointTuple
+    options: {}
+    url: string
+    type?: MarkerType
+  }>
+}>()
 
 watch(
-  () => props.markers,
+  () => markers,
   () => {
     zoomFitToMarkers()
   },
 )
 
 function zoomFitToMarkers(): void {
-  if (props.markers.length > 1) {
-    map.value.leafletObject.fitBounds(props.markers.map((m) => m.coordinates))
-    map.value.leafletObject.fitBounds(props.markers.map((m) => m.coordinates))
-  } else if (props.markers.length) {
-    center.value = props.markers[0].coordinates
+  if (markers.length > 1) {
+    map.value?.leafletObject.fitBounds(markers.map((m) => m.coordinates))
+    map.value?.leafletObject.fitBounds(markers.map((m) => m.coordinates))
+  } else if (markers.length) {
+    center.value = markers[0].coordinates
   }
 }
 
-function goTo(url): void {
-  if (props.linkOnMarker) {
+function goTo(url: string): void {
+  if (linkOnMarker) {
     if (url.startsWith(window.location.href)) {
       router.visit(url)
     } else {
