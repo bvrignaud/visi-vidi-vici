@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 
-import JetApplicationMark from '@/jetstream/ApplicationMark.vue'
 import JetBanner from '@/jetstream/Banner.vue'
 import JetDropdown from '@/jetstream/Dropdown.vue'
 import JetDropdownLink from '@/jetstream/DropdownLink.vue'
@@ -79,7 +78,7 @@ const navLinks = computed(() => {
               <!-- Logo -->
               <div class="flex shrink-0 items-center">
                 <Link href="/">
-                  <jet-application-mark class="block h-9 w-auto" />
+                  <img src="/favicon.ico" alt="" height="36" width="36" />
                 </Link>
               </div>
 
