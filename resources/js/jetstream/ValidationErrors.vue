@@ -1,3 +1,18 @@
+<script setup lang="ts">
+import { usePage } from '@inertiajs/vue3'
+import { computed } from 'vue'
+
+const page = usePage()
+
+const errors = computed(() => {
+  return page.props.errors
+})
+
+const hasErrors = computed(() => {
+  return Object.keys(errors).length > 0
+})
+</script>
+
 <template>
   <div v-if="hasErrors">
     <div class="font-medium text-red-600">Oups ! Un problème est survenu.</div>
@@ -7,19 +22,3 @@
     </ul>
   </div>
 </template>
-
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  computed: {
-    errors() {
-      return this.$page.props.errors
-    },
-
-    hasErrors() {
-      return Object.keys(this.errors).length > 0
-    },
-  },
-})
-</script>
