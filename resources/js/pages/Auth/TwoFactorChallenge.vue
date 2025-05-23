@@ -17,7 +17,7 @@
       </template>
     </div>
 
-    <jet-validation-errors class="mb-4" />
+    <validation-errors class="mb-4" />
 
     <form @submit.prevent="submit">
       <div v-if="!recovery">
@@ -70,12 +70,12 @@
 </template>
 
 <script>
+import ValidationErrors from '@/components/ValidationErrors.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
 import JetButton from '@/jetstream/Button.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetLabel from '@/jetstream/Label.vue'
-import JetValidationErrors from '@/jetstream/ValidationErrors.vue'
 import { Head } from '@inertiajs/vue3'
 import { defineComponent } from 'vue'
 
@@ -87,7 +87,7 @@ export default defineComponent({
     JetButton,
     JetInput,
     JetLabel,
-    JetValidationErrors,
+    ValidationErrors,
   },
 
   data() {

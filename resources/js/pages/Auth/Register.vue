@@ -8,7 +8,7 @@
 
     {{ $t('auth.failed') }}
 
-    <jet-validation-errors class="mb-4" />
+    <validation-errors class="mb-4" />
 
     <form @submit.prevent="submit">
       <div>
@@ -104,13 +104,13 @@
 </template>
 
 <script>
+import ValidationErrors from '@/components/ValidationErrors.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
 import JetButton from '@/jetstream/Button.vue'
 import JetCheckbox from '@/jetstream/Checkbox.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetLabel from '@/jetstream/Label.vue'
-import JetValidationErrors from '@/jetstream/ValidationErrors.vue'
 import { Head, Link } from '@inertiajs/vue3'
 import { defineComponent } from 'vue'
 
@@ -123,8 +123,8 @@ export default defineComponent({
     JetInput,
     JetCheckbox,
     JetLabel,
-    JetValidationErrors,
-    Link
+    ValidationErrors,
+    Link,
   },
 
   data() {
@@ -134,17 +134,17 @@ export default defineComponent({
         email: '',
         password: '',
         password_confirmation: '',
-        terms: false
-      })
+        terms: false,
+      }),
     }
   },
 
   methods: {
     submit() {
       this.form.post(this.route('register'), {
-        onFinish: () => this.form.reset('password', 'password_confirmation')
+        onFinish: () => this.form.reset('password', 'password_confirmation'),
       })
-    }
-  }
+    },
+  },
 })
 </script>

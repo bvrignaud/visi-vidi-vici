@@ -6,7 +6,6 @@ import JetButton from '@/jetstream/Button.vue'
 import JetCheckbox from '@/jetstream/Checkbox.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetLabel from '@/jetstream/Label.vue'
-import JetValidationErrors from '@/jetstream/ValidationErrors.vue'
 import { Head, Link, useForm } from '@inertiajs/vue3'
 
 defineProps<{
@@ -35,7 +34,7 @@ const submit = () => {
       <jet-authentication-card-logo />
     </template>
 
-    <jet-validation-errors class="mb-4" />
+    <validation-errors class="mb-4" />
 
     <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
       {{ status }}
