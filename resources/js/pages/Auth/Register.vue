@@ -6,8 +6,6 @@
       <jet-authentication-card-logo />
     </template>
 
-    {{ $t('auth.failed') }}
-
     <validation-errors class="mb-4" />
 
     <form @submit.prevent="submit">
