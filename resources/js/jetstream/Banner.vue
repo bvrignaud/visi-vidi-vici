@@ -1,3 +1,19 @@
+<script setup lang="ts">
+import { usePage } from '@inertiajs/vue3'
+import { computed, ref } from 'vue'
+
+const page = usePage()
+const show = ref(true)
+
+const style = computed(() => {
+  return page.props.jetstream.flash?.bannerStyle || 'success'
+})
+
+const message = computed(() => {
+  return page.props.jetstream.flash?.banner || ''
+})
+</script>
+
 <template>
   <div>
     <div
@@ -81,25 +97,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  data() {
-    return {
-      show: true,
-    }
-  },
-
-  computed: {
-    style() {
-      return this.$page.props.jetstream.flash?.bannerStyle || 'success'
-    },
-
-    message() {
-      return this.$page.props.jetstream.flash?.banner || ''
-    },
-  },
-})
-</script>
