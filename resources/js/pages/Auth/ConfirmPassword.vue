@@ -1,5 +1,5 @@
 <template>
-  <Head title="Secure Area" />
+  <Head :title="$t('Secure Area')" />
 
   <jet-authentication-card>
     <template #logo>
@@ -7,14 +7,18 @@
     </template>
 
     <div class="mb-4 text-sm text-gray-600">
-      This is a secure area of the application. Please confirm your password before continuing.
+      {{
+        $t(
+          'This is a secure area of the application. Please confirm your password before continuing.',
+        )
+      }}
     </div>
 
     <validation-errors class="mb-4" />
 
     <form @submit.prevent="submit">
       <div>
-        <jet-label for="password" value="Password" />
+        <jet-label for="password" :value="$t('Password')" />
         <jet-input
           id="password"
           type="password"
@@ -32,7 +36,7 @@
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
         >
-          Confirm
+          {{ $t('Confirm') }}
         </jet-button>
       </div>
     </form>
