@@ -12,8 +12,8 @@ importers:
         specifier: ^4.5.12
         version: 4.5.12
       '@inertiajs/vue3':
-        specifier: ^2.0.12
-        version: 2.0.12(vue@3.5.17(typescript@5.8.3))
+        specifier: ^2.0.13
+        version: 2.0.13(vue@3.5.17(typescript@5.8.3))
       '@tailwindcss/vite':
         specifier: ^4.1.10
         version: 4.1.10(vite@6.3.5(@types/node@22.13.14)(jiti@2.4.2)(lightningcss@1.30.1)(sass@1.86.0)(terser@5.39.0)(yaml@2.7.1))
@@ -52,8 +52,8 @@ importers:
         version: 2.5.3
     devDependencies:
       '@chromatic-com/storybook':
-        specifier: ^3.2.6
-        version: 3.2.6(react@19.1.0)(storybook@8.6.14(prettier@3.5.3))
+        specifier: ^3.2.7
+        version: 3.2.7(react@19.1.0)(storybook@8.6.14(prettier@3.5.3))
       '@storybook/addon-essentials':
         specifier: ^8.6.14
         version: 8.6.14(@types/react@19.1.4)(storybook@8.6.14(prettier@3.5.3))
@@ -121,8 +121,8 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0(prettier@3.5.3)(typescript@5.8.3)(vue-tsc@2.2.10(typescript@5.8.3))
       prettier-plugin-tailwindcss:
-        specifier: ^0.6.12
-        version: 0.6.12(prettier-plugin-organize-imports@4.1.0(prettier@3.5.3)(typescript@5.8.3)(vue-tsc@2.2.10(typescript@5.8.3)))(prettier@3.5.3)
+        specifier: ^0.6.13
+        version: 0.6.13(prettier-plugin-organize-imports@4.1.0(prettier@3.5.3)(typescript@5.8.3)(vue-tsc@2.2.10(typescript@5.8.3)))(prettier@3.5.3)
       resolve-url-loader:
         specifier: ^5.0.0
         version: 5.0.0
@@ -177,8 +177,8 @@ packages:
     resolution: {integrity: sha512-6zABk/ECA/QYSCQ1NGiVwwbQerUCZ+TQbp64Q3AgmfNvurHH0j8TtXa1qbShXA6qqkpAj4V5W8pP6mLe1mcMqA==}
     engines: {node: '>=18'}
 
-  '@chromatic-com/storybook@3.2.6':
-    resolution: {integrity: sha512-FDmn5Ry2DzQdik+eq2sp/kJMMT36Ewe7ONXUXM2Izd97c7r6R/QyGli8eyh/F0iyqVvbLveNYFyF0dBOJNwLqw==}
+  '@chromatic-com/storybook@3.2.7':
+    resolution: {integrity: sha512-fCGhk4cd3VA8RNg55MZL5CScdHqljsQcL9g6Ss7YuobHpSo9yytEWNdgMd5QxAHSPBlLGFHjnSmliM3G/BeBqw==}
     engines: {node: '>=16.0.0', yarn: '>=1.22.18'}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
@@ -398,11 +398,11 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
-  '@inertiajs/core@2.0.12':
-    resolution: {integrity: sha512-TxMRUcSB/w2Or9KSsldgcx49u+1xveLg7HuwRkqrs196ZrDwYRjtc984uc838vDP+dsFIz//+Tn0n7ysG/MgMQ==}
+  '@inertiajs/core@2.0.13':
+    resolution: {integrity: sha512-MZ1JkEoA1s7eheHiQFXVjIOw9xBx2zZFX/lCwAUSb5w6WOsz7gaLj/fTxoMZr9eyxzcfaLScsky+EcSpiRU78w==}
 
-  '@inertiajs/vue3@2.0.12':
-    resolution: {integrity: sha512-ruvThr3BKunFjh+EamcGilAI8RGSF/upL//E9bnchYEWFCwQtZ2NzQ0tBOFLQ+qYnaRiDjsyTa63h1R36PUmbg==}
+  '@inertiajs/vue3@2.0.13':
+    resolution: {integrity: sha512-Zg6wbpG04Qs2ellggnlV5aP9x182nndDROFqdxfiPGokHjU5XZiRg1ss6LfskeDmEULBT/nH55Z1p+Mgz5t++A==}
     peerDependencies:
       vue: ^3.0.0
 
@@ -2210,8 +2210,8 @@ packages:
       vue-tsc:
         optional: true
 
-  prettier-plugin-tailwindcss@0.6.12:
-    resolution: {integrity: sha512-OuTQKoqNwV7RnxTPwXWzOFXy6Jc4z8oeRZYGuMpRyG3WbuR3jjXdQFK8qFBMBx8UHWdHrddARz2fgUenild6aw==}
+  prettier-plugin-tailwindcss@0.6.13:
+    resolution: {integrity: sha512-uQ0asli1+ic8xrrSmIOaElDu0FacR4x69GynTh2oZjFY10JUt6EEumTQl5tB4fMeD6I1naKd+4rXQQ7esT2i1g==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
@@ -2875,7 +2875,7 @@ snapshots:
 
   '@bcoe/v8-coverage@1.0.2': {}
 
-  '@chromatic-com/storybook@3.2.6(react@19.1.0)(storybook@8.6.14(prettier@3.5.3))':
+  '@chromatic-com/storybook@3.2.7(react@19.1.0)(storybook@8.6.14(prettier@3.5.3))':
     dependencies:
       chromatic: 11.29.0
       filesize: 10.1.6
@@ -3026,7 +3026,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@inertiajs/core@2.0.12':
+  '@inertiajs/core@2.0.13':
     dependencies:
       axios: 1.10.0
       es-toolkit: 1.39.3
@@ -3034,9 +3034,9 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@inertiajs/vue3@2.0.12(vue@3.5.17(typescript@5.8.3))':
+  '@inertiajs/vue3@2.0.13(vue@3.5.17(typescript@5.8.3))':
     dependencies:
-      '@inertiajs/core': 2.0.12
+      '@inertiajs/core': 2.0.13
       es-toolkit: 1.39.3
       vue: 3.5.17(typescript@5.8.3)
     transitivePeerDependencies:
@@ -4874,7 +4874,7 @@ snapshots:
     optionalDependencies:
       vue-tsc: 2.2.10(typescript@5.8.3)
 
-  prettier-plugin-tailwindcss@0.6.12(prettier-plugin-organize-imports@4.1.0(prettier@3.5.3)(typescript@5.8.3)(vue-tsc@2.2.10(typescript@5.8.3)))(prettier@3.5.3):
+  prettier-plugin-tailwindcss@0.6.13(prettier-plugin-organize-imports@4.1.0(prettier@3.5.3)(typescript@5.8.3)(vue-tsc@2.2.10(typescript@5.8.3)))(prettier@3.5.3):
     dependencies:
       prettier: 3.5.3
     optionalDependencies:
