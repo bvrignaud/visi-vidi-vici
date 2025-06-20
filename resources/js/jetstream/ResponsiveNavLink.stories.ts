@@ -1,5 +1,5 @@
 import ResponsiveNavLink from '@/jetstream/ResponsiveNavLink.vue'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 const meta: Meta<typeof ResponsiveNavLink> = {
   title: 'Jetstream/ResponsiveNavLink',

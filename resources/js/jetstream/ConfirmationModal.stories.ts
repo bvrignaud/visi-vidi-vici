@@ -1,7 +1,7 @@
 import ConfirmationModal from '@/jetstream/ConfirmationModal.vue'
 import Button from '@/jetstream/Button.vue'
 import SecondaryButton from '@/jetstream/SecondaryButton.vue'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 const meta: Meta<typeof ConfirmationModal> = {
   title: 'Jetstream/ConfirmationModal',

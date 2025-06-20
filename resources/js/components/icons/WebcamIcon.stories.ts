@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import WebcamIcon from './WebcamIcon.vue'
 
 const meta: Meta<typeof WebcamIcon> = {

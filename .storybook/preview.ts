@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/vue3'
+import type { Preview } from '@storybook/vue3-vite'
 import '../resources/css/app.css'
 
 const preview: Preview = {

@@ -1,6 +1,6 @@
 import AuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import AuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 const meta: Meta<typeof AuthenticationCard> = {
   title: 'Jetstream/AuthenticationCard',
