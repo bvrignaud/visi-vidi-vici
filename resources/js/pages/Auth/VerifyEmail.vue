@@ -18,9 +18,9 @@
 
     <form @submit.prevent="submit">
       <div class="mt-4 flex items-center justify-between">
-        <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+        <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
           Resend Verification Email
-        </jet-button>
+        </Button>
 
         <Link
           :href="route('logout')"
@@ -35,9 +35,9 @@
 </template>
 
 <script>
+import Button from '@/components/Button.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
-import JetButton from '@/jetstream/Button.vue'
 import { Head, Link } from '@inertiajs/vue3'
 import { defineComponent } from 'vue'
 
@@ -46,7 +46,7 @@ export default defineComponent({
     Head,
     JetAuthenticationCard,
     JetAuthenticationCardLogo,
-    JetButton,
+    Button,
     Link,
   },
 

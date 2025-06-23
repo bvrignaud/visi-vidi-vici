@@ -1,5 +1,5 @@
+import Button from '@/components/Button.vue'
 import ConfirmationModal from '@/jetstream/ConfirmationModal.vue'
-import Button from '@/jetstream/Button.vue'
 import SecondaryButton from '@/jetstream/SecondaryButton.vue'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 

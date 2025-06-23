@@ -29,14 +29,14 @@
       <template #footer>
         <jet-secondary-button @click="closeModal"> Cancel </jet-secondary-button>
 
-        <jet-button
+        <Button
           class="ml-2"
           @click="confirmPassword"
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
         >
           {{ button }}
-        </jet-button>
+        </Button>
       </template>
     </jet-dialog-modal>
   </span>
@@ -44,7 +44,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-import JetButton from './Button.vue'
+import Button from '../components/Button.vue'
 import JetDialogModal from './DialogModal.vue'
 import JetInput from './Input.vue'
 import JetInputError from './InputError.vue'
@@ -66,7 +66,7 @@ export default defineComponent({
   },
 
   components: {
-    JetButton,
+    Button,
     JetDialogModal,
     JetInput,
     JetInputError,

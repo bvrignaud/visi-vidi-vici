@@ -82,8 +82,8 @@
 </template>
 
 <script lang="ts">
+import Button from '@/components/Button.vue'
 import ActionMessage from '@/jetstream/ActionMessage.vue'
-import Button from '@/jetstream/Button.vue'
 import FormSection from '@/jetstream/FormSection.vue'
 import JetInput from '@/jetstream/Input.vue'
 import InputError from '@/jetstream/InputError.vue'

@@ -57,23 +57,19 @@
           <template v-else> Use an authentication code</template>
         </button>
 
-        <jet-button
-          class="ml-4"
-          :class="{ 'opacity-25': form.processing }"
-          :disabled="form.processing"
-        >
+        <Button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
           Log in
-        </jet-button>
+        </Button>
       </div>
     </form>
   </jet-authentication-card>
 </template>
 
 <script>
+import Button from '@/components/Button.vue'
 import ValidationErrors from '@/components/ValidationErrors.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
-import JetButton from '@/jetstream/Button.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetLabel from '@/jetstream/Label.vue'
 import { Head } from '@inertiajs/vue3'
@@ -84,7 +80,7 @@ export default defineComponent({
     Head,
     JetAuthenticationCard,
     JetAuthenticationCardLogo,
-    JetButton,
+    Button: Button,
     JetInput,
     JetLabel,
     ValidationErrors,

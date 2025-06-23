@@ -51,16 +51,16 @@
         Sauvegardé.
       </jet-action-message>
 
-      <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+      <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
         Sauvegarder
-      </jet-button>
+      </Button>
     </template>
   </jet-form-section>
 </template>
 
 <script lang="ts">
+import Button from '@/components/Button.vue'
 import JetActionMessage from '@/jetstream/ActionMessage.vue'
-import JetButton from '@/jetstream/Button.vue'
 import JetFormSection from '@/jetstream/FormSection.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetInputError from '@/jetstream/InputError.vue'
@@ -70,7 +70,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   components: {
     JetActionMessage,
-    JetButton,
+    Button,
     JetFormSection,
     JetInput,
     JetInputError,

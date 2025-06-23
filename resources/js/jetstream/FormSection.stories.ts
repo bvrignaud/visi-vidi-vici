@@ -1,5 +1,5 @@
+import Button from '@/components/Button.vue'
 import FormSection from '@/jetstream/FormSection.vue'
-import Button from '@/jetstream/Button.vue'
 import Input from '@/jetstream/Input.vue'
 import Label from '@/jetstream/Label.vue'
 import InputError from '@/jetstream/InputError.vue'

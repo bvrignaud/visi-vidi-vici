@@ -70,9 +70,9 @@
       </div>
 
       <div class="mt-5 flex items-center">
-        <jet-button @click="confirmLogout">
+        <Button @click="confirmLogout">
           Déconnecter les sessions ouvertes sur d'autres navigateurs
-        </jet-button>
+        </Button>
 
         <jet-action-message :on="form.recentlySuccessful" class="ml-3">
           Terminé.
@@ -104,14 +104,14 @@
         <template #footer>
           <jet-secondary-button @click="closeModal"> Annuler</jet-secondary-button>
 
-          <jet-button
+          <Button
             class="ml-2"
             @click="logoutOtherBrowserSessions"
             :class="{ 'opacity-25': form.processing }"
             :disabled="form.processing"
           >
             Déconnecter les sessions ouvertes sur d'autres navigateurs
-          </jet-button>
+          </Button>
         </template>
       </jet-dialog-modal>
     </template>
@@ -119,9 +119,9 @@
 </template>
 
 <script>
+import Button from '@/components/Button.vue'
 import JetActionMessage from '@/jetstream/ActionMessage.vue'
 import JetActionSection from '@/jetstream/ActionSection.vue'
-import JetButton from '@/jetstream/Button.vue'
 import JetDialogModal from '@/jetstream/DialogModal.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetInputError from '@/jetstream/InputError.vue'
@@ -134,7 +134,7 @@ export default defineComponent({
   components: {
     JetActionMessage,
     JetActionSection,
-    JetButton,
+    Button,
     JetDialogModal,
     JetInput,
     JetInputError,

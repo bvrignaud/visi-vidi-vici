@@ -1,5 +1,5 @@
+import Button from '@/components/Button.vue'
 import ConfirmsPassword from '@/jetstream/ConfirmsPassword.vue'
-import Button from '@/jetstream/Button.vue'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 const meta: Meta<typeof ConfirmsPassword> = {

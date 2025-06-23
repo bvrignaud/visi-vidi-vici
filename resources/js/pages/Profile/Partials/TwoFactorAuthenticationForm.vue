@@ -55,9 +55,9 @@
       <div class="mt-5">
         <div v-if="!twoFactorEnabled">
           <jet-confirms-password @confirmed="enableTwoFactorAuthentication">
-            <jet-button type="button" :class="{ 'opacity-25': enabling }" :disabled="enabling">
+            <Button type="button" :class="{ 'opacity-25': enabling }" :disabled="enabling">
               Activer
-            </jet-button>
+            </Button>
           </jet-confirms-password>
         </div>
 
@@ -86,8 +86,8 @@
 </template>
 
 <script lang="ts">
+import Button from '@/components/Button.vue'
 import JetActionSection from '@/jetstream/ActionSection.vue'
-import JetButton from '@/jetstream/Button.vue'
 import JetConfirmsPassword from '@/jetstream/ConfirmsPassword.vue'
 import JetDangerButton from '@/jetstream/DangerButton.vue'
 import JetSecondaryButton from '@/jetstream/SecondaryButton.vue'
@@ -96,7 +96,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   components: {
     JetActionSection,
-    JetButton,
+    Button,
     JetConfirmsPassword,
     JetDangerButton,
     JetSecondaryButton,

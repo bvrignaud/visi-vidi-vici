@@ -33,8 +33,8 @@
 </template>
 
 <script setup lang="ts">
+import Button from '@/components/Button.vue'
 import Map from '@/components/Map.vue'
-import Button from '@/jetstream/Button.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
 import type { Spot } from '@/types/Spot'
 import { Link } from '@inertiajs/vue3'

@@ -1,8 +1,8 @@
-import Button from '@/jetstream/Button.vue'
+import Button from '@/components/Button.vue'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 const meta: Meta<typeof Button> = {
-  title: 'Jetstream/Button',
+  title: 'Components/Button',
   component: Button,
   tags: ['autodocs'],
   render: (args) => ({

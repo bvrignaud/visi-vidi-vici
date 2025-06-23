@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import Button from '@/components/Button.vue'
 import TextLink from '@/components/TextLink.vue'
 import ValidationErrors from '@/components/ValidationErrors.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
-import JetButton from '@/jetstream/Button.vue'
 import JetCheckbox from '@/jetstream/Checkbox.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetLabel from '@/jetstream/Label.vue'
@@ -82,13 +82,9 @@ const submit = () => {
           {{ $t('Forgot your password?') }}
         </Link>
 
-        <jet-button
-          class="ml-4"
-          :class="{ 'opacity-25': form.processing }"
-          :disabled="form.processing"
-        >
+        <Button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
           {{ $t('Log in') }}
-        </jet-button>
+        </Button>
       </div>
 
       <div class="text-muted-foreground text-center text-sm">
