@@ -47,8 +47,9 @@ class SpotsController extends Controller
         $sun_infos = [];
         foreach ($carbonPeriod as $carbon) {
             $sun_infos[$carbon->format('Y-m-d')] = array_map(
-                fn ($timestamp): string => Carbon::createFromTimestamp($timestamp)
-                    ->setTimezone($spot->timezone)->format('H:i'),
+                fn ($timestamp): string|bool => is_bool($timestamp)
+                    ? $timestamp
+                    : Carbon::createFromTimestamp($timestamp)->setTimezone($spot->timezone)->format('H:i'),
                 date_sun_info($carbon->getTimestamp(), $spot->lat, $spot->lng)
             );
         }
