@@ -19,7 +19,7 @@ class StormGlassAPI
         $cacheKey .= $start ? "&start={$start->format('Y-m-d')}" : '';
         $cacheKey .= $end ? "&end={$end->format('Y-m-d')}" : '';
 
-        return \Cache::remember($cacheKey, 3600, function () use ($lat, $lng, $start, $end) {
+        return \Cache::remember($cacheKey, 3600 * 2, function () use ($lat, $lng, $start, $end) {
             $response = Http::withHeaders([
                 'Authorization' => config('services.stormglass.key'),
             ])->get('https://api.stormglass.io/v2/weather/point', [
