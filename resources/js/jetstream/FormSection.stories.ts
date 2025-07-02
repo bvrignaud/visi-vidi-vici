@@ -1,4 +1,4 @@
-import Button from '@/components/Button.vue'
+import Button from '@/components/buttons/Button.vue'
 import FormSection from '@/jetstream/FormSection.vue'
 import Input from '@/jetstream/Input.vue'
 import Label from '@/jetstream/Label.vue'

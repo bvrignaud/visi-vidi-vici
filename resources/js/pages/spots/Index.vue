@@ -1,7 +1,7 @@
 <template>
   <app-layout title="Spots">
     <template #header>
-      <h2 class="text-xl font-semibold leading-tight text-gray-800">Visi vidi vici</h2>
+      <h2 class="text-xl leading-tight font-semibold text-gray-800">Visi vidi vici</h2>
     </template>
 
     <div class="py-12">
@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import Button from '@/components/Button.vue'
+import Button from '@/components/buttons/Button.vue'
 import Map from '@/components/Map.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
 import type { Spot } from '@/types/Spot'

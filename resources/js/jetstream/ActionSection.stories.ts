@@ -1,4 +1,4 @@
-import Button from '@/components/Button.vue'
+import Button from '@/components/buttons/Button.vue'
 import ActionSection from '@/jetstream/ActionSection.vue'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 

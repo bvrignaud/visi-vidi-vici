@@ -44,7 +44,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-import Button from '../components/Button.vue'
+import Button from '../components/buttons/Button.vue'
 import JetDialogModal from './DialogModal.vue'
 import JetInput from './Input.vue'
 import JetInputError from './InputError.vue'

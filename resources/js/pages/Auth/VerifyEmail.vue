@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import Button from '@/components/Button.vue'
+import Button from '@/components/buttons/Button.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
 import { Head, Link } from '@inertiajs/vue3'

@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import Button from '@/components/Button.vue'
+import Button from '@/components/buttons/Button.vue'
 import JetActionMessage from '@/jetstream/ActionMessage.vue'
 import JetActionSection from '@/jetstream/ActionSection.vue'
 import JetDialogModal from '@/jetstream/DialogModal.vue'

@@ -62,7 +62,7 @@
 </template>
 
 <script lang="ts">
-import Button from '@/components/Button.vue'
+import Button from '@/components/buttons/Button.vue'
 import TextArea from '@/components/TextArea.vue'
 import ActionMessage from '@/jetstream/ActionMessage.vue'
 import FormSection from '@/jetstream/FormSection.vue'

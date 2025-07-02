@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import Button from '@/components/Button.vue'
+import Button from '@/components/buttons/Button.vue'
 import ValidationErrors from '@/components/ValidationErrors.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from '@/components/Button.vue'
+import Button from '@/components/buttons/Button.vue'
 import TextLink from '@/components/TextLink.vue'
 import ValidationErrors from '@/components/ValidationErrors.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'

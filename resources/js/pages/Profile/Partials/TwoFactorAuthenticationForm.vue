@@ -86,7 +86,7 @@
 </template>
 
 <script lang="ts">
-import Button from '@/components/Button.vue'
+import Button from '@/components/buttons/Button.vue'
 import JetActionSection from '@/jetstream/ActionSection.vue'
 import JetConfirmsPassword from '@/jetstream/ConfirmsPassword.vue'
 import JetDangerButton from '@/jetstream/DangerButton.vue'

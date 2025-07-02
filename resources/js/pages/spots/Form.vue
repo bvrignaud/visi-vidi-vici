@@ -1,7 +1,7 @@
 <template>
   <app-layout title="Création d'un nouveau spot">
     <template #header>
-      <h2 class="text-xl font-semibold leading-tight text-gray-800">Nouveau Spot</h2>
+      <h2 class="text-xl leading-tight font-semibold text-gray-800">Nouveau Spot</h2>
     </template>
 
     <div class="py-12">
@@ -82,7 +82,7 @@
 </template>
 
 <script lang="ts">
-import Button from '@/components/Button.vue'
+import Button from '@/components/buttons/Button.vue'
 import ActionMessage from '@/jetstream/ActionMessage.vue'
 import FormSection from '@/jetstream/FormSection.vue'
 import JetInput from '@/jetstream/Input.vue'
