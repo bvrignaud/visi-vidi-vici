@@ -11,12 +11,11 @@ parameters:
 
     ignoreErrors:
         - '#Method App\\Actions\\Fortify\\[a-zA-Z0-9\\_]+\::[a-zA-Z0-9\\_]+\(\) has parameter \$input with no value type specified in iterable type array#'
-        - '#Parameter \#1 \$timestamp of static method Carbon\\Carbon\:\:createFromTimestamp\(\) expects float\|int\|string, bool\|int given#'
+        #- '#Parameter \#1 \$timestamp of static method Carbon\\Carbon\:\:createFromTimestamp\(\) expects float\|int\|string, bool\|int given#'
         -
           message: '#Method [a-zA-Z0-9\\_]+::rules\(\) return type has no value type specified in iterable type array.#'
           paths:
             - app/Http/Requests/*
-        - '#Method App\\Services\\StormGlassAPI\::[a-zA-Z0-9\\_]+\(\) return type has no value type specified in iterable type array#'
 
 #    excludePaths:
 #        - ./*/*/FileToBeExcluded.php

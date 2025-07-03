@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SpotTrait;
 use App\Models\Spot;
-use App\Services\StormGlassAPI;
+use App\Services\StormGlassApi\StormGlassAPI;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Response;

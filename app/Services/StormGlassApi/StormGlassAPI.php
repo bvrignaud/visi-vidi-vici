@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Services;
+namespace App\Services\StormGlassApi;
 
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Http;
  */
 class StormGlassAPI
 {
+    /**
+     * @throws RequestException
+     *
+     * @phpstan-ignore missingType.iterableValue
+     */
     public function getWeatherPoint(float $lat, float $lng, ?\DateTime $start = null, ?\DateTime $end = null): array
     {
         $cacheKey = "StormGlassWeatherPoint?lat={$lat}&lng={$lng}";
@@ -48,6 +54,11 @@ class StormGlassAPI
         });
     }
 
+    /**
+     * @throws RequestException
+     *
+     * @phpstan-ignore missingType.iterableValue
+     */
     public function getTideExtremesPoint(float $lat, float $lng, ?\DateTime $start = null): array
     {
         return \Cache::remember(
