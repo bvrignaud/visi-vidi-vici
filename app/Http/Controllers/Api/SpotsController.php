@@ -54,6 +54,6 @@ class SpotsController extends Controller
             );
         }
 
-        return new Response(compact('spot', 'forecasts', 'tides', 'sun_infos'));
+        return new Response(compact('forecasts', 'tides', 'sun_infos'));
     }
 }
