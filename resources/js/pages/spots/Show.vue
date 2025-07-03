@@ -1,7 +1,7 @@
 <template>
   <app-layout title="Spots">
     <template #header>
-      <h2 class="text-xl font-semibold leading-tight text-gray-800">{{ spot.name }}</h2>
+      <h2 class="text-xl leading-tight font-semibold text-gray-800">{{ spot.name }}</h2>
     </template>
 
     <div class="pb-10">
@@ -278,31 +278,6 @@
   </app-layout>
 </template>
 
-<style scoped>
-@reference "../../../css/app.css";
-
-table {
-  @apply text-center;
-}
-
-th.actual-day,
-td.actual-day {
-  @apply bg-yellow-300;
-}
-
-.sticky-col {
-  @apply sticky left-0 z-10 bg-white;
-}
-
-table.detailed th {
-  @apply text-sm;
-}
-
-table.detailed td {
-  @apply p-0 text-xs;
-}
-</style>
-
 <script setup lang="ts">
 import Map from '@/components/Map.vue'
 import WebcamThumbnail from '@/components/WebcamThumbnail.vue'
@@ -329,7 +304,6 @@ const forecasts = ref<Array<Forecast>>([])
 const forecastsAvg = ref<{ [date: string]: ForecastAvg }>({})
 const sunInfos = ref<{ [date: string]: SunInfo }>({})
 const tidesRows = ref<{ [date: string]: { colspan: number; tides: Array<any> } }>({})
-// const tidesRows = ref<Record<string, { colspan: number; tides: Array<any> }>>({})
 const today: string = dayjs().format('YYYY-MM-DD')
 const markers = ref<Array<any>>([])
 const webcams = ref<Array<Webcam>>([])
@@ -347,13 +321,6 @@ onMounted(async () => {
           tides: [],
         }
       }
-      // if (sunInfos.value[key] !== undefined) {
-      //   if (sunInfos.value[key].colspan === undefined) {
-      //     sunInfos.value[key].colspan = 1
-      //   } else {
-      //     sunInfos.value[key].colspan++
-      //   }
-      // }
       tidesRows.value[key].colspan++
     })
     data.tides.forEach((tide) => {
@@ -402,7 +369,7 @@ function calculateAvgForecasts(forecasts: Forecast[]): void {
   }
 }
 
-function isNow(time: string) {
+function isNow(time: number | string) {
   return dayjs(time).format('YYYY-MM-DD') === today
 }
 
@@ -421,3 +388,28 @@ function numberToColor(i: number, min: number, max: number) {
   return `rgb(${R},${G},${B})`
 }
 </script>
+
+<style scoped>
+@reference "../../../css/app.css";
+
+table {
+  @apply text-center;
+}
+
+th.actual-day,
+td.actual-day {
+  @apply bg-yellow-300;
+}
+
+.sticky-col {
+  @apply sticky left-0 z-10 bg-white;
+}
+
+table.detailed th {
+  @apply text-sm;
+}
+
+table.detailed td {
+  @apply p-0 text-xs;
+}
+</style>
