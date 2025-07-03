@@ -50,16 +50,20 @@ class StormGlassAPI
 
     public function getTideExtremesPoint(float $lat, float $lng, ?\DateTime $start = null): array
     {
-        return \Cache::remember("StormGlassTideExtremesPoint?lat={$lat}&lng={$lng}&start={$start?->format('Ymd')}", 3600, function () use ($lat, $lng, $start) {
-            $response = Http::withHeaders([
-                'Authorization' => config('services.stormglass.key'),
-            ])->get('https://api.stormglass.io/v2/tide/extremes/point', [
-                'lat' => $lat,
-                'lng' => $lng,
-                'start' => $start?->getTimestamp(),
-            ]);
+        return \Cache::remember(
+            "StormGlassTideExtremesPoint?lat={$lat}&lng={$lng}&start={$start?->format('Ymd')}",
+            3600 * 24 * 7,
+            function () use ($lat, $lng, $start) {
+                $response = Http::withHeaders([
+                    'Authorization' => config('services.stormglass.key'),
+                ])->get('https://api.stormglass.io/v2/tide/extremes/point', [
+                    'lat' => $lat,
+                    'lng' => $lng,
+                    'start' => $start?->getTimestamp(),
+                ])->throw();
 
-            return $response->json()['data'];
-        });
+                return $response->json()['data'];
+            }
+        );
     }
 }
