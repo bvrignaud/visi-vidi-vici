@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Modal from '@/jetstream/Modal.vue'
+import Modal from '@/components/ui/modal/Modal.vue'
 import { reactive } from 'vue'
-import '../../css/app.css'
+import '../../../../css/app.css'
 
 const state = reactive({
   show: true,
@@ -18,7 +18,7 @@ function close() {
 </script>
 
 <template>
-  <Story title="Jetstream/Modal">
+  <Story title="Ui/modal/Modal">
     <Variant title="Default">
       <div class="p-4">
         <Modal

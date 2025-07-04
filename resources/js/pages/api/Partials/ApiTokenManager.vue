@@ -180,12 +180,12 @@
 
 <script>
 import Button from '@/components/buttons/Button.vue'
+import JetConfirmationModal from '@/components/ui/modal/ConfirmationModal.vue'
+import JetDialogModal from '@/components/ui/modal/DialogModal.vue'
 import JetActionMessage from '@/jetstream/ActionMessage.vue'
 import JetActionSection from '@/jetstream/ActionSection.vue'
 import JetCheckbox from '@/jetstream/Checkbox.vue'
-import JetConfirmationModal from '@/jetstream/ConfirmationModal.vue'
 import JetDangerButton from '@/jetstream/DangerButton.vue'
-import JetDialogModal from '@/jetstream/DialogModal.vue'
 import JetFormSection from '@/jetstream/FormSection.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetInputError from '@/jetstream/InputError.vue'

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import Button from '@/components/buttons/Button.vue'
-import DialogModal from '@/jetstream/DialogModal.vue'
+import DialogModal from '@/components/ui/modal/DialogModal.vue'
 import SecondaryButton from '@/jetstream/SecondaryButton.vue'
 import { reactive } from 'vue'
-import '../../css/app.css'
+import '../../../../css/app.css'
 
 const state = reactive({
   show: false,
@@ -21,16 +21,21 @@ function openModal() {
 </script>
 
 <template>
-  <Story title="Jetstream/DialogModal">
+  <Story title="Ui/modal/DialogModal">
     <Variant title="Default">
       <div class="p-6">
-        <DialogModal :show="state.show" :max-width="state.maxWidth" :closeable="state.closeable" @close="closeModal">
-          <template #title>
-            Dialog Title
-          </template>
+        <DialogModal
+          :show="state.show"
+          :max-width="state.maxWidth"
+          :closeable="state.closeable"
+          @close="closeModal"
+        >
+          <template #title> Dialog Title</template>
           <template #content>
-            <p>This is the content of the dialog modal. You can put any content here, including forms, text, or other
-              components.</p>
+            <p>
+              This is the content of the dialog modal. You can put any content here, including
+              forms, text, or other components.
+            </p>
             <p class="mt-4">Dialog modals are used for a variety of purposes in the application.</p>
           </template>
           <template #footer>
@@ -44,10 +49,13 @@ function openModal() {
 
     <Variant title="Not Closeable">
       <div class="p-6">
-        <DialogModal :show="state.show" :max-width="state.maxWidth" :closeable="false" @close="closeModal">
-          <template #title>
-            Not Closeable Dialog
-          </template>
+        <DialogModal
+          :show="state.show"
+          :max-width="state.maxWidth"
+          :closeable="false"
+          @close="closeModal"
+        >
+          <template #title> Not Closeable Dialog</template>
           <template #content>
             <p>This dialog cannot be closed by clicking outside or pressing Escape.</p>
             <p class="mt-4">You must use one of the buttons in the footer to close it.</p>
@@ -63,10 +71,13 @@ function openModal() {
 
     <Variant title="Small Width">
       <div class="p-6">
-        <DialogModal :show="state.show" max-width="sm" :closeable="state.closeable" @close="closeModal">
-          <template #title>
-            Small Dialog
-          </template>
+        <DialogModal
+          :show="state.show"
+          max-width="sm"
+          :closeable="state.closeable"
+          @close="closeModal"
+        >
+          <template #title> Small Dialog</template>
           <template #content>
             <p>This is a small dialog with a width of 'sm'.</p>
           </template>
@@ -81,7 +92,11 @@ function openModal() {
 
     <template #controls>
       <HstCheckbox title="Show" v-model="state.show" />
-      <HstSelect title="Max Width" v-model="state.maxWidth" :options="['sm', 'md', 'lg', 'xl', '2xl']" />
+      <HstSelect
+        title="Max Width"
+        v-model="state.maxWidth"
+        :options="['sm', 'md', 'lg', 'xl', '2xl']"
+      />
       <HstCheckbox title="Closeable" v-model="state.closeable" />
     </template>
   </Story>
