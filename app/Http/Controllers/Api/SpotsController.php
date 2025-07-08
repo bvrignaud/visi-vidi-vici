@@ -7,11 +7,14 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SpotTrait;
 use App\Models\Spot;
+use App\Services\StormGlassApi\ErrorCodes;
 use App\Services\StormGlassApi\StormGlassAPI;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
+use Sentry;
 
 class SpotsController extends Controller
 {
@@ -31,7 +34,13 @@ class SpotsController extends Controller
 
         $carbonPeriod = CarbonPeriod::create('today -5 days', '1 days', 10);
 
-        $forecasts = $stormGlassAPI->getWeatherPoint($spot->lat, $spot->lng, Carbon::today()->sub(new \DateInterval('P5D')));
+        try {
+            $forecasts = $stormGlassAPI->getWeatherPoint($spot->lat, $spot->lng, Carbon::today()->sub(new \DateInterval('P5D')));
+            $tides = $stormGlassAPI->getTideExtremesPoint($spot->lat, $spot->lng, Carbon::parse('today -5 days'));
+        } catch (RequestException $e) {
+            Sentry::captureException($e);
+            abort(402, ErrorCodes::from(402)->description());
+        }
 
         $note = 5;
         foreach ($forecasts as &$forecast) {
@@ -41,8 +50,6 @@ class SpotsController extends Controller
             $note = $note < 0 ? 0 : min($note, 10);
             $forecast['note'] = $note;
         }
-
-        $tides = $stormGlassAPI->getTideExtremesPoint($spot->lat, $spot->lng, Carbon::parse('today -5 days'));
 
         $sun_infos = [];
         foreach ($carbonPeriod as $carbon) {
