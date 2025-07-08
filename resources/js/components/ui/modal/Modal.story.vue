@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { SecondaryButton } from '@/components/ui/buttons'
 import Modal from '@/components/ui/modal/Modal.vue'
 import { reactive } from 'vue'
 import '../../../../css/app.css'
@@ -18,7 +19,7 @@ function close() {
 </script>
 
 <template>
-  <Story title="Ui/modal/Modal">
+  <Story title="Ui/Modals/Modal">
     <Variant title="Default">
       <div class="p-4">
         <Modal
@@ -33,13 +34,7 @@ function close() {
               This is the default modal configuration with standard width and closeable behavior.
             </p>
             <div class="mt-4 flex justify-end">
-              <button
-                type="button"
-                class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-xs font-semibold tracking-widest text-gray-700 uppercase shadow-sm transition hover:bg-gray-50 focus:outline-none"
-                @click="close"
-              >
-                Close
-              </button>
+              <secondary-button @click="close">Close</secondary-button>
             </div>
           </div>
         </Modal>
@@ -53,13 +48,7 @@ function close() {
             <h2 class="text-lg font-medium text-gray-900">Small Modal</h2>
             <p class="mt-3 text-sm text-gray-600">This modal uses the small width configuration.</p>
             <div class="mt-4 flex justify-end">
-              <button
-                type="button"
-                class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-xs font-semibold tracking-widest text-gray-700 uppercase shadow-sm transition hover:bg-gray-50 focus:outline-none"
-                @click="close"
-              >
-                Close
-              </button>
+              <secondary-button @click="close">Close</secondary-button>
             </div>
           </div>
         </Modal>
@@ -76,13 +65,7 @@ function close() {
               close button.
             </p>
             <div class="mt-4 flex justify-end">
-              <button
-                type="button"
-                class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-xs font-semibold tracking-widest text-gray-700 uppercase shadow-sm transition hover:bg-gray-50 focus:outline-none"
-                @click="close"
-              >
-                Close
-              </button>
+              <secondary-button @click="close">Close</secondary-button>
             </div>
           </div>
         </Modal>

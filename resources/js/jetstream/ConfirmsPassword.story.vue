@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from '@/components/buttons/Button.vue'
+import { Button } from '@/components/ui/buttons'
 import ConfirmsPassword from '@/jetstream/ConfirmsPassword.vue'
 import { reactive, onMounted } from 'vue'
 import '../../css/app.css'

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import DangerButton from '@/jetstream/DangerButton.vue'
+import { SecondaryButton } from '@/components/ui/buttons'
 import { reactive } from 'vue'
-import '../../css/app.css'
+import '../../../../css/app.css'
 
 const state = reactive({
   type: 'button',
@@ -9,13 +9,13 @@ const state = reactive({
 </script>
 
 <template>
-  <Story title="Jetstream/DangerButton">
+  <Story title="Ui/Buttons/SecondaryButton">
     <Variant title="Default">
-      <DangerButton :type="state.type">Delete Account</DangerButton>
+      <SecondaryButton :type="state.type">Cancel</SecondaryButton>
     </Variant>
 
     <Variant title="As Submit">
-      <DangerButton type="submit">Delete Account</DangerButton>
+      <SecondaryButton type="submit">Submit</SecondaryButton>
     </Variant>
 
     <template #controls>

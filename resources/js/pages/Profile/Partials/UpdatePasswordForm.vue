@@ -59,7 +59,7 @@
 </template>
 
 <script lang="ts">
-import Button from '@/components/buttons/Button.vue'
+import Button from '@/components/ui/buttons/Button.vue'
 import JetActionMessage from '@/jetstream/ActionMessage.vue'
 import JetFormSection from '@/jetstream/FormSection.vue'
 import JetInput from '@/jetstream/Input.vue'

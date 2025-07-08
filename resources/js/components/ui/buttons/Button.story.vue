@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Button from '@/components/buttons/Button.vue'
+import { Button } from '@/components/ui/buttons'
 import { reactive } from 'vue'
-import '../../../css/app.css'
+import '../../../../css/app.css'
 
 const state = reactive({
   type: undefined,
@@ -9,7 +9,7 @@ const state = reactive({
 </script>
 
 <template>
-  <Story title="Buttons/Button">
+  <Story title="Ui/Buttons/Button">
     <Variant title="default">
       <Button :type="state.type">Button</Button>
     </Variant>

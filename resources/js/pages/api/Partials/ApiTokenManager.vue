@@ -179,18 +179,18 @@
 </template>
 
 <script>
-import Button from '@/components/buttons/Button.vue'
+import Button from '@/components/ui/buttons/Button.vue'
+import JetDangerButton from '@/components/ui/buttons/DangerButton.vue'
+import JetSecondaryButton from '@/components/ui/buttons/SecondaryButton.vue'
 import JetConfirmationModal from '@/components/ui/modal/ConfirmationModal.vue'
 import JetDialogModal from '@/components/ui/modal/DialogModal.vue'
 import JetActionMessage from '@/jetstream/ActionMessage.vue'
 import JetActionSection from '@/jetstream/ActionSection.vue'
 import JetCheckbox from '@/jetstream/Checkbox.vue'
-import JetDangerButton from '@/jetstream/DangerButton.vue'
 import JetFormSection from '@/jetstream/FormSection.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetInputError from '@/jetstream/InputError.vue'
 import JetLabel from '@/jetstream/Label.vue'
-import JetSecondaryButton from '@/jetstream/SecondaryButton.vue'
 import JetSectionBorder from '@/jetstream/SectionBorder.vue'
 import { defineComponent } from 'vue'
 

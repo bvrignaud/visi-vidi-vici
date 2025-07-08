@@ -119,13 +119,13 @@
 </template>
 
 <script>
-import Button from '@/components/buttons/Button.vue'
+import Button from '@/components/ui/buttons/Button.vue'
+import JetSecondaryButton from '@/components/ui/buttons/SecondaryButton.vue'
+import JetDialogModal from '@/components/ui/modal/DialogModal.vue'
 import JetActionMessage from '@/jetstream/ActionMessage.vue'
 import JetActionSection from '@/jetstream/ActionSection.vue'
-import JetDialogModal from '@/components/ui/modal/DialogModal.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetInputError from '@/jetstream/InputError.vue'
-import JetSecondaryButton from '@/jetstream/SecondaryButton.vue'
 import { defineComponent } from 'vue'
 
 export default defineComponent({

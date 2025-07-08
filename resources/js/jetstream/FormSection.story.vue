@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from '@/components/buttons/Button.vue'
+import { Button } from '@/components/ui/buttons'
 import FormSection from '@/jetstream/FormSection.vue'
 import Input from '@/jetstream/Input.vue'
 import InputError from '@/jetstream/InputError.vue'

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Button from '@/components/buttons/Button.vue'
 import TextLink from '@/components/TextLink.vue'
+import Button from '@/components/ui/buttons/Button.vue'
 import ValidationErrors from '@/components/ValidationErrors.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'

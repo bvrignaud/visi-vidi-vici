@@ -86,11 +86,11 @@
 </template>
 
 <script lang="ts">
-import Button from '@/components/buttons/Button.vue'
+import Button from '@/components/ui/buttons/Button.vue'
+import JetDangerButton from '@/components/ui/buttons/DangerButton.vue'
+import JetSecondaryButton from '@/components/ui/buttons/SecondaryButton.vue'
 import JetActionSection from '@/jetstream/ActionSection.vue'
 import JetConfirmsPassword from '@/jetstream/ConfirmsPassword.vue'
-import JetDangerButton from '@/jetstream/DangerButton.vue'
-import JetSecondaryButton from '@/jetstream/SecondaryButton.vue'
 import { defineComponent } from 'vue'
 
 export default defineComponent({

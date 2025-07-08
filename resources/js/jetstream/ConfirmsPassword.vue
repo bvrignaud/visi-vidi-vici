@@ -43,12 +43,12 @@
 </template>
 
 <script>
+import Button from '@/components/ui/buttons/Button.vue'
 import { defineComponent } from 'vue'
-import Button from '../components/buttons/Button.vue'
+import JetSecondaryButton from '../components/ui/buttons/SecondaryButton.vue'
 import JetDialogModal from '../components/ui/modal/DialogModal.vue'
 import JetInput from './Input.vue'
 import JetInputError from './InputError.vue'
-import JetSecondaryButton from './SecondaryButton.vue'
 
 export default defineComponent({
   emits: ['confirmed'],

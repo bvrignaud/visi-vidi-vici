@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import Button from '@/components/buttons/Button.vue'
+import { Button, SecondaryButton } from '@/components/ui/buttons'
 import DialogModal from '@/components/ui/modal/DialogModal.vue'
-import SecondaryButton from '@/jetstream/SecondaryButton.vue'
 import { reactive } from 'vue'
 import '../../../../css/app.css'
 
@@ -21,7 +20,7 @@ function openModal() {
 </script>
 
 <template>
-  <Story title="Ui/modal/DialogModal">
+  <Story title="Ui/Modals/DialogModal">
     <Variant title="Default">
       <div class="p-6">
         <DialogModal
