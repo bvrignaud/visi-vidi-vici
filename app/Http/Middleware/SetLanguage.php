@@ -15,7 +15,7 @@ class SetLanguage
      */
     public function handle(Request $request, Closure $next): mixed
     {
-        App::setLocale($request->getPreferredLanguage(['en', 'fr']));
+        App::setLocale($request->getPreferredLanguage(['fr', 'en']));
 
         return $next($request);
     }
