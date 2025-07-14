@@ -10,8 +10,6 @@ use Inertia\Inertia;
 
 class SpotsController extends Controller
 {
-    use SpotTrait;
-
     public function index(): \Inertia\Response
     {
         return Inertia::render('spots/Index', [

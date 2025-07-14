@@ -12,8 +12,11 @@ interface SpotForecast {
 }
 
 export const useSpot = () => {
-  async function fetchSpotForecast(id: string): Promise<SpotForecast> {
+  async function fetchSpotForecast(id: string, start: Date | null = null): Promise<SpotForecast> {
     const response = await axios.get(`/api/spots/${id}/forecast`, {
+      params: {
+        start,
+      },
       responseType: 'json',
     })
 

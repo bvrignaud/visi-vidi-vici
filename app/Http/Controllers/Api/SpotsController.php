@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
+use App\Actions\Forecasts\GetWeatherPoint;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\SpotTrait;
+use App\Http\Requests\GetForecastRequest;
 use App\Models\Spot;
 use App\Services\StormGlassApi\ErrorCodes;
 use App\Services\StormGlassApi\StormGlassAPI;
@@ -18,8 +19,6 @@ use Sentry;
 
 class SpotsController extends Controller
 {
-    use SpotTrait;
-
     /**
      * @return Collection<int, Spot>
      */
@@ -28,36 +27,31 @@ class SpotsController extends Controller
         return Spot::orderBy('name')->get();
     }
 
-    public function getForecast(Spot $spot): Response
+    public function getForecast(Spot $spot, GetForecastRequest $request): Response
     {
         $stormGlassAPI = new StormGlassAPI;
 
-        $carbonPeriod = CarbonPeriod::create('today -5 days', '1 days', 10);
+        $start = $request->date('start') ?: Carbon::today()->sub(new \DateInterval('P4D'));
+
+        $carbonPeriod = CarbonPeriod::create($start, '1 days', 10);
 
         try {
-            $forecasts = $stormGlassAPI->getWeatherPoint($spot->lat, $spot->lng, Carbon::today()->sub(new \DateInterval('P5D')));
-            $tides = $stormGlassAPI->getTideExtremesPoint($spot->lat, $spot->lng, Carbon::parse('today -5 days'));
+            $forecasts = GetWeatherPoint::get($spot, $start->toImmutable());
+            $tides = $stormGlassAPI->getTideExtremesPoint($spot->lat, $spot->lng, $start);
         } catch (RequestException $e) {
             Sentry::captureException($e);
             abort(402, ErrorCodes::from(402)->description());
         }
 
-        $note = 5;
-        foreach ($forecasts as &$forecast) {
-            $note += $this->calculNoteForSwell($forecast['swellHeight']);
-            $note += $this->calculNoteForSwellPeriod($forecast['swellPeriod']);
-            $note += $this->calculNoteForWind($spot->optimal_wind_direction, $forecast['windDirection'], $forecast['windSpeed']);
-            $note = $note < 0 ? 0 : min($note, 10);
-            $forecast['note'] = $note;
-        }
-
         $sun_infos = [];
         foreach ($carbonPeriod as $carbon) {
-            $sun_infos[$carbon->format('Y-m-d')] = array_map(
+            $carbon->setTimezone($spot->timezone);
+            $dateFormatted = $carbon->format('Y-m-d');
+            $sun_infos[$dateFormatted] = array_map(
                 fn ($timestamp): string|bool => is_bool($timestamp)
                     ? $timestamp
                     : Carbon::createFromTimestamp($timestamp)->setTimezone($spot->timezone)->format('H:i'),
-                date_sun_info($carbon->getTimestamp(), $spot->lat, $spot->lng)
+                date_sun_info(strtotime($dateFormatted), $spot->lat, $spot->lng)
             );
         }
 
