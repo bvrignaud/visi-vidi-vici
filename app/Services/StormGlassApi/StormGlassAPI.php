@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services\StormGlassApi;
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -42,7 +43,11 @@ class StormGlassAPI
 
             foreach ($hours as &$hour) {
                 $hour['cloudCover'] = round(array_sum(array_values($hour['cloudCover'])) / count($hour['cloudCover']), 1);
-                $hour['airTemperature'] = round(array_sum(array_values($hour['airTemperature'])) / count($hour['airTemperature']), 1);
+
+                $airTemperatures = array_values($hour['airTemperature']);
+                $airTemperatures = Arr::reject($airTemperatures, fn (float $value) => $value < -100);
+                $hour['airTemperature'] = round(array_sum($airTemperatures) / count($airTemperatures), 1);
+
                 $hour['swellHeight'] = empty($hour['swellHeight']) ? null : round(array_sum(array_values($hour['swellHeight'])) / count($hour['swellHeight']), 1);
                 $hour['swellPeriod'] = empty($hour['swellPeriod']) ? null : round(array_sum(array_values($hour['swellPeriod'])) / count($hour['swellPeriod']));
                 $hour['waterTemperature'] = round(array_sum(array_values($hour['waterTemperature'])) / count($hour['waterTemperature']), 0);
