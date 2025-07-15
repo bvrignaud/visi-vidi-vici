@@ -45,7 +45,7 @@ class StormGlassAPI
                 $hour['cloudCover'] = round(array_sum(array_values($hour['cloudCover'])) / count($hour['cloudCover']), 1);
 
                 $airTemperatures = array_values($hour['airTemperature']);
-                $airTemperatures = Arr::reject($airTemperatures, fn (float $value) => $value < -100);
+                $airTemperatures = Arr::reject($airTemperatures, fn (float $value) => $value < -75);
                 $hour['airTemperature'] = round(array_sum($airTemperatures) / count($airTemperatures), 1);
 
                 $hour['swellHeight'] = empty($hour['swellHeight']) ? null : round(array_sum(array_values($hour['swellHeight'])) / count($hour['swellHeight']), 1);
