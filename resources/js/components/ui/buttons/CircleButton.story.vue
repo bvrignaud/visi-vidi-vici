@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import CircleButton from '@/components/buttons/CircleButton.vue'
+import CircleButton from '@/components/ui/buttons/CircleButton.vue'
 import { logEvent } from 'histoire/client'
-import '../../../css/app.css'
+import '../../../../css/app.css'
 </script>
 
 <template>
-  <Story title="Buttons/CircleButton" :layout="{ type: 'grid', width: 200 }">
+  <Story title="Ui/Buttons/CircleButton" :layout="{ type: 'grid', width: 200 }">
     <Variant title="default">
       <circle-button @click="logEvent('click', $event)" />
     </Variant>
