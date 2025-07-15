@@ -7,6 +7,7 @@ import { i18nVue } from 'laravel-vue-i18n'
 import type { DefineComponent } from 'vue'
 import { createApp, h } from 'vue'
 import { ZiggyVue } from 'ziggy-js'
+import { initMatomo, trackPageView } from './matomo'
 
 const appName = import.meta.env.VITE_APP_NAME || 'Visi vidi vici'
 
@@ -18,7 +19,10 @@ createInertiaApp({
       import.meta.glob<DefineComponent>('./pages/**/*.vue'),
     ),
   setup({ el, App, props, plugin }) {
-    createApp({ render: () => h(App, props) })
+    // Initialize Matomo
+    initMatomo()
+
+    const app = createApp({ render: () => h(App, props) })
       .use(plugin)
       .use(i18nVue, {
         resolve: async (lang: string) => {
@@ -27,7 +31,15 @@ createInertiaApp({
         },
       })
       .use(ZiggyVue)
-      .mount(el)
+
+    app.mount(el)
+
+    // Set up Inertia page change tracking for Matomo
+    import('@inertiajs/vue3').then(({ router }) => {
+      router.on('navigate', (event) => {
+        trackPageView(event.detail.page.url)
+      })
+    })
   },
   progress: {
     color: '#4B5563',
