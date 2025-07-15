@@ -141,8 +141,7 @@
               </tr>
               </tbody>
             </table>
-            <!--            <button id="arrow-end" class="next-7-days absolute top-100 right-5">❯</button>-->
-            <circle-button class="absolute top-100 -left-2 z-10" @click="fetchForecast">
+            <circle-button class="absolute top-100 -left-2 z-10" @click="fetchForecastPrev">
               ❮
             </circle-button>
             <circle-button class="absolute top-100 -right-2 z-10" @click="fetchForecastNext">
