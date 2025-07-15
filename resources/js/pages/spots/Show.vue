@@ -60,8 +60,10 @@
                 <td
                   v-for="(forecast, date) in forecastsAvg"
                   :key="date"
-                  :class="{ 'actual-day': isNow(date) }"
-                  :style="{ color: numberToColor(forecast.airTemperature, 0, 40) }"
+                  :class="[
+                    { 'actual-day': isNow(date) },
+                    getTemperatureColorClass(forecast.airTemperature, 0, 40),
+                  ]"
                 >
                   {{ Math.round(forecast.airTemperature) }}°
                 </td>
@@ -71,8 +73,10 @@
                 <td
                   v-for="(forecast, date) in forecastsAvg"
                   :key="date"
-                  :class="{ 'actual-day': isNow(date) }"
-                  :style="{ color: numberToColor(forecast.waterTemperature, 0, 40) }"
+                  :class="[
+                    { 'actual-day': isNow(date) },
+                    getTemperatureColorClass(forecast.waterTemperature, 5, 30),
+                  ]"
                 >
                   {{ Math.round(forecast.waterTemperature) }}°
                 </td>
@@ -188,8 +192,10 @@
               <td
                 v-for="forecast in forecasts"
                 :key="forecast.time"
-                :class="{ 'actual-day': isNow(forecast.time) }"
-                :style="{ color: numberToColor(forecast.airTemperature, 0, 40) }"
+                :class="[
+                  { 'actual-day': isNow(forecast.time) },
+                  getTemperatureColorClass(forecast.airTemperature, 0, 40),
+                ]"
               >
                 {{ Math.round(forecast.airTemperature) }}°
               </td>
@@ -199,8 +205,10 @@
               <td
                 v-for="forecast in forecasts"
                 :key="forecast.time"
-                :class="{ 'actual-day': isNow(forecast.time) }"
-                :style="{ color: numberToColor(forecast.waterTemperature, 0, 40) }"
+                :class="[
+                  { 'actual-day': isNow(forecast.time) },
+                  getTemperatureColorClass(forecast.waterTemperature, 5, 30),
+                ]"
               >
                 {{ Math.round(forecast.waterTemperature) }}°
               </td>
@@ -370,6 +378,15 @@ function getCloudCoverColorClass(value: number, min: number, max: number): strin
   if (percentage <= 40) return 'text-green-400'
   if (percentage <= 60) return 'text-yellow-500'
   if (percentage <= 80) return 'text-orange-500'
+  return 'text-red-500'
+}
+
+function getTemperatureColorClass(value: number, min: number, max: number): string {
+  const percentage = ((value - min) / (max - min)) * 100
+
+  if (percentage <= 25) return 'text-blue-600'
+  if (percentage <= 50) return 'text-blue-400'
+  if (percentage <= 75) return 'text-yellow-500'
   return 'text-red-500'
 }
 
