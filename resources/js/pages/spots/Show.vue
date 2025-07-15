@@ -47,8 +47,10 @@
                 <td
                   v-for="(forecast, date) in forecastsAvg"
                   :key="date"
-                  :class="{ 'actual-day': isNow(date) }"
-                  :style="{ color: numberToColor(forecast.cloudCover, 0, 100) }"
+                  :class="[
+                    { 'actual-day': isNow(date) },
+                    getCloudCoverColorClass(forecast.cloudCover, 0, 100),
+                  ]"
                 >
                   {{ Math.round(forecast.cloudCover) }}%
                 </td>
@@ -208,8 +210,10 @@
               <td
                 v-for="forecast in forecasts"
                 :key="forecast.time"
-                :class="{ 'actual-day': isNow(forecast.time) }"
-                :style="{ color: numberToColor(forecast.cloudCover, 0, 100) }"
+                :class="[
+                  { 'actual-day': isNow(forecast.time) },
+                  getCloudCoverColorClass(forecast.cloudCover, 0, 100),
+                ]"
               >
                 {{ Math.round(forecast.cloudCover) }}%
               </td>
@@ -356,6 +360,16 @@ function getScoreColorClass(value: number, min: number, max: number): string {
   if (percentage >= 60) return 'text-green-400'
   if (percentage >= 40) return 'text-yellow-500'
   if (percentage >= 20) return 'text-orange-500'
+  return 'text-red-500'
+}
+
+function getCloudCoverColorClass(value: number, min: number, max: number): string {
+  const percentage = ((value - min) / (max - min)) * 100
+
+  if (percentage <= 20) return 'text-green-600'
+  if (percentage <= 40) return 'text-green-400'
+  if (percentage <= 60) return 'text-yellow-500'
+  if (percentage <= 80) return 'text-orange-500'
   return 'text-red-500'
 }
 
