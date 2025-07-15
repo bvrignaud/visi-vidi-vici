@@ -34,8 +34,10 @@
                 <td
                   v-for="(forecast, date) in forecastsAvg"
                   :key="date"
-                  :class="{ 'actual-day': isNow(date) }"
-                  :style="{ color: numberToColor(forecast.note, 0, 10) }"
+                  :class="[
+                    { 'actual-day': isNow(date) },
+                    getScoreColorClass(forecast.note, 0, 10),
+                  ]"
                 >
                   {{ Math.round(forecast.note) }}
                 </td>
@@ -171,8 +173,10 @@
               <td
                 v-for="forecast in forecasts"
                 :key="forecast.time"
-                :class="{ 'actual-day': isNow(forecast.time) }"
-                :style="{ color: numberToColor(forecast.note, 0, 10) }"
+                :class="[
+                    { 'actual-day': isNow(forecast.time) },
+                    getScoreColorClass(forecast.note, 0, 10),
+                  ]"
               >
                 {{ Math.round(forecast.note) }}
               </td>
@@ -343,6 +347,17 @@ const today: string = dayjs().format('YYYY-MM-DD')
 const markers = ref<Array<any>>([])
 const webcams = ref<Array<Webcam>>([])
 const showModalPaymentRequired = ref(false)
+
+// Fonction pour les scores (inversé car note élevée = bon)
+function getScoreColorClass(value: number, min: number, max: number): string {
+  const percentage = ((value - min) / (max - min)) * 100
+
+  if (percentage >= 80) return 'text-green-600'
+  if (percentage >= 60) return 'text-green-400'
+  if (percentage >= 40) return 'text-yellow-500'
+  if (percentage >= 20) return 'text-orange-500'
+  return 'text-red-500'
+}
 
 function fetchForecast() {
   tidesRows.value = {}
