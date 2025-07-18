@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Carbon\CarbonInterface;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,8 +13,9 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use SimpleStatsIo\LaravelClient\Contracts\TrackablePerson;
 
-class User extends Authenticatable
+class User extends Authenticatable implements TrackablePerson
 {
     use HasApiTokens;
 
@@ -63,5 +65,10 @@ class User extends Authenticatable
             'password' => 'hashed',
             'is_admin' => 'boolean',
         ];
+    }
+
+    public function getTrackingTime(): CarbonInterface
+    {
+        return $this->created_at;
     }
 }
