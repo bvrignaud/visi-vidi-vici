@@ -15,7 +15,7 @@ return new class extends Migration
             $table->timestamp('time');
             $table->float('note');
 
-            $table->foreignId('spot_id')->constrained()->cascadeOnDelete();
+            $table->foreignUuid('spot_id')->constrained()->cascadeOnDelete();
 
             $table->timestamps();
         });
