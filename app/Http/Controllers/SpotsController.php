@@ -10,13 +10,6 @@ use Inertia\Inertia;
 
 class SpotsController extends Controller
 {
-    public function index(): \Inertia\Response
-    {
-        return Inertia::render('spots/Index', [
-            'spots' => Spot::orderBy('name')->get(),
-        ]);
-    }
-
     public function create(): \Inertia\Response
     {
         return Inertia::render('spots/Form');

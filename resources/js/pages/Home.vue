@@ -34,10 +34,10 @@
 
 <script setup lang="ts">
 import Map from '@/components/Map.vue'
-import Button from '@/components/ui/buttons/Button.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
 import type { Spot } from '@/types/Spot'
 import { Link } from '@inertiajs/vue3'
+import Button from '../components/ui/buttons/Button.vue'
 
 const props = defineProps<{
   spots: Spot[]

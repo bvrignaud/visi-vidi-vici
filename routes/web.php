@@ -26,7 +26,7 @@ use Inertia\Inertia;
 //        'phpVersion' => PHP_VERSION,
 //    ]);
 // });
-Route::get('/', [Controllers\SpotsController::class, 'index'])->name('home');
+Route::get('/', [Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    return Inertia::render('Dashboard');
