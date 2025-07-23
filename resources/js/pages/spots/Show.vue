@@ -1,5 +1,5 @@
 <template>
-  <app-layout title="Spots">
+  <app-layout :title="`${$t('Weather')} ${spot.name}`">
     <template #header>
       <h2 class="text-xl leading-tight font-semibold text-gray-800">{{ spot.name }}</h2>
     </template>
