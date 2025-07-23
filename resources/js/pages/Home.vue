@@ -1,5 +1,5 @@
 <template>
-  <app-layout title="Spots">
+  <app-layout :title="$t('Home')">
     <template #header>
       <h2 class="text-xl leading-tight font-semibold text-gray-800">Visi vidi vici</h2>
     </template>
