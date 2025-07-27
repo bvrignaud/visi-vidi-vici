@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers;
+use Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -33,7 +34,8 @@ Route::get('/', [Controllers\HomeController::class, 'index'])->name('home');
 // })->name('dashboard');
 
 Route::get('/contact', [Controllers\ContactController::class, 'index'])->name('contact');
-Route::post('/contact/send', [Controllers\ContactController::class, 'send'])->name('contact.send');
+Route::post('/contact/send', [Controllers\ContactController::class, 'send'])->name('contact.send')
+    ->middleware([HandlePrecognitiveRequests::class]);
 
 Route::get('/mentions-legales', function () {
     return Inertia::render('MentionsLegales');

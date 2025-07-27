@@ -19,6 +19,7 @@
               class="mt-1 block w-full"
               v-model="form.name"
               autocomplete="name"
+              @change="form.validate('name')"
             />
             <InputError :message="form.errors.name" class="mt-2" />
           </div>
@@ -32,6 +33,7 @@
               class="mt-1 block w-full"
               v-model="form.email"
               required
+              @change="form.validate('email')"
             />
             <InputError :message="form.errors.email" class="mt-2" />
           </div>
@@ -39,14 +41,26 @@
           <!-- Subject -->
           <div class="col-span-6 sm:col-span-4">
             <Label for="subject" value="Objet" />
-            <Input id="subject" type="text" class="mt-1 block w-full" v-model="form.subject" />
+            <Input
+              id="subject"
+              type="text"
+              class="mt-1 block w-full"
+              v-model="form.subject"
+              @change="form.validate('subject')"
+            />
             <InputError :message="form.errors.subject" class="mt-2" />
           </div>
 
           <!-- Message -->
           <div class="col-span-6 sm:col-span-4">
             <Label for="content" value="Message" />
-            <TextArea id="content" class="mt-1 block w-full" v-model="form.content" required />
+            <TextArea
+              id="content"
+              class="mt-1 block w-full"
+              v-model="form.content"
+              required
+              @change="form.validate('content')"
+            />
             <InputError :message="form.errors.content" class="mt-2" />
           </div>
         </template>
@@ -70,18 +84,18 @@ import Input from '@/jetstream/Input.vue'
 import InputError from '@/jetstream/InputError.vue'
 import Label from '@/jetstream/Label.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
-import { useForm } from '@inertiajs/vue3'
+import { useForm } from 'laravel-precognition-vue-inertia'
 
-const form = useForm({
+const form = useForm('post', route('contact.send'), {
   name: '',
   email: '',
   subject: '',
   content: '',
 })
 
-function submit() {
-  form.post(route('contact.send'), {
-    onFinish: () => form.reset(),
+const submit = () =>
+  form.submit({
+    preserveScroll: true,
+    onSuccess: () => form.reset(),
   })
-}
 </script>
