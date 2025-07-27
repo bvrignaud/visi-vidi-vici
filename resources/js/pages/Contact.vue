@@ -1,7 +1,7 @@
 <template>
   <app-layout title="Contact">
     <template #header>
-      <h2 class="text-xl font-semibold leading-tight text-gray-800">Contact</h2>
+      <h2 class="text-xl leading-tight font-semibold text-gray-800">Contact</h2>
     </template>
 
     <div class="mx-auto max-w-7xl py-10 sm:px-6 lg:px-8">
@@ -61,7 +61,7 @@
   </app-layout>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import TextArea from '@/components/TextArea.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import ActionMessage from '@/jetstream/ActionMessage.vue'
@@ -70,35 +70,18 @@ import Input from '@/jetstream/Input.vue'
 import InputError from '@/jetstream/InputError.vue'
 import Label from '@/jetstream/Label.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
-import { defineComponent } from 'vue'
+import { useForm } from '@inertiajs/vue3'
 
-export default defineComponent({
-  components: {
-    Button,
-    ActionMessage,
-    TextArea,
-    InputError,
-    Input,
-    Label,
-    FormSection,
-    AppLayout,
-  },
-  data() {
-    return {
-      form: this.$inertia.form({
-        name: '',
-        email: '',
-        subject: '',
-        content: '',
-      }),
-    }
-  },
-  methods: {
-    submit() {
-      this.form.post(this.route('contact.send'), {
-        onFinish: () => this.form.reset(),
-      })
-    },
-  },
+const form = useForm({
+  name: '',
+  email: '',
+  subject: '',
+  content: '',
 })
+
+function submit() {
+  form.post(route('contact.send'), {
+    onFinish: () => form.reset(),
+  })
+}
 </script>
