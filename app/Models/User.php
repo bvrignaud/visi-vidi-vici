@@ -6,6 +6,8 @@ namespace App\Models;
 
 use Carbon\CarbonInterface;
 use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,7 +17,9 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use SimpleStatsIo\LaravelClient\Contracts\TrackablePerson;
 
-class User extends Authenticatable implements TrackablePerson
+#[Fillable(['name', 'email', 'password', 'is_admin'])]
+#[Hidden(['password', 'remember_token', 'two_factor_secret', 'two_factor_recovery_codes'])]
+final class User extends Authenticatable implements TrackablePerson
 {
     use HasApiTokens;
 
@@ -25,26 +29,6 @@ class User extends Authenticatable implements TrackablePerson
     use HasProfilePhoto;
     use HasUuids, TwoFactorAuthenticatable;
     use Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'is_admin',
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
-    ];
 
     /**
      * The accessors to append to the model's array form.
@@ -63,6 +47,7 @@ class User extends Authenticatable implements TrackablePerson
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'two_factor_confirmed_at' => 'datetime',
             'is_admin' => 'boolean',
         ];
     }
