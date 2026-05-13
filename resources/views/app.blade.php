@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title inertia>{{ config('app.name', 'Visi vidi vici') }}</title>
+    <title data-inertia>{{ config('app.name', 'Visi vidi vici') }}</title>
 
     <meta name="description" content="@lang('pages/main.meta.description')">
 
@@ -16,6 +16,6 @@
     @inertiaHead
 </head>
 <body class="font-sans antialiased">
-@inertia
+<x-inertia::app />
 </body>
 </html>
