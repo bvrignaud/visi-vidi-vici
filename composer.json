@@ -13,7 +13,7 @@
   "require": {
     "php": "^8.4",
     "ext-mbstring": "*",
-    "inertiajs/inertia-laravel": "^2.0",
+    "inertiajs/inertia-laravel": "^3.1",
     "laravel/framework": "^13.0",
     "laravel/jetstream": "^5.0",
     "laravel/sanctum": "^4.0",
