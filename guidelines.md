@@ -11,8 +11,8 @@ for the frontend.
 ### Requirements
 
 - PHP 8.4+
-- Node.js 18.0+ (Node 22.14.0 recommended via Volta)
-- PNPM 10.7.0 (recommended via Volta)
+- Node.js 22.15+ (Node 22.15.0 recommended via Volta)
+- bun 1.3.13+
 - database : SQLite or other db
 
 ### Setup
@@ -24,7 +24,7 @@ for the frontend.
    ```
 3. Install JavaScript dependencies:
    ```bash
-   pnpm install
+   bun install
    ```
 4. Copy `.env.example` to `.env` and configure your environment variables
 5. Generate application key:
@@ -48,14 +48,14 @@ for the frontend.
   ```
 - Start the Vite development server:
   ```bash
-  pnpm dev
+  bun dev
   ```
 
 ### Building for Production
 
 - Build the frontend assets:
   ```bash
-  pnpm build
+  bun build
   ```
 
 ## Development Guidelines
@@ -93,15 +93,15 @@ for the frontend.
 - Vue components use the Composition API
 - Format code:
   ```bash
-  pnpm format
+  bun format
   ```
 - Check formatting:
   ```bash
-  pnpm format:check
+  bun format:check
   ```
 - Lint code:
   ```bash
-  pnpm lint
+  bun lint
   ```
 
 ## Testing Information

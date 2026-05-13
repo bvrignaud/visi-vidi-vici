@@ -47,8 +47,8 @@ cd DEPPLOY_FOLDER
 git pull origin master
 composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 echo "" | sudo -S service php8.0-fpm reload
-pnpm install
-pnpm run production
+bun install
+bun run production
 
 echo "🚀 Application deployed!"
 
