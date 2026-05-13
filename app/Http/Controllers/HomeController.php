@@ -6,13 +6,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Spot;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class HomeController extends Controller
 {
-    public function index(): \Inertia\Response
+    public function index(): Response
     {
         return Inertia::render('Home', [
-            'spots' => Spot::orderBy('name')->get(),
+            'spots' => Inertia::defer(fn () => Spot::orderBy('name')->get()),
         ]);
     }
 }

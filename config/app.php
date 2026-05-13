@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use Illuminate\Support\ServiceProvider;
-
 return [
 
     /*
@@ -124,33 +122,6 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Autoloaded Service Providers
-    |--------------------------------------------------------------------------
-    |
-    | The service providers listed here will be automatically loaded on the
-    | request to your application. Feel free to add your own services to
-    | this array to grant expanded functionality to your applications.
-    |
-    */
-
-    //    'providers' => ServiceProvider::defaultProviders()->merge([
-    //        /*
-    //         * Package Service Providers...
-    //         */
-    //
-    //        /*
-    //         * Application Service Providers...
-    //         */
-    //        App\Providers\AppServiceProvider::class,
-    // //        App\Providers\AuthServiceProvider::class,
-    //        App\Providers\EventServiceProvider::class,
-    //        App\Providers\RouteServiceProvider::class,
-    //        ,
-    //        ,
-    //    ])->toArray(),
 
     /*
     |--------------------------------------------------------------------------
