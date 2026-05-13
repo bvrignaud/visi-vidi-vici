@@ -29,6 +29,7 @@
     "fakerphp/faker": "^1.23",
     "larastan/larastan": "^3.0",
     "laravel-lang/common": "^6.1",
+    "laravel/boost": "^2.4",
     "laravel/pail": "^1.2",
     "laravel/pint": "^1.13",
     "laravel/sail": "^1.18",
@@ -59,6 +60,7 @@
     "post-update-cmd": [
       "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
       "@php artisan lang:update",
+      "@php artisan boost:update --ansi",
       "pint --dirty"
     ],
     "post-root-package-install": [
