@@ -56,3 +56,8 @@ php artisan route:cache
 php artisan view:clear
 php artisan migrate --force
 ```
+
+## TODO
+
+- supprimer loadash
+- supprimer axios
