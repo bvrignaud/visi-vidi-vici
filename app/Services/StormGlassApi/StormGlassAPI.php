@@ -50,7 +50,9 @@ class StormGlassAPI
 
                 $hour['swellHeight'] = empty($hour['swellHeight']) ? null : round(array_sum(array_values($hour['swellHeight'])) / count($hour['swellHeight']), 1);
                 $hour['swellPeriod'] = empty($hour['swellPeriod']) ? null : round(array_sum(array_values($hour['swellPeriod'])) / count($hour['swellPeriod']));
-                $hour['waterTemperature'] = round(array_sum(array_values($hour['waterTemperature'])) / count($hour['waterTemperature']), 0);
+                $hour['waterTemperature'] = array_key_exists('waterTemperature', $hour)
+                    ? round(array_sum(array_values($hour['waterTemperature'])) / count($hour['waterTemperature']), 0)
+                    : null;
                 $hour['windDirection'] = round(array_sum(array_values($hour['windDirection'])) / count($hour['windDirection']), 0);
                 $hour['windSpeed'] = round(array_sum(array_values($hour['windSpeed'])) / count($hour['windSpeed']), 0);
             }
