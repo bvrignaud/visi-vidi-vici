@@ -6,16 +6,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SpotStoreRequest;
 use App\Models\Spot;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class SpotsController extends Controller
 {
-    public function create(): \Inertia\Response
+    public function create(): Response
     {
         return Inertia::render('spots/Form');
     }
 
-    public function store(SpotStoreRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(SpotStoreRequest $request): RedirectResponse
     {
         Spot::create($request->only([
             'name',
@@ -31,7 +33,7 @@ class SpotsController extends Controller
         ]);
     }
 
-    public function show(Spot $spot): \Inertia\Response
+    public function show(Spot $spot): Response
     {
         return Inertia::render('spots/Show', compact('spot'));
     }
@@ -50,7 +52,7 @@ class SpotsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(SpotStoreRequest $request, Spot $spot): \Illuminate\Http\RedirectResponse
+    public function update(SpotStoreRequest $request, Spot $spot): RedirectResponse
     {
         $spot->update($request->only([
             'name',

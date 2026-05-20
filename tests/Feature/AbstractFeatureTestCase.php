@@ -6,8 +6,9 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
+use Tests\TestCase;
 
-abstract class AbstractFeatureTestCase extends \Tests\TestCase
+abstract class AbstractFeatureTestCase extends TestCase
 {
     use RefreshDatabase;
 

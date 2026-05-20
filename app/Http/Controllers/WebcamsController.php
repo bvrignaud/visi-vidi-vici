@@ -8,13 +8,14 @@ namespace App\Http\Controllers;
 // use App\Http\Requests\UpdateWebcamsRequest;
 // use App\Models\Webcams;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class WebcamsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): \Inertia\Response
+    public function index(): Response
     {
         return Inertia::render('webcams/Index');
     }
