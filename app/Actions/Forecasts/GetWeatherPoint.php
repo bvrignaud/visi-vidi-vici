@@ -36,6 +36,7 @@ final class GetWeatherPoint
 
             $note = $lastForecast->note ?? 5;
 
+            $upserts = [];
             foreach ($forecasts as &$forecast) {
                 $note += self::calculNoteForSwell($forecast['swellHeight']);
                 $note += self::calculNoteForSwellPeriod($forecast['swellPeriod']);
@@ -43,13 +44,16 @@ final class GetWeatherPoint
                 $note = $note < 0 ? 0 : min($note, 10);
                 $forecast['note'] = $note;
 
-                Forecast::updateOrCreate(
-                    ['spot_id' => $spot->id, 'time' => $forecast['time']],
-                    [
-                        'note' => $note,
-                    ]
-                );
+                $upserts[] = [
+                    'spot_id' => $spot->id,
+                    'time' => $forecast['time'],
+                    'note' => $note,
+                    'created_at' => now()->toDateTimeString(),
+                    'updated_at' => now()->toDateTimeString(),
+                ];
             }
+
+            Forecast::upsert($upserts, ['spot_id', 'time'], ['note', 'updated_at']);
 
             return $forecasts;
         });
