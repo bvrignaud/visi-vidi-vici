@@ -14,10 +14,10 @@ class ContactController extends Controller
     public function send(Request $request): void
     {
         $validated = $request->validate([
-            'name' => 'nullable|string|max:200',
-            'email' => 'email|required',
-            'subject' => 'nullable|string|max:255',
-            'content' => 'string',
+            'name' => ['nullable', 'string', 'max:200'],
+            'email' => ['email', 'required'],
+            'subject' => ['nullable', 'string', 'max:255'],
+            'content' => ['string'],
         ]);
 
         Mail::to(config('mail.contact.address'))->send(new Contact($validated));

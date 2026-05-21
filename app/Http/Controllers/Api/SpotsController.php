@@ -10,11 +10,11 @@ use App\Http\Requests\GetForecastRequest;
 use App\Models\Spot;
 use App\Services\StormGlassApi\ErrorCodes;
 use App\Services\StormGlassApi\StormGlassAPI;
-use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Date;
 use Sentry;
 
 class SpotsController extends Controller
@@ -31,7 +31,7 @@ class SpotsController extends Controller
     {
         $stormGlassAPI = new StormGlassAPI;
 
-        $start = $request->date('start') ?: Carbon::today()->sub(new \DateInterval('P4D'));
+        $start = $request->date('start') ?: Date::today()->sub(new \DateInterval('P4D'));
 
         $carbonPeriod = CarbonPeriod::create($start, '1 days', 10);
 
@@ -50,7 +50,7 @@ class SpotsController extends Controller
             $sun_infos[$dateFormatted] = array_map(
                 fn ($timestamp): string|bool => is_bool($timestamp)
                     ? $timestamp
-                    : Carbon::createFromTimestamp($timestamp)->setTimezone($spot->timezone)->format('H:i'),
+                    : Date::createFromTimestamp($timestamp)->setTimezone($spot->timezone)->format('H:i'),
                 date_sun_info(strtotime($dateFormatted), $spot->lat, $spot->lng)
             );
         }

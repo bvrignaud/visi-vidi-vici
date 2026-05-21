@@ -14,6 +14,6 @@ class WebcamsControllerTest extends TestCase
     {
         $response = $this->get('/webcams');
 
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 }

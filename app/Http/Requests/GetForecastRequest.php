@@ -25,7 +25,7 @@ class GetForecastRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'start' => 'date',
+            'start' => ['date'],
         ];
     }
 }

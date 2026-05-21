@@ -5,10 +5,18 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Database\Factories\SpotFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+#[Fillable([
+    'name',
+    'lng',
+    'lat',
+    'optimal_wind_direction',
+    'timezone',
+])]
 class Spot extends Model
 {
     /** @use HasFactory<SpotFactory> */
@@ -18,13 +26,5 @@ class Spot extends Model
 
     protected $casts = [
         'optimal_wind_direction' => 'integer',
-    ];
-
-    protected $fillable = [
-        'name',
-        'lng',
-        'lat',
-        'optimal_wind_direction',
-        'timezone',
     ];
 }

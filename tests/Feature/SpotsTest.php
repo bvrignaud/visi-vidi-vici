@@ -17,7 +17,7 @@ class SpotsTest extends AbstractFeatureTestCase
     public function get_spot_should_return_200(): void
     {
         $response = $this->get(route('spots.show', ['spot' => Spot::inRandomOrder()->first()]));
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 
     #[Test]
@@ -31,7 +31,7 @@ class SpotsTest extends AbstractFeatureTestCase
             ->withoutExceptionHandling()
             ->actingAs($user)
             ->get(route('spots.create'));
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 
     #[Test]
@@ -41,11 +41,11 @@ class SpotsTest extends AbstractFeatureTestCase
         $response = $this
             ->withoutExceptionHandling()
             ->actingAs(User::factory()->create(['is_admin' => true]))->post(route('spots.store'), [
-                'name' => $this->faker->name,
-                'lng' => $this->faker->longitude,
-                'lat' => $this->faker->latitude,
+                'name' => $this->faker->name(),
+                'lng' => $this->faker->longitude(),
+                'lat' => $this->faker->latitude(),
                 'optimal_wind_direction' => rand(0, 360),
-                'timezone' => $this->faker->timezone,
+                'timezone' => $this->faker->timezone(),
             ]);
         $response->assertRedirect();
         $this->assertCount($spotCount + 1, Spot::all());
@@ -59,10 +59,10 @@ class SpotsTest extends AbstractFeatureTestCase
             ->actingAs(User::factory()->create(['is_admin' => true]))
             ->patch(route('spots.update', $spot), [
                 'name' => 'New name',
-                'lng' => $this->faker->longitude,
-                'lat' => $this->faker->latitude,
+                'lng' => $this->faker->longitude(),
+                'lat' => $this->faker->latitude(),
                 'optimal_wind_direction' => rand(0, 360),
-                'timezone' => $this->faker->timezone,
+                'timezone' => $this->faker->timezone(),
             ]);
         $response->assertRedirect();
         $spot->refresh();

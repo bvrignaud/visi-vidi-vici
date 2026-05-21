@@ -26,6 +26,7 @@
   "require-dev": {
     "barryvdh/laravel-debugbar": "*",
     "brianium/paratest": "*",
+    "driftingly/rector-laravel": "^2.3",
     "fakerphp/faker": "^1.23",
     "larastan/larastan": "^3.0",
     "laravel-lang/common": "^6.1",
@@ -78,6 +79,7 @@
       "@php ./vendor/bin/phpstan analyse"
     ],
     "clean": [
+      "vendor/bin/rector",
       "@php ./vendor/bin/pint --dirty",
       "@php ./vendor/bin/phpstan analyse",
       "@php artisan test --parallel"

@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Carbon\CarbonInterface;
 use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Attributes\Appends;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -19,6 +20,9 @@ use SimpleStatsIo\LaravelClient\Contracts\TrackablePerson;
 
 #[Fillable(['name', 'email', 'password', 'is_admin'])]
 #[Hidden(['password', 'remember_token', 'two_factor_secret', 'two_factor_recovery_codes'])]
+#[Appends([
+    'profile_photo_url',
+])]
 final class User extends Authenticatable implements TrackablePerson
 {
     use HasApiTokens;
@@ -29,13 +33,6 @@ final class User extends Authenticatable implements TrackablePerson
     use HasProfilePhoto;
     use HasUuids, TwoFactorAuthenticatable;
     use Notifiable;
-
-    /**
-     * The accessors to append to the model's array form.
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
 
     /**
      * Get the attributes that should be cast.

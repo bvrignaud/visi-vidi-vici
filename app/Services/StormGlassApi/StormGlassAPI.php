@@ -6,6 +6,7 @@ namespace App\Services\StormGlassApi;
 
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -26,7 +27,7 @@ class StormGlassAPI
         $cacheKey .= $start ? "&start={$start->format('Y-m-d')}" : '';
         $cacheKey .= $end ? "&end={$end->format('Y-m-d')}" : '';
 
-        return \Cache::remember($cacheKey, 3600 * 4, function () use ($lat, $lng, $start, $end) {
+        return Cache::remember($cacheKey, 3600 * 4, function () use ($lat, $lng, $start, $end) {
             $response = Http::withHeaders([
                 'Authorization' => config('services.stormglass.key'),
             ])->get('https://api.stormglass.io/v2/weather/point', [
@@ -68,7 +69,7 @@ class StormGlassAPI
      */
     public function getTideExtremesPoint(float $lat, float $lng, ?\DateTime $start = null): array
     {
-        return \Cache::remember(
+        return Cache::remember(
             "StormGlassTideExtremesPoint?lat={$lat}&lng={$lng}&start={$start?->format('Ymd')}",
             3600 * 24 * 7,
             function () use ($lat, $lng, $start) {

@@ -46,7 +46,7 @@ final class SpotsForecastTest extends AbstractFeatureTestCase
 
         $response = $this->getJson("/api/spots/{$spot->id}/forecast");
 
-        $response->assertStatus(200);
+        $response->assertOk();
 
         $queries = DB::getQueryLog();
         $queryCount = count($queries);

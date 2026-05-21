@@ -10,6 +10,6 @@ class HomeTest extends AbstractFeatureTestCase
     {
         $response = $this->get('/');
 
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 }

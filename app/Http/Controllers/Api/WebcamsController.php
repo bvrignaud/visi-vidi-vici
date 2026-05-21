@@ -21,7 +21,7 @@ class WebcamsController extends Controller
             'url',
             'lat',
             'lng',
-        ])->when($request['lat'] && $request['lng'], function (Builder $query) use ($request) {
+        ])->when($request['lat'] && $request['lng'], function (Builder $query) use ($request): void {
             $query
                 ->selectRaw(
                     'ACOS(SIN(PI() * ? / 180.0)*SIN(PI()*lat/180.0)+COS(PI() * ? / 180.0)*COS(PI()*lat/180.0)*COS(PI()*lng/180.0-PI() * ? / 180.0))*6371 distance',

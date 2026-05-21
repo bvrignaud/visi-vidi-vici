@@ -41,9 +41,9 @@ Route::get('/mentions-legales', function () {
     return Inertia::render('MentionsLegales');
 })->name('mentions-legales');
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
     // Admin routes
-    Route::middleware('admin')->group(function () {
+    Route::middleware('admin')->group(function (): void {
         Route::get('/spots/create', [Controllers\SpotsController::class, 'create'])->name('spots.create');
         Route::post('/spots/create', [Controllers\SpotsController::class, 'store'])->name('spots.store');
         Route::patch('/spots/{spot}', [Controllers\SpotsController::class, 'update'])->name('spots.update');
