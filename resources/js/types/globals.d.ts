@@ -1,4 +1,5 @@
 import { AppPageProps } from '@/types/index'
+import { trans, transChoice } from 'laravel-vue-i18n'
 
 // Extend ImportMeta interface for Vite...
 declare module 'vite/client' {
@@ -23,5 +24,7 @@ declare module 'vue' {
     $inertia: typeof Router
     $page: Page
     $headManager: ReturnType<typeof createHeadManager>
+    $t: typeof trans
+    $tChoice: typeof transChoice
   }
 }
