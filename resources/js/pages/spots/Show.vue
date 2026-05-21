@@ -340,7 +340,6 @@ import type { Spot } from '@/types/Spot'
 import { SunInfo } from '@/types/SunInfo'
 import type Webcam from '@/types/Webcam'
 import dayjs from 'dayjs'
-import { meanBy } from 'lodash'
 import { onMounted, ref } from 'vue'
 
 const { fetchSpotForecast } = useSpot()
@@ -456,6 +455,9 @@ onMounted(async () => {
 })
 
 function calculateAvgForecasts(forecasts: Forecast[]): void {
+  const meanBy = (array: any[], key: string) =>
+    array.length === 0 ? 0 : array.reduce((acc, item) => acc + item[key], 0) / array.length
+
   // let day = dayjs().startOf('day').subtract(4, 'days')
   let day = startDate.value.clone()
   for (let i = 0; i < 10; i++) {

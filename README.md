@@ -59,5 +59,4 @@ php artisan migrate --force
 
 ## TODO
 
-- supprimer loadash
 - supprimer axios
