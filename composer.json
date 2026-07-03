@@ -20,7 +20,7 @@
     "laravel/tinker": "*",
     "sentry/sentry-laravel": "^4.2.0",
     "silviolleite/laravelpwa": "^2.0",
-    "simplestats-io/laravel-client": "^3.1",
+    "simplestats-io/laravel-client": "^v5.0.0",
     "tightenco/ziggy": "^2.0"
   },
   "require-dev": {
