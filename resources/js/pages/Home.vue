@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import Map from '@/components/Map.vue'
+import Map from '@/components/features/Map.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
 import type { Spot } from '@/types/Spot'
 import { Deferred, Link } from '@inertiajs/vue3'

@@ -76,7 +76,7 @@
 </template>
 
 <script setup lang="ts">
-import TextArea from '@/components/TextArea.vue'
+import TextArea from '@/components/features/TextArea.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import ActionMessage from '@/jetstream/ActionMessage.vue'
 import FormSection from '@/jetstream/FormSection.vue'

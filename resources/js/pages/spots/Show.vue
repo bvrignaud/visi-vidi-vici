@@ -326,11 +326,11 @@
 </template>
 
 <script setup lang="ts">
-import Map from '@/components/Map.vue'
+import Map from '@/components/features/Map.vue'
 import { BuyMeACoffeeButton, CircleButton, SecondaryButton } from '@/components/ui/buttons'
 import { DialogModal } from '@/components/ui/modal'
-import WebcamThumbnail from '@/components/WebcamThumbnail.vue'
-import WindArrow from '@/components/WindArrow.vue'
+import WebcamThumbnail from '@/components/features/WebcamThumbnail.vue'
+import WindArrow from '@/components/features/WindArrow.vue'
 import { useSpot } from '@/composables/useSpot'
 import MarkerType from '@/enums/MarkerType'
 import AppLayout from '@/layouts/AppLayout.vue'

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
-import '../../../css/app.css'
+import '../../../../css/app.css'
 import WebcamIcon from './WebcamIcon.vue'
 
 const state = reactive({

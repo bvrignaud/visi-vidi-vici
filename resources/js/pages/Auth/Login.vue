@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TextLink from '@/components/TextLink.vue'
+import TextLink from '@/components/features/TextLink.vue'
 import Button from '@/components/ui/buttons/Button.vue'
-import ValidationErrors from '@/components/ValidationErrors.vue'
+import ValidationErrors from '@/components/features/ValidationErrors.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
 import JetCheckbox from '@/jetstream/Checkbox.vue'

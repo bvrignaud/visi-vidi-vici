@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import WebcamThumbnail from '@/components/WebcamThumbnail.vue'
-import '../../css/app.css'
+import WebcamThumbnail from '@/components/features/WebcamThumbnail.vue'
+import '../../../css/app.css'
 
 const webcam = {
   id: 1,

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
-import '../../css/app.css'
+import '../../../css/app.css'
 import WindArrow from './WindArrow.vue'
 
 const state = reactive({
