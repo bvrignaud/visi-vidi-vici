@@ -52,7 +52,7 @@ const { linkOnMarker = true, markers = [] } = defineProps<{
   markers: Array<{
     id: number
     coordinates: PointTuple
-    options: {}
+    options: object
     url: string
     type?: MarkerType
   }>
