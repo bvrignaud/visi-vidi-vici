@@ -10,6 +10,7 @@ use App\Http\Requests\GetForecastRequest;
 use App\Models\Spot;
 use App\Services\StormGlassApi\ErrorCodes;
 use App\Services\StormGlassApi\StormGlassAPI;
+use Carbon\CarbonImmutable;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Response;
@@ -31,6 +32,7 @@ class SpotsController extends Controller
     {
         $stormGlassAPI = new StormGlassAPI;
 
+        /** @var CarbonImmutable $start */
         $start = $request->date('start') ?: Date::today()->sub(new \DateInterval('P4D'));
 
         $carbonPeriod = CarbonPeriod::create($start, '1 days', 10);

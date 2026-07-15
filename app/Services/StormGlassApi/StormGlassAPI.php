@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\StormGlassApi;
 
+use Carbon\CarbonImmutable;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
@@ -67,7 +68,7 @@ class StormGlassAPI
      *
      * @phpstan-ignore missingType.iterableValue
      */
-    public function getTideExtremesPoint(float $lat, float $lng, ?\DateTime $start = null): array
+    public function getTideExtremesPoint(float $lat, float $lng, ?CarbonImmutable $start = null): array
     {
         return Cache::remember(
             "StormGlassTideExtremesPoint?lat={$lat}&lng={$lng}&start={$start?->format('Ymd')}",
