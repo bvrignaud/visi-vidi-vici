@@ -1,26 +1,4 @@
-import type { PageProps } from '@inertiajs/core'
-
-export interface Auth {
-  user: User
-}
-
-export interface SharedData extends PageProps {
-  name: string
-  quote: { message: string; author: string }
-  auth: Auth
-  sidebarOpen: boolean
-}
-
-export interface User {
-  id: number
-  name: string
-  email: string
-  email_verified_at?: string
-  is_admin?: boolean
-  profile_photo_url?: string
-  created_at?: string
-  updated_at?: string
-}
+export * from './auth'
 
 export interface PaginatedResponse<T> {
   data: T[]

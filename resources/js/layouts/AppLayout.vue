@@ -20,6 +20,7 @@ defineProps({
 })
 
 const page = usePage()
+const auth = computed(() => page.props.auth)
 const showingNavigationDropdown = ref(false)
 
 const logoutUser = () => {
@@ -45,7 +46,7 @@ const navLinks = computed(() => {
   const links = [...baseNavLinks]
 
   // Add admin link if user is admin
-  if (page.props.auth.user?.is_admin) {
+  if (auth.value.user?.is_admin) {
     links.push({
       label: trans('Admin'),
       route: adminUsers,
@@ -85,7 +86,7 @@ const navLinks = computed(() => {
                 >
                   {{ navLink.label }}
                 </jet-nav-link>
-                <template v-if="!$page.props.auth.user">
+                <template v-if="!auth.user">
                   <jet-nav-link :href="login()" :active="$page.url === login.url()">
                     {{ $t('Log in') }}
                   </jet-nav-link>
@@ -98,41 +99,18 @@ const navLinks = computed(() => {
 
             <div class="hidden sm:ml-6 sm:flex sm:items-center">
               <!-- Settings Dropdown -->
-              <div class="relative ml-3" v-if="$page.props.auth.user">
+              <div class="relative ml-3" v-if="auth.user">
                 <jet-dropdown align="right" width="48">
                   <template #trigger>
                     <button
-                      v-if="$page.props.jetstream.managesProfilePhotos"
                       class="flex rounded-full border-2 border-transparent text-sm transition focus:border-gray-300 focus:outline-hidden"
                     >
                       <img
                         class="h-8 w-8 rounded-full object-cover"
-                        :src="$page.props.auth.user.profile_photo_url"
-                        :alt="$page.props.auth.user.name"
+                        :src="auth.user.profile_photo_url"
+                        :alt="auth.user.name"
                       />
                     </button>
-
-                    <span v-else class="inline-flex rounded-md">
-                      <button
-                        type="button"
-                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-500 transition hover:text-gray-700 focus:outline-hidden"
-                      >
-                        {{ $page.props.auth.user.name }}
-
-                        <svg
-                          class="-mr-0.5 ml-2 h-4 w-4"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
-                      </button>
-                    </span>
                   </template>
 
                   <template #content>
@@ -195,7 +173,7 @@ const navLinks = computed(() => {
           class="sm:hidden"
         >
           <div class="space-y-1 pt-2 pb-3">
-            <!--                        <jet-responsive-nav-link v-if="$page.props.auth.user" :href="route('dashboard')" :active="route().current('dashboard')">-->
+            <!--                        <jet-responsive-nav-link v-if="auth.user" :href="route('dashboard')" :active="route().current('dashboard')">-->
             <!--                            Dashboard-->
             <!--                        </jet-responsive-nav-link>-->
             <jet-responsive-nav-link
@@ -206,7 +184,7 @@ const navLinks = computed(() => {
             >
               {{ navLink.label }}
             </jet-responsive-nav-link>
-            <template v-if="!$page.props.auth.user">
+            <template v-if="!auth.user">
               <jet-responsive-nav-link :href="login()" :active="$page.url === login.url()">
                 {{ $t('Log in') }}
               </jet-responsive-nav-link>
@@ -217,27 +195,27 @@ const navLinks = computed(() => {
           </div>
 
           <!-- Responsive Settings Options -->
-          <div v-if="$page.props.auth.user" class="border-t border-gray-200 pt-4 pb-1">
+          <div v-if="auth.user" class="border-t border-gray-200 pt-4 pb-1">
             <div class="flex items-center px-4">
-              <div v-if="$page.props.jetstream.managesProfilePhotos" class="mr-3 shrink-0">
+              <div class="mr-3 shrink-0">
                 <img
                   class="h-10 w-10 rounded-full object-cover"
-                  :src="$page.props.auth.user.profile_photo_url"
-                  :alt="$page.props.auth.user.name"
+                  :src="auth.user.profile_photo_url"
+                  :alt="auth.user.name"
                 />
               </div>
 
               <div>
                 <div class="text-base font-medium text-gray-800">
-                  {{ $page.props.auth.user.name }}
+                  {{ auth.user.name }}
                 </div>
                 <div class="text-sm font-medium text-gray-500">
-                  {{ $page.props.auth.user.email }}
+                  {{ auth.user.email }}
                 </div>
               </div>
             </div>
 
-            <div v-if="$page.props.auth.user" class="mt-3 space-y-1">
+            <div v-if="auth.user" class="mt-3 space-y-1">
               <jet-responsive-nav-link
                 :href="profileShow()"
                 :active="$page.url === profileShow.url()"
