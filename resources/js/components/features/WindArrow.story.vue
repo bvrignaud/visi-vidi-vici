@@ -10,7 +10,7 @@ const state = reactive({
 </script>
 
 <template>
-  <Story title="WindArrow" :layout="{ type: 'grid', width: '200px' }">
+  <Story title="Features/WindArrow" :layout="{ type: 'grid', width: '200px' }">
     <Variant title="Light North">
       <WindArrow :direction="0" :windSpeed="2" />
     </Variant>

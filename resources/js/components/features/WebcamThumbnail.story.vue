@@ -12,7 +12,7 @@ const webcam = {
 </script>
 
 <template>
-  <Story title="WebcamThumbnail">
+  <Story title="Features/WebcamThumbnail">
     <Variant title="Basic">
       <WebcamThumbnail :webcam="webcam" />
     </Variant>

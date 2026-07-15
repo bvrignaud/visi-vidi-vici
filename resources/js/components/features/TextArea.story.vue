@@ -9,7 +9,7 @@ const state = reactive({
 </script>
 
 <template>
-  <Story title="TextArea">
+  <Story title="Features/TextArea">
     <Variant title="Basic">
       <TextArea />
     </Variant>
