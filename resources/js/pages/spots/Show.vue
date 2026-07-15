@@ -458,7 +458,6 @@ function calculateAvgForecasts(forecasts: Forecast[]): void {
   const meanBy = (array: any[], key: string) =>
     array.length === 0 ? 0 : array.reduce((acc, item) => acc + item[key], 0) / array.length
 
-  // let day = dayjs().startOf('day').subtract(4, 'days')
   let day = startDate.value.clone()
   for (let i = 0; i < 10; i++) {
     const key = day.format('YYYY-MM-DD')

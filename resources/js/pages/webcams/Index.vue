@@ -20,16 +20,18 @@ import MarkerType from '@/enums/MarkerType'
 import AppLayout from '@/layouts/AppLayout.vue'
 import { webcamsService } from '@/services/Api/webcamsService'
 import type Marker from '@/types/Marker'
+import Webcam from '@/types/Webcam'
+import { PointTuple } from 'leaflet'
 import { onMounted, ref } from 'vue'
 
 const markers = ref<Array<Marker>>([])
 
 onMounted(async () => {
   webcamsService.getAll().then((data) => {
-    markers.value = data.map((webcam: object) => {
+    markers.value = data.map((webcam: Webcam) => {
       return {
         id: webcam.id,
-        coordinates: [webcam.lat, webcam.lng],
+        coordinates: [webcam.lat, webcam.lng] as PointTuple,
         options: { title: webcam.title },
         url: webcam.url,
         type: MarkerType.Webcam,

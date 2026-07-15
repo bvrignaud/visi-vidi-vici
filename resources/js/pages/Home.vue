@@ -54,6 +54,7 @@ import AppLayout from '@/layouts/AppLayout.vue'
 import { create as spotCreate, show as spotShow } from '@/routes/spots'
 import type { Spot } from '@/types/Spot'
 import { Deferred, Link } from '@inertiajs/vue3'
+import { PointTuple } from 'leaflet'
 import Button from '../components/ui/buttons/Button.vue'
 
 const props = defineProps<{
@@ -64,7 +65,7 @@ function markers() {
   return (props.spots || []).map((spot) => {
     return {
       id: spot.id,
-      coordinates: [spot.lat, spot.lng] as [number, number],
+      coordinates: [spot.lat, spot.lng] as PointTuple,
       options: { title: spot.name },
       url: spotShow.url(spot.id),
     }

@@ -1,8 +1,9 @@
 import MarkerType from '@/enums/MarkerType'
+import { PointTuple } from 'leaflet'
 
 interface Marker {
   id: number
-  coordinates: Array<number>
+  coordinates: PointTuple
   options: object
   url: string
   type: MarkerType

@@ -24,6 +24,6 @@ export interface PaginatedResponse<T> {
   }
 }
 
-export interface Response<T> {
+export interface ApiResponse<T> {
   data: T[]
 }

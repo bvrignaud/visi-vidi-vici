@@ -50,7 +50,7 @@ const map = ref()
 const { linkOnMarker = true, markers = [] } = defineProps<{
   linkOnMarker: boolean
   markers: Array<{
-    id: number
+    id: number | string
     coordinates: PointTuple
     options: object
     url: string
