@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import TextLink from '@/components/features/TextLink.vue'
-import Button from '@/components/ui/buttons/Button.vue'
 import ValidationErrors from '@/components/features/ValidationErrors.vue'
+import Button from '@/components/ui/buttons/Button.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
 import JetCheckbox from '@/jetstream/Checkbox.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetLabel from '@/jetstream/Label.vue'
+import { register } from '@/routes'
+import { store as loginStore } from '@/routes/login'
+import { request as passwordRequest } from '@/routes/password'
 import { Head, Link, useForm } from '@inertiajs/vue3'
 
 defineProps<{
@@ -21,7 +24,7 @@ const form = useForm({
 })
 
 const submit = () => {
-  form.post(route('login'), {
+  form.submit(loginStore(), {
     onFinish: () => form.reset('password'),
   })
 }
@@ -76,7 +79,7 @@ const submit = () => {
       <div class="mt-4 flex items-center justify-end">
         <Link
           v-if="canResetPassword"
-          :href="route('password.request')"
+          :href="passwordRequest()"
           class="text-sm text-gray-600 underline hover:text-gray-900"
         >
           {{ $t('Forgot your password?') }}
@@ -89,7 +92,7 @@ const submit = () => {
 
       <div class="text-muted-foreground text-center text-sm">
         {{ $t('pages.login.dont_have_an_account') }}
-        <TextLink :href="route('register')" :tabindex="5">
+        <TextLink :href="register()" :tabindex="5">
           {{ $t('pages.login.sign_up') }}
         </TextLink>
       </div>

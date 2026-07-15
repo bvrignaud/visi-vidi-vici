@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
+import Footer from '@/components/layout/Footer.vue'
+import { BuyMeACoffeeButton } from '@/components/ui/buttons'
 import JetBanner from '@/jetstream/Banner.vue'
 import JetDropdown from '@/jetstream/Dropdown.vue'
 import JetDropdownLink from '@/jetstream/DropdownLink.vue'
 import JetNavLink from '@/jetstream/NavLink.vue'
 import JetResponsiveNavLink from '@/jetstream/ResponsiveNavLink.vue'
-import Footer from '@/components/layout/Footer.vue'
+import { contact, home, login, logout, register } from '@/routes'
+import { users as adminUsers } from '@/routes/admin'
+import { show as profileShow } from '@/routes/profile'
+import { index as webcamsIndex } from '@/routes/webcams'
 import { Head, Link, router, usePage } from '@inertiajs/vue3'
 import { trans } from 'laravel-vue-i18n'
-import { BuyMeACoffeeButton } from '@/components/ui/buttons'
 
 defineProps({
   title: String,
@@ -18,34 +22,35 @@ defineProps({
 const page = usePage()
 const showingNavigationDropdown = ref(false)
 
+// TODO : supprimer
 const switchToTeam = (team) => {
-  router.put(
-    route('current-team.update'),
-    {
-      team_id: team.id,
-    },
-    {
-      preserveState: false,
-    },
-  )
+  // router.put(
+  //   route('current-team.update'),
+  //   {
+  //     team_id: team.id,
+  //   },
+  //   {
+  //     preserveState: false,
+  //   },
+  // )
 }
 
-const logout = () => {
-  router.post(route('logout'))
+const logoutUser = () => {
+  router.post(logout())
 }
 
 const baseNavLinks = [
   {
     label: trans('Home'),
-    route: 'home',
+    route: home,
   },
   {
     label: trans('Webcams'),
-    route: 'webcams.index',
+    route: webcamsIndex,
   },
   {
     label: 'Contact',
-    route: 'contact',
+    route: contact,
   },
 ]
 
@@ -56,7 +61,7 @@ const navLinks = computed(() => {
   if (page.props.auth.user?.is_admin) {
     links.push({
       label: trans('Admin'),
-      route: 'admin.users',
+      route: adminUsers,
     })
   }
 
@@ -91,16 +96,16 @@ const navLinks = computed(() => {
                 <jet-nav-link
                   v-for="(navLink, key) in navLinks"
                   :key="key"
-                  :href="route(navLink.route)"
-                  :active="route().current(navLink.route)"
+                  :href="navLink.route()"
+                  :active="$page.url === navLink.route.url()"
                 >
                   {{ navLink.label }}
                 </jet-nav-link>
                 <template v-if="!$page.props.auth.user">
-                  <jet-nav-link :href="route('login')" :active="route().current('login')">
+                  <jet-nav-link :href="login()" :active="$page.url === login.url()">
                     {{ $t('Log in') }}
                   </jet-nav-link>
-                  <jet-nav-link :href="route('register')" :active="route().current('register')">
+                  <jet-nav-link :href="register()" :active="$page.url === register.url()">
                     {{ $t('Register') }}
                   </jet-nav-link>
                 </template>
@@ -144,16 +149,11 @@ const navLinks = computed(() => {
                         </div>
 
                         <!-- Team Settings -->
-                        <jet-dropdown-link
-                          :href="route('teams.show', $page.props.auth.user.current_team)"
-                        >
+                        <jet-dropdown-link :href="'#'">
                           {{ $t('Team Settings') }}
                         </jet-dropdown-link>
 
-                        <jet-dropdown-link
-                          :href="route('teams.create')"
-                          v-if="$page.props.jetstream.canCreateTeams"
-                        >
+                        <jet-dropdown-link :href="'#'" v-if="$page.props.jetstream.canCreateTeams">
                           {{ $t('Create New Team') }}
                         </jet-dropdown-link>
 
@@ -239,19 +239,16 @@ const navLinks = computed(() => {
                       {{ $t('Manage Account') }}
                     </div>
 
-                    <jet-dropdown-link :href="route('profile.show')"> Profil</jet-dropdown-link>
+                    <jet-dropdown-link :href="profileShow()"> Profil</jet-dropdown-link>
 
-                    <jet-dropdown-link
-                      :href="route('api-tokens.index')"
-                      v-if="$page.props.jetstream.hasApiFeatures"
-                    >
+                    <jet-dropdown-link :href="'#'" v-if="$page.props.jetstream.hasApiFeatures">
                       API Tokens
                     </jet-dropdown-link>
 
                     <div class="border-t border-gray-100"></div>
 
                     <!-- Authentication -->
-                    <form @submit.prevent="logout">
+                    <form @submit.prevent="logoutUser">
                       <jet-dropdown-link as="button">
                         {{ $t('Log Out') }}
                       </jet-dropdown-link>
@@ -306,19 +303,16 @@ const navLinks = computed(() => {
             <jet-responsive-nav-link
               v-for="(navLink, key) in navLinks"
               :key="key"
-              :href="route(navLink.route)"
-              :active="route().current(navLink.route)"
+              :href="navLink.route()"
+              :active="$page.url === navLink.route.url()"
             >
               {{ navLink.label }}
             </jet-responsive-nav-link>
             <template v-if="!$page.props.auth.user">
-              <jet-responsive-nav-link :href="route('login')" :active="route().current('login')">
+              <jet-responsive-nav-link :href="login()" :active="$page.url === login.url()">
                 {{ $t('Log in') }}
               </jet-responsive-nav-link>
-              <jet-responsive-nav-link
-                :href="route('register')"
-                :active="route().current('register')"
-              >
+              <jet-responsive-nav-link :href="register()" :active="$page.url === register.url()">
                 {{ $t('Register') }}
               </jet-responsive-nav-link>
             </template>
@@ -347,22 +341,22 @@ const navLinks = computed(() => {
 
             <div v-if="$page.props.auth.user" class="mt-3 space-y-1">
               <jet-responsive-nav-link
-                :href="route('profile.show')"
-                :active="route().current('profile.show')"
+                :href="profileShow()"
+                :active="$page.url === profileShow.url()"
               >
                 Profil
               </jet-responsive-nav-link>
 
               <jet-responsive-nav-link
-                :href="route('api-tokens.index')"
-                :active="route().current('api-tokens.index')"
+                :href="'#'"
+                :active="false"
                 v-if="$page.props.jetstream.hasApiFeatures"
               >
                 API Tokens
               </jet-responsive-nav-link>
 
               <!-- Authentication -->
-              <form method="POST" @submit.prevent="logout">
+              <form method="POST" @submit.prevent="logoutUser">
                 <jet-responsive-nav-link as="button">
                   {{ $t('Log Out') }}
                 </jet-responsive-nav-link>
@@ -377,16 +371,13 @@ const navLinks = computed(() => {
                 </div>
 
                 <!-- Team Settings -->
-                <jet-responsive-nav-link
-                  :href="route('teams.show', $page.props.auth.user.current_team)"
-                  :active="route().current('teams.show')"
-                >
+                <jet-responsive-nav-link :href="'#'" :active="false">
                   {{ $t('Team Settings') }}
                 </jet-responsive-nav-link>
 
                 <jet-responsive-nav-link
-                  :href="route('teams.create')"
-                  :active="route().current('teams.create')"
+                  :href="'#'"
+                  :active="false"
                   v-if="$page.props.jetstream.canCreateTeams"
                 >
                   {{ $t('Create New Team') }}

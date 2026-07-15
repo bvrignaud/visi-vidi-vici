@@ -89,6 +89,8 @@ import JetFormSection from '@/jetstream/FormSection.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetInputError from '@/jetstream/InputError.vue'
 import JetLabel from '@/jetstream/Label.vue'
+import { destroy as deletePhotoRoute } from '@/routes/current-user-photo'
+import { update as updateProfileInfo } from '@/routes/user-profile-information'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -103,6 +105,10 @@ export default defineComponent({
   },
 
   props: ['user'],
+
+  setup() {
+    return { updateProfileInfo, deletePhotoRoute }
+  },
 
   data() {
     return {
@@ -123,7 +129,7 @@ export default defineComponent({
         this.form.photo = this.$refs.photo.files[0]
       }
 
-      this.form.post(route('user-profile-information.update'), {
+      this.form.submit(this.updateProfileInfo(), {
         errorBag: 'updateProfileInformation',
         preserveScroll: true,
         onSuccess: () => this.clearPhotoFileInput(),
@@ -149,7 +155,7 @@ export default defineComponent({
     },
 
     deletePhoto() {
-      this.$inertia.delete(route('current-user-photo.destroy'), {
+      this.$inertia.visit(this.deletePhotoRoute(), {
         preserveScroll: true,
         onSuccess: () => {
           this.photoPreview = null

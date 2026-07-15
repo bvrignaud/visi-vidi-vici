@@ -89,6 +89,7 @@ import JetInput from '@/jetstream/Input.vue'
 import InputError from '@/jetstream/InputError.vue'
 import Label from '@/jetstream/Label.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
+import { store as spotStore } from '@/routes/spots'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -100,6 +101,9 @@ export default defineComponent({
     Label,
     FormSection,
     AppLayout,
+  },
+  setup() {
+    return { spotStore }
   },
   data() {
     return {
@@ -113,7 +117,7 @@ export default defineComponent({
   },
   methods: {
     submit() {
-      this.form.post(route('spots.create'))
+      this.form.submit(this.spotStore())
     },
   },
 })

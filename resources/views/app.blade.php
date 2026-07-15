@@ -11,7 +11,6 @@
     @laravelPWA
 
     <!-- Scripts -->
-    @routes
     @vite(['resources/js/app.ts', "resources/js/pages/{$page['component']}.vue"])
     @inertiaHead
 </head>

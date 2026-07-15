@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import AppLayout from '@/layouts/AppLayout.vue'
+import { contact } from '@/routes'
 import { Link } from '@inertiajs/vue3'
 </script>
 
 <template>
   <app-layout title="Mentions légales">
     <template #header>
-      <h1 class="text-xl font-semibold leading-tight text-gray-800">Mentions légales</h1>
+      <h1 class="text-xl leading-tight font-semibold text-gray-800">Mentions légales</h1>
     </template>
     <div class="bg-gray-100 px-6 py-12">
       <div class="mx-auto max-w-7xl rounded-lg bg-white p-8 shadow-md">
@@ -26,7 +27,6 @@ import { Link } from '@inertiajs/vue3'
             </a>
           </p>
         </section>
-
         <section class="mb-6">
           <h2 class="mb-2 text-xl font-semibold">Propriété Intellectuelle</h2>
           <p>
@@ -73,6 +73,7 @@ import { Link } from '@inertiajs/vue3'
             <!--              Politique de Cookies-->
             <!--            </Link>-->
             <!--            .-->
+            <!--            .-->
           </p>
         </section>
 
@@ -92,7 +93,7 @@ import { Link } from '@inertiajs/vue3'
           <h2 class="mb-2 text-xl font-semibold">Contact</h2>
           <p>
             Pour toute question ou réclamation, vous pouvez nous contacter via notre page de
-            <Link :href="route('contact')">contact</Link>
+            <Link :href="contact()">contact</Link>
             .
           </p>
         </section>

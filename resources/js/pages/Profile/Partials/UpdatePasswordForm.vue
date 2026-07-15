@@ -65,6 +65,7 @@ import JetFormSection from '@/jetstream/FormSection.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetInputError from '@/jetstream/InputError.vue'
 import JetLabel from '@/jetstream/Label.vue'
+import { update as updateUserPassword } from '@/routes/user-password'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -75,6 +76,10 @@ export default defineComponent({
     JetInput,
     JetInputError,
     JetLabel,
+  },
+
+  setup() {
+    return { updateUserPassword }
   },
 
   data() {
@@ -89,7 +94,7 @@ export default defineComponent({
 
   methods: {
     updatePassword() {
-      this.form.put(route('user-password.update'), {
+      this.form.submit(this.updateUserPassword(), {
         errorBag: 'updatePassword',
         preserveScroll: true,
         onSuccess: () => this.form.reset(),

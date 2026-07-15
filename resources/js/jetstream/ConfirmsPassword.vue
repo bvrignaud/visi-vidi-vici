@@ -44,6 +44,8 @@
 
 <script>
 import Button from '@/components/ui/buttons/Button.vue'
+import { confirmation as passwordConfirmation } from '@/routes/password'
+import { store as passwordConfirmStore } from '@/routes/password/confirm'
 import { defineComponent } from 'vue'
 import JetSecondaryButton from '../components/ui/buttons/SecondaryButton.vue'
 import JetDialogModal from '../components/ui/modal/DialogModal.vue'
@@ -73,6 +75,10 @@ export default defineComponent({
     JetSecondaryButton,
   },
 
+  setup() {
+    return { passwordConfirmation, passwordConfirmStore }
+  },
+
   data() {
     return {
       confirmingPassword: false,
@@ -85,7 +91,7 @@ export default defineComponent({
 
   methods: {
     startConfirmingPassword() {
-      axios.get(route('password.confirmation')).then((response) => {
+      axios.get(this.passwordConfirmation().url).then((response) => {
         if (response.data.confirmed) {
           this.$emit('confirmed')
         } else {
@@ -100,7 +106,7 @@ export default defineComponent({
       this.form.processing = true
 
       axios
-        .post(route('password.confirm'), {
+        .post(this.passwordConfirmStore().url, {
           password: this.form.password,
         })
         .then(() => {

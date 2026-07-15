@@ -66,7 +66,7 @@
               I agree to the
               <a
                 target="_blank"
-                :href="route('terms.show')"
+                :href="'#'"
                 class="text-sm text-gray-600 underline hover:text-gray-900"
               >
                 Terms of Service
@@ -74,7 +74,7 @@
               and
               <a
                 target="_blank"
-                :href="route('policy.show')"
+                :href="'#'"
                 class="text-sm text-gray-600 underline hover:text-gray-900"
               >
                 Privacy Policy
@@ -85,7 +85,7 @@
       </div>
 
       <div class="mt-4 flex items-center justify-end">
-        <Link :href="route('login')" class="text-sm text-gray-600 underline hover:text-gray-900">
+        <Link :href="login()" class="text-sm text-gray-600 underline hover:text-gray-900">
           {{ $t('Already registered?') }}
         </Link>
 
@@ -98,13 +98,15 @@
 </template>
 
 <script>
-import Button from '@/components/ui/buttons/Button.vue'
 import ValidationErrors from '@/components/features/ValidationErrors.vue'
+import Button from '@/components/ui/buttons/Button.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
 import JetCheckbox from '@/jetstream/Checkbox.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetLabel from '@/jetstream/Label.vue'
+import { login } from '@/routes'
+import { store as registerStore } from '@/routes/register'
 import { Head, Link } from '@inertiajs/vue3'
 import { defineComponent } from 'vue'
 
@@ -121,6 +123,10 @@ export default defineComponent({
     Link,
   },
 
+  setup() {
+    return { login, registerStore }
+  },
+
   data() {
     return {
       form: this.$inertia.form({
@@ -135,7 +141,7 @@ export default defineComponent({
 
   methods: {
     submit() {
-      this.form.post(this.route('register'), {
+      this.form.submit(this.registerStore(), {
         onFinish: () => this.form.reset('password', 'password_confirmation'),
       })
     },

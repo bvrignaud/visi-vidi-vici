@@ -126,6 +126,7 @@ import JetActionMessage from '@/jetstream/ActionMessage.vue'
 import JetActionSection from '@/jetstream/ActionSection.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetInputError from '@/jetstream/InputError.vue'
+import { destroy as logoutOtherDevices } from '@/routes/other-browser-sessions'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -139,6 +140,10 @@ export default defineComponent({
     JetInput,
     JetInputError,
     JetSecondaryButton,
+  },
+
+  setup() {
+    return { logoutOtherDevices }
   },
 
   data() {
@@ -159,7 +164,7 @@ export default defineComponent({
     },
 
     logoutOtherBrowserSessions() {
-      this.form.delete(route('other-browser-sessions.destroy'), {
+      this.form.submit(this.logoutOtherDevices(), {
         preserveScroll: true,
         onSuccess: () => this.closeModal(),
         onError: () => this.$refs.password.focus(),

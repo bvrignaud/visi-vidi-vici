@@ -23,7 +23,7 @@
         </Button>
 
         <Link
-          :href="route('logout')"
+          :href="logout()"
           method="post"
           as="button"
           class="text-sm text-gray-600 underline hover:text-gray-900"
@@ -38,6 +38,7 @@
 import Button from '@/components/ui/buttons/Button.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
+import { logout } from '@/routes'
 import { Head, Link } from '@inertiajs/vue3'
 import { defineComponent } from 'vue'
 
@@ -54,15 +55,19 @@ export default defineComponent({
     status: String,
   },
 
+  setup() {
+    return { logout }
+  },
+
   data() {
     return {
-      form: this.$inertia.form(),
+      form: this.$inertia.form({}),
     }
   },
 
   methods: {
     submit() {
-      this.form.post(this.route('verification.send'))
+      this.form.post('/email/verification-notification')
     },
   },
 

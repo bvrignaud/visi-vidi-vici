@@ -1,5 +1,6 @@
 <script setup>
 import { Link } from '@inertiajs/vue3'
+import { mentionsLegales } from '@/routes'
 </script>
 
 <template>
@@ -10,7 +11,7 @@ import { Link } from '@inertiajs/vue3'
     >
       <div>Visi vidi Vici</div>
       <div>
-        <Link :href="route('mentions-legales')" class="no-underline hover:text-gray-800"
+        <Link :href="mentionsLegales()" class="no-underline hover:text-gray-800"
           >Mentions légales
         </Link>
       </div>

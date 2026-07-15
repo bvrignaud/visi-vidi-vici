@@ -61,6 +61,7 @@ import JetDialogModal from '@/components/ui/modal/DialogModal.vue'
 import JetActionSection from '@/jetstream/ActionSection.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetInputError from '@/jetstream/InputError.vue'
+import { destroy as deleteUserRoute } from '@/routes/current-user'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -71,6 +72,10 @@ export default defineComponent({
     JetInput,
     JetInputError,
     JetSecondaryButton,
+  },
+
+  setup() {
+    return { deleteUserRoute }
   },
 
   data() {
@@ -91,7 +96,7 @@ export default defineComponent({
     },
 
     deleteUser() {
-      this.form.delete(route('current-user.destroy'), {
+      this.form.submit(this.deleteUserRoute(), {
         preserveScroll: true,
         onSuccess: () => this.closeModal(),
         onError: () => this.$refs.password.focus(),

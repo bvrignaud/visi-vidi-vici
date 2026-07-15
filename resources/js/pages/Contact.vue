@@ -84,9 +84,10 @@ import Input from '@/jetstream/Input.vue'
 import InputError from '@/jetstream/InputError.vue'
 import Label from '@/jetstream/Label.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
+import { send as contactSend } from '@/routes/contact'
 import { useForm } from 'laravel-precognition-vue-inertia'
 
-const form = useForm('post', route('contact.send'), {
+const form = useForm('post', contactSend().url, {
   name: '',
   email: '',
   subject: '',
