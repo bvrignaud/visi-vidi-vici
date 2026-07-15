@@ -3,8 +3,7 @@
     class="rounded-md border-gray-300 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-black/50 focus:ring-indigo-200"
     @input="$emit('update:modelValue', $event.target.value)"
     ref="input"
-    >{{ modelValue }}</textarea
-  >
+    >{{ modelValue }}</textarea>
 </template>
 
 <script>

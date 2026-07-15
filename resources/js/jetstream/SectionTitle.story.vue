@@ -6,7 +6,7 @@ import '../../css/app.css'
 <template>
   <Story title="Jetstream/SectionTitle" :layout="{ type: 'grid', width: '600px' }">
     <Variant title="Default">
-      <div class="p-4 bg-gray-100">
+      <div class="bg-gray-100 p-4">
         <SectionTitle>
           <template #title>Profile Information</template>
           <template #description>
@@ -17,14 +17,15 @@ import '../../css/app.css'
     </Variant>
 
     <Variant title="With Aside Content">
-      <div class="p-4 bg-gray-100">
+      <div class="bg-gray-100 p-4">
         <SectionTitle>
           <template #title>API Tokens</template>
           <template #description>
-            API tokens allow third-party services to authenticate with our application on your behalf.
+            API tokens allow third-party services to authenticate with our application on your
+            behalf.
           </template>
           <template #aside>
-            <button class="px-4 py-2 bg-gray-800 text-white rounded-md text-sm">
+            <button class="rounded-md bg-gray-800 px-4 py-2 text-sm text-white">
               Create API Token
             </button>
           </template>

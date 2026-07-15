@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Input from './Input.vue'
 import { reactive } from 'vue'
 import '../../css/app.css'
+import Input from './Input.vue'
 
 const state = reactive({
   value: 'Example input',

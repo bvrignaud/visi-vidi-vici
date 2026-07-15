@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/buttons'
 import ConfirmsPassword from '@/jetstream/ConfirmsPassword.vue'
-import { reactive, onMounted } from 'vue'
+import { onMounted, reactive } from 'vue'
 import '../../css/app.css'
 
 // Mock the axios and route functions that ConfirmsPassword uses

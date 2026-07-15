@@ -1,6 +1,6 @@
 <script setup>
-import { Link } from '@inertiajs/vue3'
 import { mentionsLegales } from '@/routes'
+import { Link } from '@inertiajs/vue3'
 </script>
 
 <template>

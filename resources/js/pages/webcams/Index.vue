@@ -1,7 +1,7 @@
 <template>
   <app-layout title="Webcams">
     <template #header>
-      <h2 class="text-xl font-semibold leading-tight text-gray-800">Webcams</h2>
+      <h2 class="text-xl leading-tight font-semibold text-gray-800">Webcams</h2>
     </template>
 
     <div class="py-12">
