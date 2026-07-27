@@ -18,12 +18,6 @@
           <jet-section-border />
         </div>
 
-        <div>
-          <two-factor-authentication-form class="mt-10 sm:mt-0" />
-
-          <jet-section-border />
-        </div>
-
         <logout-other-browser-sessions-form :sessions="sessions" class="mt-10 sm:mt-0" />
 
         <div>
@@ -40,7 +34,6 @@ import JetSectionBorder from '@/jetstream/SectionBorder.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
 import DeleteUserForm from '@/pages/Profile/Partials/DeleteUserForm.vue'
 import LogoutOtherBrowserSessionsForm from '@/pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue'
-import TwoFactorAuthenticationForm from '@/pages/Profile/Partials/TwoFactorAuthenticationForm.vue'
 import UpdatePasswordForm from '@/pages/Profile/Partials/UpdatePasswordForm.vue'
 import UpdateProfileInformationForm from '@/pages/Profile/Partials/UpdateProfileInformationForm.vue'
 import { defineComponent } from 'vue'
@@ -53,7 +46,6 @@ export default defineComponent({
     DeleteUserForm,
     JetSectionBorder,
     LogoutOtherBrowserSessionsForm,
-    TwoFactorAuthenticationForm,
     UpdatePasswordForm,
     UpdateProfileInformationForm,
   },
