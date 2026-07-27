@@ -15,6 +15,7 @@ return [
     'array' => 'Le champ :attribute doit être un tableau.',
     'ascii' => 'Le champ :attribute ne doit contenir que des caractères alphanumériques et des symboles codés sur un octet.',
     'attached' => ':attribute est déjà attaché(e).',
+    'base64' => 'The :attribute field must be a valid Base64 string.',
     'before' => 'Le champ :attribute doit être une date antérieure au :date.',
     'before_or_equal' => 'Le champ :attribute doit être une date antérieure ou égale au :date.',
     'between' => [
