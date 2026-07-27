@@ -19,7 +19,7 @@ createInertiaApp({
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(App, props) })
       .use(plugin)
-      .use(i18nVue, {
+      .use(i18nVue as any, {
         resolve: async (lang: string) => {
           const langs = import.meta.glob('../../lang/*.json')
           return await langs[`../../lang/${lang}.json`]()
