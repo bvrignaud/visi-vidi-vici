@@ -26,11 +26,10 @@
 
         <logout-other-browser-sessions-form :sessions="sessions" class="mt-10 sm:mt-0" />
 
-        <template>
+        <div>
           <jet-section-border />
-
           <delete-user-form class="mt-10 sm:mt-0" />
-        </template>
+        </div>
       </div>
     </div>
   </app-layout>
