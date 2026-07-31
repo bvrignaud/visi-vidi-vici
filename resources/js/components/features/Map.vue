@@ -67,8 +67,8 @@ watch(
 
 function zoomFitToMarkers(): void {
   if (markers.length > 1) {
-    map.value?.leafletObject.fitBounds(markers.map((m) => m.coordinates))
-    map.value?.leafletObject.fitBounds(markers.map((m) => m.coordinates))
+    map.value?.leafletObject?.fitBounds(markers.map((m) => m.coordinates))
+    map.value?.leafletObject?.fitBounds(markers.map((m) => m.coordinates))
   } else if (markers.length) {
     center.value = markers[0].coordinates
   }
