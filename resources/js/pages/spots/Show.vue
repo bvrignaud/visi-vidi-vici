@@ -355,7 +355,7 @@ const tidesRows = ref<{ [date: string]: { colspan: number; tides: Array<any> } }
 const startDate = ref(dayjs().startOf('day').subtract(4, 'days'))
 const today: string = dayjs().format('YYYY-MM-DD')
 const markers = ref<Array<any>>([])
-const webcams = ref<Array<Webcam>>([])
+const webcams = ref<Webcam[]>([])
 const showModalPaymentRequired = ref(false)
 
 // Fonction pour les scores (inversé car note élevée = bon)
@@ -434,7 +434,8 @@ function fetchForecastPrev() {
 onMounted(async () => {
   fetchForecast()
   webcamsService.getAll({ lat: props.spot.lat, lng: props.spot.lng }).then((data) => {
-    webcams.value = data.map(
+    webcams.value = data
+    const webcamMarkers = data.map(
       (webcam: { id: number; lat: number; lng: number; title: string; url: string }) => {
         return {
           id: webcam.id,
@@ -445,7 +446,7 @@ onMounted(async () => {
         }
       },
     )
-    markers.value = markers.value.concat(webcams.value)
+    markers.value = markers.value.concat(webcamMarkers)
   })
   markers.value.push({
     id: props.spot.id,
