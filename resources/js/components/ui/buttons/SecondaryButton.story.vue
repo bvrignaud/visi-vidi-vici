@@ -4,7 +4,7 @@ import { reactive } from 'vue'
 import '../../../../css/app.css'
 
 const state = reactive({
-  type: 'button',
+  type: 'button' as 'submit' | 'button' | 'reset',
 })
 </script>
 

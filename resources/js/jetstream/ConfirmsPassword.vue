@@ -4,7 +4,7 @@
       <slot />
     </span>
 
-    <jet-dialog-modal :show="confirmingPassword" @close="closeModal">
+    <JetDialogModal :show="confirmingPassword" @close="closeModal">
       <template #title>
         {{ title }}
       </template>
@@ -13,119 +13,92 @@
         {{ content }}
 
         <div class="mt-4">
-          <jet-input
+          <JetInput
+            ref="passwordInput"
+            v-model="form.password"
             type="password"
             class="mt-1 block w-3/4"
             placeholder="Password"
-            ref="password"
-            v-model="form.password"
             @keyup.enter="confirmPassword"
           />
 
-          <jet-input-error :message="form.error" class="mt-2" />
+          <JetInputError :message="form.errors.password" class="mt-2" />
         </div>
       </template>
 
       <template #footer>
-        <jet-secondary-button @click="closeModal"> Cancel </jet-secondary-button>
+        <JetSecondaryButton @click="closeModal"> Cancel </JetSecondaryButton>
 
         <Button
           class="ml-2"
-          @click="confirmPassword"
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
+          @click="confirmPassword"
         >
           {{ button }}
         </Button>
       </template>
-    </jet-dialog-modal>
+    </JetDialogModal>
   </span>
 </template>
 
-<script>
+<script setup lang="ts">
 import Button from '@/components/ui/buttons/Button.vue'
 import { confirmation as passwordConfirmation } from '@/routes/password'
 import { store as passwordConfirmStore } from '@/routes/password/confirm'
-import { defineComponent } from 'vue'
+import { useHttp } from '@inertiajs/vue3'
+import { nextTick, ref } from 'vue'
 import JetSecondaryButton from '../components/ui/buttons/SecondaryButton.vue'
 import JetDialogModal from '../components/ui/modal/DialogModal.vue'
 import JetInput from './Input.vue'
 import JetInputError from './InputError.vue'
 
-export default defineComponent({
-  emits: ['confirmed'],
+defineProps<{
+  title?: string
+  content?: string
+  button?: string
+}>()
 
-  props: {
-    title: {
-      default: 'Confirmez votre mot de passe',
-    },
-    content: {
-      default: 'For your security, please confirm your password to continue.',
-    },
-    button: {
-      default: 'Confirm',
-    },
-  },
+const emit = defineEmits<{
+  (e: 'confirmed'): void
+}>()
 
-  components: {
-    Button,
-    JetDialogModal,
-    JetInput,
-    JetInputError,
-    JetSecondaryButton,
-  },
+const confirmingPassword = ref(false)
+const passwordInput = ref<any>(null)
 
-  setup() {
-    return { passwordConfirmation, passwordConfirmStore }
-  },
-
-  data() {
-    return {
-      confirmingPassword: false,
-      form: {
-        password: '',
-        error: '',
-      },
-    }
-  },
-
-  methods: {
-    startConfirmingPassword() {
-      axios.get(this.passwordConfirmation().url).then((response) => {
-        if (response.data.confirmed) {
-          this.$emit('confirmed')
-        } else {
-          this.confirmingPassword = true
-
-          setTimeout(() => this.$refs.password.focus(), 250)
-        }
-      })
-    },
-
-    confirmPassword() {
-      this.form.processing = true
-
-      axios
-        .post(this.passwordConfirmStore().url, {
-          password: this.form.password,
-        })
-        .then(() => {
-          this.form.processing = false
-          this.closeModal()
-          this.$nextTick(() => this.$emit('confirmed'))
-        })
-        .catch((error) => {
-          this.form.processing = false
-          this.form.error = error.response.data.errors.password[0]
-          this.$refs.password.focus()
-        })
-    },
-
-    closeModal() {
-      this.confirmingPassword = false
-      this.form.password = ''
-      this.form.error = ''
-    },
-  },
+const form = useHttp({
+  password: '',
 })
+
+const startConfirmingPassword = () => {
+  form.get(passwordConfirmation().url, {
+    onSuccess: (response: any) => {
+      if (response.confirmed) {
+        emit('confirmed')
+      } else {
+        confirmingPassword.value = true
+
+        setTimeout(() => passwordInput.value?.focus(), 250)
+      }
+    },
+  })
+}
+
+const confirmPassword = () => {
+  form.post(passwordConfirmStore().url, {
+    onSuccess: () => {
+      closeModal()
+      nextTick(() => emit('confirmed'))
+    },
+    onError: () => {
+      passwordInput.value?.focus()
+    },
+  })
+}
+
+const closeModal = () => {
+  confirmingPassword.value = false
+  form.reset()
+  form.clearErrors()
+}
 </script>

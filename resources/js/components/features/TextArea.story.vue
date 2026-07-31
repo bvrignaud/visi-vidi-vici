@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
 import '../../../css/app.css'
 import TextArea from './TextArea.vue'
-
-const state = reactive({
-  // Add reactive state if needed
-})
 </script>
 
 <template>

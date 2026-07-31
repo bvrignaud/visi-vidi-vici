@@ -10,4 +10,13 @@ export interface Forecast {
   windSpeed: number
 }
 
-export interface ForecastAvg extends Omit<Forecast, 'time'> {}
+export interface ForecastAvg {
+  note: number
+  airTemperature: number
+  cloudCover: number
+  swellHeight: number
+  swellPeriod: number
+  waterTemperature: number
+  windDirection: number
+  windSpeed: number
+}

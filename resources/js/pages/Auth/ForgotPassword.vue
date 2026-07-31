@@ -1,9 +1,9 @@
 <template>
   <Head title="Forgot Password" />
 
-  <jet-authentication-card>
+  <JetAuthenticationCard>
     <template #logo>
-      <jet-authentication-card-logo />
+      <JetAuthenticationCardLogo />
     </template>
 
     <div class="mb-4 text-sm text-gray-600">
@@ -15,16 +15,16 @@
       {{ status }}
     </div>
 
-    <validation-errors class="mb-4" />
+    <ValidationErrors class="mb-4" />
 
     <form @submit.prevent="submit">
       <div>
-        <jet-label for="email" value="Email" />
-        <jet-input
+        <JetLabel for="email" value="Email" />
+        <JetInput
           id="email"
+          v-model="form.email"
           type="email"
           class="mt-1 block w-full"
-          v-model="form.email"
           required
           autofocus
         />
@@ -36,10 +36,10 @@
         </Button>
       </div>
     </form>
-  </jet-authentication-card>
+  </JetAuthenticationCard>
 </template>
 
-<script>
+<script setup lang="ts">
 import ValidationErrors from '@/components/features/ValidationErrors.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
@@ -47,40 +47,17 @@ import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetLabel from '@/jetstream/Label.vue'
 import { email as sendResetLink } from '@/routes/password'
-import { Head } from '@inertiajs/vue3'
-import { defineComponent } from 'vue'
+import { Head, useForm } from '@inertiajs/vue3'
 
-export default defineComponent({
-  components: {
-    Head,
-    JetAuthenticationCard,
-    JetAuthenticationCardLogo,
-    Button,
-    JetInput,
-    JetLabel,
-    ValidationErrors,
-  },
+defineProps<{
+  status?: string
+}>()
 
-  props: {
-    status: String,
-  },
-
-  setup() {
-    return { sendResetLink }
-  },
-
-  data() {
-    return {
-      form: this.$inertia.form({
-        email: '',
-      }),
-    }
-  },
-
-  methods: {
-    submit() {
-      this.form.submit(this.sendResetLink())
-    },
-  },
+const form = useForm({
+  email: '',
 })
+
+const submit = () => {
+  form.submit(sendResetLink())
+}
 </script>

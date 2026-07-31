@@ -1,3 +1,9 @@
+<script setup lang="ts">
+defineProps<{
+  on?: boolean
+}>()
+</script>
+
 <template>
   <div>
     <transition
@@ -11,11 +17,3 @@
     </transition>
   </div>
 </template>
-
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  props: ['on'],
-})
-</script>

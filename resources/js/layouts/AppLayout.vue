@@ -78,21 +78,21 @@ const navLinks = computed(() => {
 
               <!-- Navigation Links -->
               <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <jet-nav-link
+                <JetNavLink
                   v-for="(navLink, key) in navLinks"
                   :key="key"
-                  :href="navLink.route()"
+                  :href="navLink.route().url"
                   :active="$page.url === navLink.route.url()"
                 >
                   {{ navLink.label }}
-                </jet-nav-link>
+                </JetNavLink>
                 <template v-if="!auth.user">
-                  <jet-nav-link :href="login()" :active="$page.url === login.url()">
+                  <JetNavLink :href="login().url" :active="$page.url === login.url()">
                     {{ $t('Log in') }}
-                  </jet-nav-link>
-                  <jet-nav-link :href="register()" :active="$page.url === register.url()">
+                  </JetNavLink>
+                  <JetNavLink :href="register().url" :active="$page.url === register.url()">
                     {{ $t('Register') }}
-                  </jet-nav-link>
+                  </JetNavLink>
                 </template>
               </div>
             </div>
@@ -119,7 +119,7 @@ const navLinks = computed(() => {
                       {{ $t('Manage Account') }}
                     </div>
 
-                    <jet-dropdown-link :href="profileShow()"> Profil</jet-dropdown-link>
+                    <jet-dropdown-link :href="profileShow().url"> Profil</jet-dropdown-link>
 
                     <div class="border-t border-gray-100"></div>
 
@@ -173,22 +173,22 @@ const navLinks = computed(() => {
           class="sm:hidden"
         >
           <div class="space-y-1 pt-2 pb-3">
-            <!--                        <jet-responsive-nav-link v-if="auth.user" :href="route('dashboard')" :active="route().current('dashboard')">-->
-            <!--                            Dashboard-->
-            <!--                        </jet-responsive-nav-link>-->
             <jet-responsive-nav-link
               v-for="(navLink, key) in navLinks"
               :key="key"
-              :href="navLink.route()"
+              :href="navLink.route().url"
               :active="$page.url === navLink.route.url()"
             >
               {{ navLink.label }}
             </jet-responsive-nav-link>
             <template v-if="!auth.user">
-              <jet-responsive-nav-link :href="login()" :active="$page.url === login.url()">
+              <jet-responsive-nav-link :href="login().url" :active="$page.url === login.url()">
                 {{ $t('Log in') }}
               </jet-responsive-nav-link>
-              <jet-responsive-nav-link :href="register()" :active="$page.url === register.url()">
+              <jet-responsive-nav-link
+                :href="register().url"
+                :active="$page.url === register.url()"
+              >
                 {{ $t('Register') }}
               </jet-responsive-nav-link>
             </template>
@@ -217,7 +217,7 @@ const navLinks = computed(() => {
 
             <div v-if="auth.user" class="mt-3 space-y-1">
               <jet-responsive-nav-link
-                :href="profileShow()"
+                :href="profileShow().url"
                 :active="$page.url === profileShow.url()"
               >
                 Profil

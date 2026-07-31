@@ -1,9 +1,9 @@
 <template>
   <Head title="Email Verification" />
 
-  <jet-authentication-card>
+  <JetAuthenticationCard>
     <template #logo>
-      <jet-authentication-card-logo />
+      <JetAuthenticationCardLogo />
     </template>
 
     <div class="mb-4 text-sm text-gray-600">
@@ -12,7 +12,7 @@
       another.
     </div>
 
-    <div class="mb-4 text-sm font-medium text-green-600" v-if="verificationLinkSent">
+    <div v-if="verificationLinkSent" class="mb-4 text-sm font-medium text-green-600">
       A new verification link has been sent to the email address you provided during registration.
     </div>
 
@@ -27,54 +27,31 @@
           method="post"
           as="button"
           class="text-sm text-gray-600 underline hover:text-gray-900"
-          >Log Out
+        >
+          Log Out
         </Link>
       </div>
     </form>
-  </jet-authentication-card>
+  </JetAuthenticationCard>
 </template>
 
-<script>
+<script setup lang="ts">
 import Button from '@/components/ui/buttons/Button.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
 import { logout } from '@/routes'
-import { Head, Link } from '@inertiajs/vue3'
-import { defineComponent } from 'vue'
+import { Head, Link, useForm } from '@inertiajs/vue3'
+import { computed } from 'vue'
 
-export default defineComponent({
-  components: {
-    Head,
-    JetAuthenticationCard,
-    JetAuthenticationCardLogo,
-    Button,
-    Link,
-  },
+const props = defineProps<{
+  status?: string
+}>()
 
-  props: {
-    status: String,
-  },
+const form = useForm({})
 
-  setup() {
-    return { logout }
-  },
+const submit = () => {
+  form.post('/email/verification-notification')
+}
 
-  data() {
-    return {
-      form: this.$inertia.form({}),
-    }
-  },
-
-  methods: {
-    submit() {
-      this.form.post('/email/verification-notification')
-    },
-  },
-
-  computed: {
-    verificationLinkSent() {
-      return this.status === 'verification-link-sent'
-    },
-  },
-})
+const verificationLinkSent = computed(() => props.status === 'verification-link-sent')
 </script>

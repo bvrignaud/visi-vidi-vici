@@ -1,45 +1,45 @@
 <template>
   <Head title="Reset Password" />
 
-  <jet-authentication-card>
+  <JetAuthenticationCard>
     <template #logo>
-      <jet-authentication-card-logo />
+      <JetAuthenticationCardLogo />
     </template>
 
-    <validation-errors class="mb-4" />
+    <ValidationErrors class="mb-4" />
 
     <form @submit.prevent="submit">
       <div>
-        <jet-label for="email" value="Email" />
-        <jet-input
+        <JetLabel for="email" value="Email" />
+        <JetInput
           id="email"
+          v-model="form.email"
           type="email"
           class="mt-1 block w-full"
-          v-model="form.email"
           required
           autofocus
         />
       </div>
 
       <div class="mt-4">
-        <jet-label for="password" value="Password" />
-        <jet-input
+        <JetLabel for="password" value="Password" />
+        <JetInput
           id="password"
+          v-model="form.password"
           type="password"
           class="mt-1 block w-full"
-          v-model="form.password"
           required
           autocomplete="new-password"
         />
       </div>
 
       <div class="mt-4">
-        <jet-label for="password_confirmation" value="Confirmez votre mot de passe" />
-        <jet-input
+        <JetLabel for="password_confirmation" value="Confirmez votre mot de passe" />
+        <JetInput
           id="password_confirmation"
+          v-model="form.password_confirmation"
           type="password"
           class="mt-1 block w-full"
-          v-model="form.password_confirmation"
           required
           autocomplete="new-password"
         />
@@ -51,57 +51,34 @@
         </Button>
       </div>
     </form>
-  </jet-authentication-card>
+  </JetAuthenticationCard>
 </template>
 
-<script>
+<script setup lang="ts">
 import ValidationErrors from '@/components/features/ValidationErrors.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetLabel from '@/jetstream/Label.vue'
-import { update as updatePassword } from '@/routes/password'
-import { Head } from '@inertiajs/vue3'
-import { defineComponent } from 'vue'
+import { update } from '@/routes/password'
+import { Head, useForm } from '@inertiajs/vue3'
 
-export default defineComponent({
-  components: {
-    Head,
-    JetAuthenticationCard,
-    JetAuthenticationCardLogo,
-    Button,
-    JetInput,
-    JetLabel,
-    ValidationErrors,
-  },
+const props = defineProps<{
+  email: string
+  token: string
+}>()
 
-  props: {
-    email: String,
-    token: String,
-  },
-
-  setup() {
-    return { updatePassword }
-  },
-
-  data() {
-    return {
-      form: this.$inertia.form({
-        token: this.token,
-        email: this.email,
-        password: '',
-        password_confirmation: '',
-      }),
-    }
-  },
-
-  methods: {
-    submit() {
-      this.form.submit(this.updatePassword(), {
-        onFinish: () => this.form.reset('password', 'password_confirmation'),
-      })
-    },
-  },
+const form = useForm({
+  token: props.token,
+  email: props.email,
+  password: '',
+  password_confirmation: '',
 })
+
+const submit = () => {
+  form.submit(update(), {
+    onFinish: () => form.reset('password', 'password_confirmation'),
+  })
+}
 </script>

@@ -1,3 +1,66 @@
+<script setup lang="ts">
+import { computed, onMounted, onUnmounted, watch } from 'vue'
+
+const props = withDefaults(
+  defineProps<{
+    show?: boolean
+    maxWidth?: string
+    closeable?: boolean
+  }>(),
+  {
+    show: false,
+    maxWidth: '2xl',
+    closeable: true,
+  },
+)
+
+const emit = defineEmits<{
+  (e: 'close'): void
+}>()
+
+watch(
+  () => props.show,
+  (show) => {
+    if (show) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+  },
+  { immediate: true },
+)
+
+const close = () => {
+  if (props.closeable) {
+    emit('close')
+  }
+}
+
+const closeOnEscape = (e: KeyboardEvent) => {
+  if (e.key === 'Escape' && props.show) {
+    close()
+  }
+}
+
+onMounted(() => document.addEventListener('keydown', closeOnEscape))
+onUnmounted(() => {
+  document.removeEventListener('keydown', closeOnEscape)
+  document.body.style.overflow = ''
+})
+
+const maxWidthClass = computed(() => {
+  return (
+    {
+      sm: 'sm:max-w-sm',
+      md: 'sm:max-w-md',
+      lg: 'sm:max-w-lg',
+      xl: 'sm:max-w-xl',
+      '2xl': 'sm:max-w-2xl',
+    }[props.maxWidth] || 'sm:max-w-2xl'
+  )
+})
+</script>
+
 <template>
   <teleport to="body">
     <transition leave-active-class="duration-200">
@@ -11,7 +74,7 @@
           leave-to-class="opacity-0"
         >
           <div v-show="show" class="fixed inset-0 transform transition-all" @click="close">
-            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            <div class="absolute inset-0 bg-gray-500 opacity-75" />
           </div>
         </transition>
 
@@ -28,11 +91,11 @@
             class="relative mb-6 transform overflow-hidden rounded-lg bg-white shadow-xl transition-all sm:mx-auto sm:w-full"
             :class="maxWidthClass"
           >
-            <slot v-if="show"></slot>
+            <slot v-if="show" />
             <button
               v-if="closeable"
               type="button"
-              class="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:pointer-events-none"
+              class="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none"
               @click="close"
             >
               <svg
@@ -47,8 +110,8 @@
                 stroke-linejoin="round"
                 class="lucide lucide-xicon h-4 w-4"
               >
-                <path d="M18 6 6 18"></path>
-                <path d="m6 6 12 12"></path>
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
               </svg>
               <span class="sr-only">Close</span>
             </button>
@@ -58,72 +121,3 @@
     </transition>
   </teleport>
 </template>
-
-<script>
-import { defineComponent, onMounted, onUnmounted } from 'vue'
-
-export default defineComponent({
-  emits: ['close'],
-
-  props: {
-    show: {
-      default: false,
-    },
-    maxWidth: {
-      default: '2xl',
-    },
-    closeable: {
-      default: true,
-    },
-  },
-
-  watch: {
-    show: {
-      immediate: true,
-      handler: (show) => {
-        if (show) {
-          document.body.style.overflow = 'hidden'
-        } else {
-          document.body.style.overflow = null
-        }
-      },
-    },
-  },
-
-  setup(props, { emit }) {
-    const close = () => {
-      if (props.closeable) {
-        emit('close')
-      }
-    }
-
-    const closeOnEscape = (e) => {
-      if (e.key === 'Escape' && props.show) {
-        close()
-      }
-    }
-
-    onMounted(() => document.addEventListener('keydown', closeOnEscape))
-    onUnmounted(() => {
-      document.removeEventListener('keydown', closeOnEscape)
-      document.body.style.overflow = null
-    })
-
-    return {
-      close,
-    }
-  },
-
-  computed: {
-    maxWidthClass() {
-      return {
-        sm: 'sm:max-w-sm',
-        md: 'sm:max-w-md',
-        lg: 'sm:max-w-lg',
-        xl: 'sm:max-w-xl',
-        '2xl': 'sm:max-w-2xl',
-      }[this.maxWidth]
-    },
-  },
-})
-</script>

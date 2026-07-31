@@ -1,48 +1,42 @@
+<script setup lang="ts">
+import Modal from './Modal.vue'
+
+withDefaults(
+  defineProps<{
+    show?: boolean
+    maxWidth?: string
+    closeable?: boolean
+  }>(),
+  {
+    show: false,
+    maxWidth: '2xl',
+    closeable: true,
+  },
+)
+
+const emit = defineEmits<{
+  (e: 'close'): void
+}>()
+
+const close = () => {
+  emit('close')
+}
+</script>
+
 <template>
-  <modal :show="show" :max-width="maxWidth" :closeable="closeable" @close="close">
+  <Modal :show="show" :max-width="maxWidth" :closeable="closeable" @close="close">
     <div class="px-6 py-4">
       <div class="text-lg">
-        <slot name="title"> </slot>
+        <slot name="title" />
       </div>
 
       <div class="mt-4">
-        <slot name="content"> </slot>
+        <slot name="content" />
       </div>
     </div>
 
     <div class="bg-gray-100 px-6 py-4 text-right">
-      <slot name="footer"> </slot>
+      <slot name="footer" />
     </div>
-  </modal>
+  </Modal>
 </template>
-
-<script>
-import { defineComponent } from 'vue'
-import Modal from './Modal.vue'
-
-export default defineComponent({
-  emits: ['close'],
-
-  components: {
-    Modal,
-  },
-
-  props: {
-    show: {
-      default: false,
-    },
-    maxWidth: {
-      default: '2xl',
-    },
-    closeable: {
-      default: true,
-    },
-  },
-
-  methods: {
-    close() {
-      this.$emit('close')
-    },
-  },
-})
-</script>

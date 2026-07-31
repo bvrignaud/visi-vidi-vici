@@ -1,21 +1,21 @@
 <template>
   <Head :title="$t('Register')" />
 
-  <jet-authentication-card>
+  <JetAuthenticationCard>
     <template #logo>
-      <jet-authentication-card-logo />
+      <JetAuthenticationCardLogo />
     </template>
 
-    <validation-errors class="mb-4" />
+    <ValidationErrors class="mb-4" />
 
     <form @submit.prevent="submit">
       <div>
-        <jet-label for="name" :value="$t('Name')" />
-        <jet-input
+        <JetLabel for="name" :value="$t('Name')" />
+        <JetInput
           id="name"
+          v-model="form.name"
           type="text"
           class="mt-1 block w-full"
-          v-model="form.name"
           required
           autofocus
           autocomplete="name"
@@ -23,65 +23,32 @@
       </div>
 
       <div class="mt-4">
-        <jet-label for="email" value="Email" />
-        <jet-input
-          id="email"
-          type="email"
-          class="mt-1 block w-full"
-          v-model="form.email"
-          required
-        />
+        <JetLabel for="email" value="Email" />
+        <JetInput id="email" v-model="form.email" type="email" class="mt-1 block w-full" required />
       </div>
 
       <div class="mt-4">
-        <jet-label for="password" value="Mot de passe" />
-        <jet-input
+        <JetLabel for="password" value="Mot de passe" />
+        <JetInput
           id="password"
+          v-model="form.password"
           type="password"
           class="mt-1 block w-full"
-          v-model="form.password"
           required
           autocomplete="new-password"
         />
       </div>
 
       <div class="mt-4">
-        <jet-label for="password_confirmation" value="Confirmez votre mot de passe" />
-        <jet-input
+        <JetLabel for="password_confirmation" value="Confirmez votre mot de passe" />
+        <JetInput
           id="password_confirmation"
+          v-model="form.password_confirmation"
           type="password"
           class="mt-1 block w-full"
-          v-model="form.password_confirmation"
           required
           autocomplete="new-password"
         />
-      </div>
-
-      <div class="mt-4" v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
-        <jet-label for="terms">
-          <div class="flex items-center">
-            <jet-checkbox name="terms" id="terms" v-model:checked="form.terms" />
-
-            <div class="ml-2">
-              I agree to the
-              <a
-                target="_blank"
-                :href="'#'"
-                class="text-sm text-gray-600 underline hover:text-gray-900"
-              >
-                Terms of Service
-              </a>
-              and
-              <a
-                target="_blank"
-                :href="'#'"
-                class="text-sm text-gray-600 underline hover:text-gray-900"
-              >
-                Privacy Policy
-              </a>
-            </div>
-          </div>
-        </jet-label>
       </div>
 
       <div class="mt-4 flex items-center justify-end">
@@ -94,57 +61,31 @@
         </Button>
       </div>
     </form>
-  </jet-authentication-card>
+  </JetAuthenticationCard>
 </template>
 
-<script>
+<script setup lang="ts">
 import ValidationErrors from '@/components/features/ValidationErrors.vue'
 import Button from '@/components/ui/buttons/Button.vue'
 import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
 import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
-import JetCheckbox from '@/jetstream/Checkbox.vue'
 import JetInput from '@/jetstream/Input.vue'
 import JetLabel from '@/jetstream/Label.vue'
 import { login } from '@/routes'
 import { store as registerStore } from '@/routes/register'
-import { Head, Link } from '@inertiajs/vue3'
-import { defineComponent } from 'vue'
+import { Head, Link, useForm } from '@inertiajs/vue3'
 
-export default defineComponent({
-  components: {
-    Head,
-    JetAuthenticationCard,
-    JetAuthenticationCardLogo,
-    Button,
-    JetInput,
-    JetCheckbox,
-    JetLabel,
-    ValidationErrors,
-    Link,
-  },
-
-  setup() {
-    return { login, registerStore }
-  },
-
-  data() {
-    return {
-      form: this.$inertia.form({
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
-        terms: false,
-      }),
-    }
-  },
-
-  methods: {
-    submit() {
-      this.form.submit(this.registerStore(), {
-        onFinish: () => this.form.reset('password', 'password_confirmation'),
-      })
-    },
-  },
+const form = useForm({
+  name: '',
+  email: '',
+  password: '',
+  password_confirmation: '',
+  terms: false,
 })
+
+const submit = () => {
+  form.submit(registerStore(), {
+    onFinish: () => form.reset('password', 'password_confirmation'),
+  })
+}
 </script>

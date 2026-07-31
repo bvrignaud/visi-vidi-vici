@@ -10,7 +10,7 @@ import '../../css/app.css'
     </Variant>
 
     <Variant title="No Message">
-      <InputError :message="null" />
+      <InputError message="" />
     </Variant>
   </Story>
 </template>

@@ -21,18 +21,18 @@
   </span>
 </template>
 
-<script setup>
-const props = defineProps({
-  direction: Number,
-  windSpeed: Number,
-})
+<script setup lang="ts">
+const { direction, windSpeed = 0 } = defineProps<{
+  direction: number
+  windSpeed?: number
+}>()
 
 const style = {
-  transform: `rotate(${props.direction + 180}deg)`,
-  fill: numberToColor(props.windSpeed * 1.9438, 0, 20),
+  transform: `rotate(${direction + 180}deg)`,
+  fill: numberToColor(windSpeed * 1.9438, 0, 20),
 }
 
-function numberToColor(i, min, max) {
+function numberToColor(i: number, min: number, max: number) {
   let R = 0
   let G = 0
   const B = 0
