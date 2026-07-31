@@ -1,5 +1,5 @@
 <template>
-  <app-layout title="Création d'un nouveau spot">
+  <AppLayout title="Création d'un nouveau spot">
     <template #header>
       <h2 class="text-xl leading-tight font-semibold text-gray-800">Nouveau Spot</h2>
     </template>
@@ -41,7 +41,7 @@
               <InputError :message="form.errors.lng" class="mt-2" />
             </div>
             <div class="col-span-6 sm:col-span-4">
-              <Label for="lat" value="Longitude" />
+              <Label for="lat" value="Latitude" />
               <JetInput
                 id="lat"
                 type="number"
@@ -78,10 +78,10 @@
         </FormSection>
       </div>
     </div>
-  </app-layout>
+  </AppLayout>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import Button from '@/components/ui/buttons/Button.vue'
 import ActionMessage from '@/jetstream/ActionMessage.vue'
 import FormSection from '@/jetstream/FormSection.vue'
@@ -90,35 +90,17 @@ import InputError from '@/jetstream/InputError.vue'
 import Label from '@/jetstream/Label.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
 import { store as spotStore } from '@/routes/spots'
-import { defineComponent } from 'vue'
+import { useForm } from '@inertiajs/vue3'
 
-export default defineComponent({
-  components: {
-    Button,
-    ActionMessage,
-    InputError,
-    JetInput,
-    Label,
-    FormSection,
-    AppLayout,
-  },
-  setup() {
-    return { spotStore }
-  },
-  data() {
-    return {
-      form: this.$inertia.form({
-        name: null,
-        lng: null,
-        lat: null,
-        optimal_wind_direction: null,
-      }),
-    }
-  },
-  methods: {
-    submit() {
-      this.form.submit(this.spotStore())
-    },
-  },
+const form = useForm({
+  name: null as string | null,
+  lng: null as number | null,
+  lat: null as number | null,
+  optimal_wind_direction: null as number | null,
 })
+
+const submit = () => {
+  console.log('submit')
+  form.submit(spotStore())
+}
 </script>
