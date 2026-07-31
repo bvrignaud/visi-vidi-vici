@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title data-inertia>{{ config('app.name', 'Visi vidi vici') }}</title>
-
     <meta name="description" content="@lang('pages/main.meta.description')">
 
     @laravelPWA
 
     <!-- Scripts -->
     @vite(['resources/js/app.ts', "resources/js/pages/{$page['component']}.vue"])
-    @inertiaHead
+    <x-inertia::head>
+        <title>{{ config('app.name', 'Visi vidi vici') }}</title>
+    </x-inertia::head>
 </head>
 <body class="font-sans antialiased">
 <x-inertia::app />
