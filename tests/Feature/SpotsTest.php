@@ -39,15 +39,16 @@ class SpotsTest extends AbstractFeatureTestCase
     {
         $spotCount = Spot::count();
         $response = $this
-            ->withoutExceptionHandling()
             ->actingAs(User::factory()->create(['is_admin' => true]))->post(route('spots.store'), [
-                'name' => $this->faker->name(),
+                'name' => 'Mon nouveau spot',
                 'lng' => $this->faker->longitude(),
                 'lat' => $this->faker->latitude(),
                 'optimal_wind_direction' => rand(0, 360),
                 'timezone' => $this->faker->timezone(),
             ]);
         $response->assertRedirect();
+        $response->assertSessionHas('flash.banner', "'Mon nouveau spot' à été ajouté à la liste des spots. Merci pour votre contribution.");
+        $response->assertSessionHas('flash.bannerStyle', 'success');
         $this->assertCount($spotCount + 1, Spot::all());
     }
 
@@ -65,6 +66,8 @@ class SpotsTest extends AbstractFeatureTestCase
                 'timezone' => $this->faker->timezone(),
             ]);
         $response->assertRedirect();
+        $response->assertSessionHas('flash.banner', "'New name' à bien été modifié. Merci pour votre contribution.");
+        $response->assertSessionHas('flash.bannerStyle', 'success');
         $spot->refresh();
         $this->assertEquals('New name', $spot->name);
     }

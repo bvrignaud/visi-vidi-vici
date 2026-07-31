@@ -1,16 +1,24 @@
 <script setup lang="ts">
 import { usePage } from '@inertiajs/vue3'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 const page = usePage()
 const show = ref(true)
 
-const style = computed(() => {
-  return page.props.jetstream.flash?.bannerStyle || 'success'
+const style = computed<string>(() => {
+  return (
+    (page.props as any).jetstream?.flash?.bannerStyle ||
+    (page.props as any).flash?.bannerStyle ||
+    'success'
+  )
 })
 
-const message = computed(() => {
-  return page.props.jetstream.flash?.banner || ''
+const message = computed<string>(() => {
+  return (page.props as any).jetstream?.flash?.banner || (page.props as any).flash?.banner || ''
+})
+
+watch(message, () => {
+  show.value = true
 })
 </script>
 
