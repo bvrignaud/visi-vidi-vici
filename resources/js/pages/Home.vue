@@ -21,7 +21,7 @@
                 <tbody>
                   <tr v-for="spot in spots" :key="spot.id">
                     <td>
-                      <Link :href="spotShow(spot.id)">{{ spot.name }}</Link>
+                      <Link :href="spotShow(spot.route_key)">{{ spot.name }}</Link>
                     </td>
                   </tr>
                 </tbody>
@@ -67,7 +67,7 @@ function markers() {
       id: spot.id,
       coordinates: [spot.lat, spot.lng] as PointTuple,
       options: { title: spot.name },
-      url: spotShow.url(spot.id),
+      url: spotShow.url(spot.route_key),
     }
   })
 }

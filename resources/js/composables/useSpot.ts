@@ -14,8 +14,8 @@ interface SpotForecast {
 export const useSpot = () => {
   const http = useHttp()
 
-  async function fetchSpotForecast(id: string, start: Date | null = null) {
-    const response = await http.get(`/api/spots/${id}/forecast`, {
+  async function fetchSpotForecast(routeKey: string, start: Date | null = null) {
+    const response = await http.get(`/api/spots/${routeKey}/forecast`, {
       headers: { params: { query: { start } } },
     })
 

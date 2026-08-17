@@ -16,7 +16,8 @@ class SpotsTest extends AbstractFeatureTestCase
     #[Test]
     public function get_spot_should_return_200(): void
     {
-        $response = $this->get(route('spots.show', ['spot' => Spot::inRandomOrder()->first()]));
+        $spot = Spot::factory()->create();
+        $response = $this->get(route('spots.show', ['spot' => $spot]));
         $response->assertOk();
     }
 
@@ -70,5 +71,17 @@ class SpotsTest extends AbstractFeatureTestCase
         $response->assertSessionHas('flash.bannerStyle', 'success');
         $spot->refresh();
         $this->assertEquals('New name', $spot->name);
+    }
+
+    #[Test]
+    public function it_redirects_stale_slugs_to_canonical_urls(): void
+    {
+        $spot = Spot::factory()->create(['name' => 'Original Name']);
+        $staleRouteKey = 'stale-slug--'.$spot->id;
+
+        $response = $this->get("/spots/{$staleRouteKey}");
+
+        $response->assertStatus(308);
+        $response->assertRedirect(route('spots.show', $spot));
     }
 }

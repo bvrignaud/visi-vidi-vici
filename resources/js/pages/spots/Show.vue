@@ -393,7 +393,7 @@ function fetchForecast() {
   sunInfos.value = {}
   forecasts.value = []
   forecastsAvg.value = {}
-  fetchSpotForecast(props.spot.id, startDate.value.toDate())
+  fetchSpotForecast(props.spot.route_key, startDate.value.toDate())
     .then((data) => {
       forecasts.value = data.forecasts
       sunInfos.value = data.sun_infos

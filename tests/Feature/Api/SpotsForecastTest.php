@@ -44,7 +44,7 @@ final class SpotsForecastTest extends AbstractFeatureTestCase
         DB::flushQueryLog();
         DB::enableQueryLog();
 
-        $response = $this->getJson("/api/spots/{$spot->id}/forecast");
+        $response = $this->getJson("/api/spots/{$spot->getRouteKey()}/forecast");
 
         $response->assertOk();
 
