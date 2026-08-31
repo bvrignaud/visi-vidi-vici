@@ -25,7 +25,7 @@ class SpotsTest extends AbstractFeatureTestCase
     public function get_create_spot(): void
     {
         $response = $this->get(route('spots.create'));
-        $response->assertStatus(302);
+        $response->assertFound();
 
         $user = User::factory()->create(['is_admin' => true]);
         $response = $this
@@ -81,7 +81,7 @@ class SpotsTest extends AbstractFeatureTestCase
 
         $response = $this->get("/spots/{$staleRouteKey}");
 
-        $response->assertStatus(308);
+        $response->assertPermanentRedirect();
         $response->assertRedirect(route('spots.show', $spot));
     }
 }

@@ -28,7 +28,7 @@ class ContactTest extends TestCase
             'subject' => $this->faker->jobTitle(),
             'content' => $this->faker->paragraphs(3, true),
         ]);
-        $response->assertStatus(302);
+        $response->assertFound();
         Mail::assertQueued(Contact::class);
     }
 }

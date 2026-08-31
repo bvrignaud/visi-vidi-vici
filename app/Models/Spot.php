@@ -32,10 +32,6 @@ class Spot extends Model
     use HasSlug;
     use HasUuids;
 
-    protected $casts = [
-        'optimal_wind_direction' => 'integer',
-    ];
-
     protected function getRouteKeyAttribute(): string
     {
         return $this->getRouteKey();
@@ -47,5 +43,12 @@ class Spot extends Model
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug')
             ->selfHealing(separator: '--');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'optimal_wind_direction' => 'integer',
+        ];
     }
 }
