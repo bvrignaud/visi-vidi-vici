@@ -36,9 +36,9 @@ for the frontend.
    php artisan migrate --seed
    ```
 7. Link the storage to the public folder:
-    ```bash
-    php artisan storage:link
-    ```
+   ```bash
+   php artisan storage:link
+   ```
 
 ### Development
 
@@ -141,6 +141,7 @@ The project uses PHPUnit for PHP testing with two main test suites:
 #### Creating New Tests
 
 1. For unit tests, extend `PHPUnit\Framework\TestCase`:
+
    ```php
    <?php
 

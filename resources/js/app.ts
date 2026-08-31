@@ -8,7 +8,7 @@ import { createApp, h } from 'vue'
 
 const appName = import.meta.env.VITE_APP_NAME || 'Visi vidi vici'
 
-createInertiaApp({
+void createInertiaApp({
   title: (title) => `${title} 🐟 ${appName}`,
   resolve: (name) =>
     resolvePageComponent(
