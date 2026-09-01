@@ -7,6 +7,7 @@ namespace App\Models;
 use Database\Factories\SpotFactory;
 use Illuminate\Database\Eloquent\Attributes\Appends;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -32,9 +33,14 @@ class Spot extends Model
     use HasSlug;
     use HasUuids;
 
-    protected function getRouteKeyAttribute(): string
+    /**
+     * @return Attribute<mixed, null>
+     */
+    protected function routeKey(): Attribute
     {
-        return $this->getRouteKey();
+        return Attribute::make(get: function () {
+            return $this->getRouteKey();
+        });
     }
 
     public function getSlugOptions(): SlugOptions
