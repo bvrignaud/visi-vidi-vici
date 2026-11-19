@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 
 import Footer from '@/components/layout/Footer.vue'
 import { BuyMeACoffeeButton } from '@/components/ui/buttons'
+import { Toaster } from '@/components/ui/sonner'
 import JetBanner from '@/jetstream/Banner.vue'
 import JetDropdown from '@/jetstream/Dropdown.vue'
 import JetDropdownLink from '@/jetstream/DropdownLink.vue'
@@ -253,4 +254,5 @@ const navLinks = computed(() => {
       <Footer />
     </div>
   </div>
+  <Toaster />
 </template>

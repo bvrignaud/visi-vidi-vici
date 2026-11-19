@@ -26,7 +26,8 @@
     "laravel-vue-i18n": "^2.9.0",
     "leaflet": "^1.9.4",
     "tailwindcss": "^4.3.5",
-    "vue": "^3.5.45"
+    "vue": "^3.5.45",
+    "vue-sonner": "^2.0.9"
   },
   "devDependencies": {
     "@histoire/plugin-vue": "1.0.0-alpha.2",
