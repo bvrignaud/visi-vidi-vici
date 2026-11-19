@@ -6,39 +6,47 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laravel\Jetstream\Features;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class DeleteAccountTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_user_accounts_can_be_deleted(): void
+    #[Test]
+    public function user_can_delete_their_account(): void
     {
-        if (! Features::hasAccountDeletionFeatures()) {
-            $this->markTestSkipped('Account deletion is not enabled.');
-        }
+        $user = User::factory()->create();
 
-        $this->actingAs($user = User::factory()->create());
+        $response = $this
+            ->actingAs($user)
+            ->delete(route('current-user.destroy'), [
+                'password' => 'password',
+            ]);
 
-        $this->delete('/user', [
-            'password' => 'password',
-        ]);
+        $response
+            ->assertSessionHasNoErrors()
+            ->assertRedirect(route('home'));
 
+        // $this->assertGuest();
         $this->assertNull($user->fresh());
     }
 
-    public function test_correct_password_must_be_provided_before_account_can_be_deleted(): void
+    #[Test]
+    public function correct_password_must_be_provided_to_delete_account(): void
     {
-        if (! Features::hasAccountDeletionFeatures()) {
-            $this->markTestSkipped('Account deletion is not enabled.');
-        }
+        $user = User::factory()->create();
 
-        $this->actingAs($user = User::factory()->create());
+        $response = $this
+            ->actingAs($user)
+            ->from(route('profile.show'))
+            ->delete(route('current-user.destroy'), [
+                'password' => 'wrong-password',
+            ]);
 
-        $this->delete('/user', [
-            'password' => 'wrong-password',
-        ]);
+        $response
+            ->assertSessionHasErrors('password')
+            ->assertRedirect(route('profile.show'));
 
         $this->assertNotNull($user->fresh());
     }
