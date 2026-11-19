@@ -34,8 +34,8 @@ Route::get('/', [Controllers\HomeController::class, 'index'])->name('home');
 // })->name('dashboard');
 
 Route::get('/contact', [Controllers\ContactController::class, 'index'])->name('contact');
-Route::post('/contact/send', [Controllers\ContactController::class, 'send'])->name('contact.send')
-    ->middleware([HandlePrecognitiveRequests::class]);
+Route::post('/contact', [Controllers\ContactController::class, 'send'])->name('contact.send')
+    ->middleware([HandlePrecognitiveRequests::class, 'throttle:contact']);
 
 Route::get('/mentions-legales', function () {
     return Inertia::render('MentionsLegales');

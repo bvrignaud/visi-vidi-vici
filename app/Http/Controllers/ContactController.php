@@ -23,6 +23,8 @@ class ContactController extends Controller
         Mail::to(config('mail.contact.address'))
             ->send(new Contact($request->validated()));
 
+        Inertia::flash('toast', ['type' => 'success', 'message' => __('Message sent.')]);
+
         return back()->with('message_sent', 'Votre message vient d\'être envoyé');
     }
 }
