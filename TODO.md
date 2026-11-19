@@ -1,7 +1,6 @@
 # TODO
 
 - [ ] formulaire d'édition de spot
-- [ ] Laravel auditor ? (https://www.youtube.com/watch?v=yLCd0x3TGuQ)
 - [ ] diminuer la hauteur des vagues pour st gilles de 0.1
 - [ ] https://medium.com/@developerawam/inertia-js-v3-is-finally-stable-heres-everything-that-changed-abaa23259ce6
 - [ ] trouver une autre api pour les marées avec les coefficients (utilisé calcul basé sur Brest via StormGlass)

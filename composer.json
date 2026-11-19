@@ -38,6 +38,7 @@
     "laravel/sail": "^1.18",
     "laravel/telescope": "^5.20",
     "mockery/mockery": "^1.4.4",
+    "mrpunyapal/laravel-auditor": "^0.4.0",
     "nunomaduro/collision": "*",
     "nunomaduro/phpinsights": "^2.7",
     "phpunit/phpunit": "^12.0",
