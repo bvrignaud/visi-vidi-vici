@@ -5,7 +5,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import { i18nVue } from 'laravel-vue-i18n'
 import type { DefineComponent } from 'vue'
 import { createApp, h } from 'vue'
-import { initializeFlashToast } from '@/lib/flashToast';
+import { initializeFlashToast } from '@/lib/flashToast'
 
 const appName = import.meta.env.VITE_APP_NAME || 'Visi vidi vici'
 
@@ -33,4 +33,4 @@ void createInertiaApp({
 })
 
 // This will listen for flash toast data from the server...
-initializeFlashToast();
+initializeFlashToast()

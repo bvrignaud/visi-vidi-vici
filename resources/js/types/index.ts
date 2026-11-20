@@ -1,5 +1,5 @@
 export * from './auth'
-export * from './ui';
+export * from './ui'
 
 export interface PaginatedResponse<T> {
   data: T[]

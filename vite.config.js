@@ -1,4 +1,4 @@
-import inertia from '@inertiajs/vite';
+import inertia from '@inertiajs/vite'
 import { wayfinder } from '@laravel/vite-plugin-wayfinder'
 import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
