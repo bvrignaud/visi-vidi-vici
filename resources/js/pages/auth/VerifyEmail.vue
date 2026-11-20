@@ -1,57 +1,53 @@
+<script setup lang="ts">
+import { Form, Head } from '@inertiajs/vue3'
+import TextLink from '@/components/features/TextLink.vue'
+import { Button } from '@/components/ui/buttons'
+import { Spinner } from '@/components/ui/spinner'
+import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
+import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
+import { logout } from '@/routes'
+import { send } from '@/routes/verification'
+
+defineOptions({
+  layout: {
+    title: 'Email verification',
+    description: 'Please verify your email address by clicking on the link we just emailed to you.',
+  },
+})
+
+defineProps<{
+  status?: string
+}>()
+</script>
+
 <template>
-  <Head title="Email Verification" />
+  <Head title="Email verification" />
 
   <JetAuthenticationCard>
     <template #logo>
       <JetAuthenticationCardLogo />
     </template>
 
-    <div class="mb-4 text-sm text-gray-600">
-      Thanks for signing up! Before getting started, could you verify your email address by clicking
-      on the link we just emailed to you? If you didn't receive the email, we will gladly send you
-      another.
+    <div
+      v-if="status === 'verification-link-sent'"
+      class="mb-4 text-center text-sm font-medium text-green-600"
+    >
+      {{
+        $t(
+          'A new verification link has been sent to the email address you provided during registration.',
+        )
+      }}
     </div>
 
-    <div v-if="verificationLinkSent" class="mb-4 text-sm font-medium text-green-600">
-      A new verification link has been sent to the email address you provided during registration.
-    </div>
+    <Form v-bind="send.form()" class="space-y-6 text-center" v-slot="{ processing }">
+      <Button :disabled="processing" variant="secondary">
+        <Spinner v-if="processing" />
+        {{ $t('Resend Verification Email') }}
+      </Button>
 
-    <form @submit.prevent="submit">
-      <div class="mt-4 flex items-center justify-between">
-        <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-          Resend Verification Email
-        </Button>
-
-        <Link
-          :href="logout()"
-          method="post"
-          as="button"
-          class="text-sm text-gray-600 underline hover:text-gray-900"
-        >
-          Log Out
-        </Link>
-      </div>
-    </form>
+      <TextLink :href="logout()" as="button" class="mx-auto block text-sm">{{
+        $t('Log Out')
+      }}</TextLink>
+    </Form>
   </JetAuthenticationCard>
 </template>
-
-<script setup lang="ts">
-import Button from '@/components/ui/buttons/Button.vue'
-import JetAuthenticationCard from '@/jetstream/AuthenticationCard.vue'
-import JetAuthenticationCardLogo from '@/jetstream/AuthenticationCardLogo.vue'
-import { logout } from '@/routes'
-import { Head, Link, useForm } from '@inertiajs/vue3'
-import { computed } from 'vue'
-
-const props = defineProps<{
-  status?: string
-}>()
-
-const form = useForm({})
-
-const submit = () => {
-  form.post('/email/verification-notification')
-}
-
-const verificationLinkSent = computed(() => props.status === 'verification-link-sent')
-</script>

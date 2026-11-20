@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Carbon\CarbonInterface;
 use Database\Factories\UserFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Attributes\Appends;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
@@ -23,7 +24,7 @@ use SimpleStatsIo\LaravelClient\Contracts\TrackablePerson;
 #[Appends([
     'profile_photo_url',
 ])]
-final class User extends Authenticatable implements TrackablePerson
+final class User extends Authenticatable implements MustVerifyEmail, TrackablePerson
 {
     use HasApiTokens;
 
